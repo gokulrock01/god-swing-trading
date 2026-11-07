@@ -1,6 +1,6 @@
 {
   "initial_capital_usd": 100000,
-  "cash_balance_usd": 38626.59000000001,
+  "cash_balance_usd": 4803.62000000001,
   "realized_pnl_usd": 0.0,
   "open_positions": {
     "AMT": {
@@ -53,6 +53,32 @@
       "cost": 10155.12,
       "date": "2026-11-08",
       "score": 7,
+      "tp1_booked": false
+    },
+    "VRSN": {
+      "symbol": "VRSN",
+      "verdict": "BUY NOW",
+      "entry": 308.67,
+      "sl": 284.46,
+      "tp1": 357.09,
+      "tp2": 381.3,
+      "shares": 61,
+      "cost": 18828.87,
+      "date": "2026-11-07",
+      "score": 10,
+      "tp1_booked": false
+    },
+    "CNC": {
+      "symbol": "CNC",
+      "verdict": "BUY NOW",
+      "entry": 69.74,
+      "sl": 62.79,
+      "tp1": 83.64,
+      "tp2": 90.59,
+      "shares": 215,
+      "cost": 14994.1,
+      "date": "2026-11-07",
+      "score": 9,
       "tp1_booked": false
     }
   },
