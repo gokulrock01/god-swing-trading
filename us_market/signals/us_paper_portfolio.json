@@ -1,0 +1,60 @@
+{
+  "initial_capital_usd": 100000,
+  "cash_balance_usd": 38626.59000000001,
+  "realized_pnl_usd": 0.0,
+  "open_positions": {
+    "AMT": {
+      "symbol": "AMT",
+      "verdict": "BUY NOW",
+      "entry": 188.79,
+      "sl": 172.88,
+      "tp1": 220.61,
+      "tp2": 236.52,
+      "shares": 94,
+      "cost": 17746.26,
+      "date": "2026-11-08",
+      "score": 8,
+      "tp1_booked": false
+    },
+    "A": {
+      "symbol": "A",
+      "verdict": "NEAR ENTRY",
+      "entry": 174.71,
+      "sl": 166.81,
+      "tp1": 190.66,
+      "tp2": 198.61,
+      "shares": 125,
+      "cost": 21838.75,
+      "date": "2026-11-08",
+      "score": 7,
+      "tp1_booked": false
+    },
+    "AFL": {
+      "symbol": "AFL",
+      "verdict": "NEAR ENTRY",
+      "entry": 121.18,
+      "sl": 113.66,
+      "tp1": 144.86,
+      "tp2": 155.26,
+      "shares": 96,
+      "cost": 11633.28,
+      "date": "2026-11-08",
+      "score": 7,
+      "tp1_booked": false
+    },
+    "AMCR": {
+      "symbol": "AMCR",
+      "verdict": "NEAR ENTRY",
+      "entry": 44.54,
+      "sl": 40.49,
+      "tp1": 53.63,
+      "tp2": 58.01,
+      "shares": 228,
+      "cost": 10155.12,
+      "date": "2026-11-08",
+      "score": 7,
+      "tp1_booked": false
+    }
+  },
+  "closed_positions": []
+}

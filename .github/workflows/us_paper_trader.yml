@@ -1,0 +1,40 @@
+name: Daily US Swing Paper Trader (S&P 500)
+
+on:
+  schedule:
+    # 4:15 PM EST Monday to Friday (21:15 UTC) - Post US market close
+    - cron: '15 21 * * 1-5'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub web UI
+
+jobs:
+  run-us-paper-trader:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r python_scanner/requirements.txt
+
+      - name: Run US Autonomous Paper Trader
+        run: |
+          python us_market/auto_us_paper_trader.py
+
+      - name: Commit and push updated US portfolio & logs
+        run: |
+          git config --global user.name "GodSwing-US-Bot"
+          git config --global user.email "us-bot@godswing.local"
+          git add us_market/signals/
+          git commit -m "Auto-update US paper trading portfolio [$(date +'%Y-%m-%d %H:%M EST')]" || echo "No changes to commit"
+          git push
