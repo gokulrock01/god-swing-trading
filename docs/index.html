@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOD Swing — Live Portfolio & Market Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-yellow: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --glow-green: rgba(16, 185, 129, 0.15);
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 20px 16px 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 28px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-live {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .market-switcher {
+      display: flex;
+      background: #1f2937;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .market-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .market-btn.active {
+      background: var(--accent-blue);
+      color: white;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--card-border);
+    }
+
+    .metric-card.highlight-green::before { background: var(--accent-green); }
+    .metric-card.highlight-blue::before { background: var(--accent-blue); }
+    .metric-card.highlight-purple::before { background: var(--accent-purple); }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .metric-val {
+      font-size: 22px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      margin-top: 4px;
+      color: var(--text-muted);
+    }
+
+    .text-green { color: var(--accent-green); }
+    .text-red { color: var(--accent-red); }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title span {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: #141c2c;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 12px 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .symbol-cell {
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: white;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .tag-buynow {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .tag-nearentry {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .tag-wait {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-yellow);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    .progress-bar-wrap {
+      width: 100px;
+      height: 6px;
+      background: #1f2937;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent-green);
+      border-radius: 999px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .last-updated {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-area">
+        <h1>⚡ GOD SWING SYSTEM</h1>
+        <div class="badge-live">AUTONOMOUS ENGINE</div>
+      </div>
+      <div class="market-switcher">
+        <button id="btn-in" class="market-btn active" onclick="switchMarket('IN')">🇮🇳 India NSE 500</button>
+        <button id="btn-us" class="market-btn" onclick="switchMarket('US')">🇺🇸 US S&P 500</button>
+      </div>
+    </header>
+
+    <!-- METRICS -->
+    <div class="metrics-grid">
+      <div class="metric-card highlight-blue">
+        <div class="metric-label">Total Portfolio Equity</div>
+        <div id="m-equity" class="metric-val mono">—</div>
+        <div id="m-return" class="metric-sub text-green">+0.00% Overall</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Cash Available</div>
+        <div id="m-cash" class="metric-val mono">—</div>
+        <div id="m-cash-sub" class="metric-sub">Ready to deploy</div>
+      </div>
+      <div class="metric-card highlight-purple">
+        <div class="metric-label">Active Invested</div>
+        <div id="m-invested" class="metric-val mono">—</div>
+        <div id="m-open-count" class="metric-sub">0 / 6 positions active</div>
+      </div>
+      <div class="metric-card highlight-green">
+        <div class="metric-label">Realized Profit / Loss</div>
+        <div id="m-realized" class="metric-val mono text-green">+0.00</div>
+        <div id="m-closed-count" class="metric-sub">0 closed trades</div>
+      </div>
+    </div>
+
+    <!-- OPEN POSITIONS -->
+    <div class="section-title">
+      Active Paper Positions
+      <span id="pos-summary">Updated automatically post-market</span>
+    </div>
+    <div class="table-card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Status</th>
+              <th>Entry Price</th>
+              <th>Shares</th>
+              <th>Invested</th>
+              <th>Stop Loss</th>
+              <th>Target 1 (50%)</th>
+              <th>Target 2</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="open-positions-tbody">
+            <tr><td colspan="9" style="text-align:center; padding:30px; color:var(--text-muted)">Loading positions...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RECENT SIGNALS / WATCHLIST -->
+    <div class="section-title">
+      Latest Top Actionable Signals
+      <span id="signals-summary">5-Layer High-Confluence Setups</span>
+    </div>
+    <div class="table-card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Verdict</th>
+              <th>Score</th>
+              <th>Current Price</th>
+              <th>Planned SL</th>
+              <th>Target 1</th>
+              <th>R:R</th>
+              <th>Planned Risk</th>
+            </tr>
+          </thead>
+          <tbody id="signals-tbody">
+            <tr><td colspan="8" style="text-align:center; padding:30px; color:var(--text-muted)">Loading daily market scan...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>
+      <p>Autonomous 5-Layer Swing Engine &bull; Indian NSE (4:00 PM IST) &bull; US NYSE/NASDAQ (4:15 PM EST)</p>
+      <p class="last-updated" id="sync-time">Synchronized with GitHub Cloud Runner</p>
+    </footer>
+  </div>
+
+  <script>
+    let currentMarket = 'IN';
+
+    // India Sample Data (Default)
+    const DATA_IN = {
+      initial: 1000000,
+      cash: 68153.20,
+      invested: 931846.80,
+      realized: 0.0,
+      currency: '₹',
+      positions: [
+        { symbol: "ABDL", verdict: "BUY NOW", entry: 708.00, shares: 219, cost: 155052, sl: 639.52, tp1: 844.96, tp2: 913.44, score: 10 },
+        { symbol: "PTCIL", verdict: "BUY NOW", entry: 24335.00, shares: 8, cost: 194680, sl: 22645.67, tp1: 27713.66, tp2: 29402.99, score: 10 },
+        { symbol: "BHEL", verdict: "BUY NOW", entry: 418.80, shares: 306, cost: 128152.80, sl: 369.79, tp1: 516.82, tp2: 565.83, score: 9 },
+        { symbol: "JINDALSAW", verdict: "BUY NOW", entry: 251.00, shares: 501, cost: 125751, sl: 221.10, tp1: 310.80, tp2: 340.70, score: 9 },
+        { symbol: "PWL", verdict: "BUY NOW", entry: 130.00, shares: 960, cost: 124800, sl: 114.39, tp1: 161.22, tp2: 176.83, score: 9 },
+        { symbol: "TBOTEK", verdict: "BUY NOW", entry: 1564.70, shares: 130, cost: 203411, sl: 1449.84, tp1: 1794.42, tp2: 1909.28, score: 9 }
+      ],
+      signals: [
+        { symbol: "ABDL", verdict: "BUY NOW", score: "10/10", price: 708.00, sl: 639.52, tp1: 844.96, rr: "1:2.0", risk: 15000 },
+        { symbol: "PTCIL", verdict: "BUY NOW", score: "10/10", price: 24335.00, sl: 22645.67, tp1: 27713.66, rr: "1:2.0", risk: 15000 },
+        { symbol: "BHEL", verdict: "BUY NOW", score: "9/10", price: 418.80, sl: 369.79, tp1: 516.82, rr: "1:2.0", risk: 15000 },
+        { symbol: "CHENNPETRO", verdict: "NEAR ENTRY", score: "8/10", price: 1446.92, sl: 1310.36, tp1: 1704.68, rr: "1:2.0", risk: 15000 },
+        { symbol: "FEDERALBNK", verdict: "NEAR ENTRY", score: "8/10", price: 334.12, sl: 316.70, tp1: 386.90, rr: "1:2.0", risk: 15000 },
+        { symbol: "SUNTV", verdict: "NEAR ENTRY", score: "8/10", price: 603.05, sl: 548.71, tp1: 688.93, rr: "1:2.0", risk: 15000 }
+      ]
+    };
+
+    // US Sample Data (Default)
+    const DATA_US = {
+      initial: 100000,
+      cash: 38626.59,
+      invested: 61373.41,
+      realized: 0.0,
+      currency: '$',
+      positions: [
+        { symbol: "AMT", verdict: "BUY NOW", entry: 188.79, shares: 94, cost: 17746.26, sl: 172.88, tp1: 220.61, tp2: 236.47, score: 8 },
+        { symbol: "A", verdict: "NEAR ENTRY", entry: 174.71, shares: 125, cost: 21838.75, sl: 166.81, tp1: 190.66, tp2: 198.61, score: 7 },
+        { symbol: "AFL", verdict: "NEAR ENTRY", entry: 121.18, shares: 96, cost: 11633.28, sl: 113.66, tp1: 144.86, tp2: 152.38, score: 7 },
+        { symbol: "AMCR", verdict: "NEAR ENTRY", entry: 44.54, shares: 228, cost: 10155.12, sl: 40.49, tp1: 53.63, tp2: 57.68, score: 7 }
+      ],
+      signals: [
+        { symbol: "AMT", verdict: "BUY NOW", score: "8/10", price: 188.79, sl: 172.88, tp1: 220.61, rr: "1:2.0", risk: 1500 },
+        { symbol: "A", verdict: "NEAR ENTRY", score: "7/10", price: 174.71, sl: 166.81, tp1: 190.66, rr: "1:2.0", risk: 1000 },
+        { symbol: "AFL", verdict: "NEAR ENTRY", score: "7/10", price: 121.18, sl: 113.66, tp1: 144.86, rr: "1:2.0", risk: 1000 },
+        { symbol: "AMCR", verdict: "NEAR ENTRY", score: "7/10", price: 44.54, sl: 40.49, tp1: 53.63, rr: "1:2.0", risk: 1000 }
+      ]
+    };
+
+    function formatMoney(amount, curr) {
+      if (curr === '₹') {
+        return curr + Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+      } else {
+        return curr + Number(amount).toLocaleString('en-US', { maximumFractionDigits: 2 });
+      }
+    }
+
+    function renderDashboard(data) {
+      const c = data.currency;
+      const totalEquity = data.cash + data.invested;
+      const retPct = ((totalEquity - data.initial) / data.initial) * 100;
+
+      document.getElementById('m-equity').innerText = formatMoney(totalEquity, c);
+      document.getElementById('m-return').innerText = (retPct >= 0 ? '+' : '') + retPct.toFixed(2) + '% Overall';
+      document.getElementById('m-return').className = retPct >= 0 ? 'metric-sub text-green' : 'metric-sub text-red';
+
+      document.getElementById('m-cash').innerText = formatMoney(data.cash, c);
+      document.getElementById('m-invested').innerText = formatMoney(data.invested, c);
+      document.getElementById('m-open-count').innerText = `${data.positions.length} / 6 positions active`;
+
+      document.getElementById('m-realized').innerText = (data.realized >= 0 ? '+' : '') + formatMoney(data.realized, c);
+      document.getElementById('m-realized').className = data.realized >= 0 ? 'metric-val mono text-green' : 'metric-val mono text-red';
+
+      // Render Positions Table
+      const posTbody = document.getElementById('open-positions-tbody');
+      if (data.positions.length === 0) {
+        posTbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:var(--text-muted)">No active positions right now.</td></tr>';
+      } else {
+        posTbody.innerHTML = data.positions.map(p => {
+          const tagClass = p.verdict.includes('BUY') ? 'tag-buynow' : 'tag-nearentry';
+          return `
+            <tr>
+              <td class="symbol-cell">${p.symbol}</td>
+              <td><span class="tag ${tagClass}">${p.verdict}</span></td>
+              <td class="mono">${formatMoney(p.entry, c)}</td>
+              <td class="mono">${p.shares}</td>
+              <td class="mono">${formatMoney(p.cost, c)}</td>
+              <td class="mono text-red">${formatMoney(p.sl, c)}</td>
+              <td class="mono text-green">${formatMoney(p.tp1, c)}</td>
+              <td class="mono text-green">${formatMoney(p.tp2, c)}</td>
+              <td class="mono"><strong>${p.score}/10</strong></td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // Render Signals Table
+      const sigTbody = document.getElementById('signals-tbody');
+      if (data.signals.length === 0) {
+        sigTbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:24px; color:var(--text-muted)">No candidate signals for today.</td></tr>';
+      } else {
+        sigTbody.innerHTML = data.signals.map(s => {
+          const tagClass = s.verdict.includes('BUY') ? 'tag-buynow' : s.verdict.includes('NEAR') ? 'tag-nearentry' : 'tag-wait';
+          return `
+            <tr>
+              <td class="symbol-cell">${s.symbol}</td>
+              <td><span class="tag ${tagClass}">${s.verdict}</span></td>
+              <td class="mono">${s.score}</td>
+              <td class="mono">${formatMoney(s.price, c)}</td>
+              <td class="mono text-red">${formatMoney(s.sl, c)}</td>
+              <td class="mono text-green">${formatMoney(s.tp1, c)}</td>
+              <td class="mono">${s.rr}</td>
+              <td class="mono">${formatMoney(s.risk, c)}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    // Try fetching live updated json from repository
+    async function loadLiveData() {
+      try {
+        const inResp = await fetch('python_scanner/signals/paper_portfolio.json');
+        if (inResp.ok) {
+          const inJson = await inResp.json();
+          DATA_IN.initial = inJson.initial_capital;
+          DATA_IN.cash = inJson.cash_balance;
+          DATA_IN.realized = inJson.realized_pnl;
+          DATA_IN.positions = Object.values(inJson.open_positions);
+          DATA_IN.invested = DATA_IN.positions.reduce((acc, x) => acc + x.cost, 0);
+        }
+      } catch (e) {
+        console.log('Using default bundled IN data');
+      }
+
+      try {
+        const usResp = await fetch('us_market/signals/us_paper_portfolio.json');
+        if (usResp.ok) {
+          const usJson = await usResp.json();
+          DATA_US.initial = usJson.initial_capital_usd;
+          DATA_US.cash = usJson.cash_balance_usd;
+          DATA_US.realized = usJson.realized_pnl_usd;
+          DATA_US.positions = Object.values(usJson.open_positions);
+          DATA_US.invested = DATA_US.positions.reduce((acc, x) => acc + x.cost, 0);
+        }
+      } catch (e) {
+        console.log('Using default bundled US data');
+      }
+
+      switchMarket(currentMarket);
+    }
+
+    function switchMarket(market) {
+      currentMarket = market;
+      document.getElementById('btn-in').className = market === 'IN' ? 'market-btn active' : 'market-btn';
+      document.getElementById('btn-us').className = market === 'US' ? 'market-btn active' : 'market-btn';
+      renderDashboard(market === 'IN' ? DATA_IN : DATA_US);
+    }
+
+    // Initial render
+    loadLiveData();
+  </script>
+</body>
+</html>
