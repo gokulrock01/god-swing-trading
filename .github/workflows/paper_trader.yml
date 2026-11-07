@@ -9,6 +9,8 @@ on:
 jobs:
   run-paper-trader:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Check out repository
