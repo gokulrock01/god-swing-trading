@@ -1,0 +1,38 @@
+name: Daily Swing Paper Trader (NSE)
+
+on:
+  schedule:
+    # 4:00 PM IST Monday to Friday (10:30 AM UTC)
+    - cron: '30 10 * * 1-5'
+  workflow_dispatch: # Allows manual trigger from GitHub web UI anytime
+
+jobs:
+  run-paper-trader:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r python_scanner/requirements.txt
+
+      - name: Run Autonomous Paper Trader
+        run: |
+          python python_scanner/auto_paper_trader.py
+
+      - name: Commit and push updated portfolio & logs
+        run: |
+          git config --global user.name "GodSwing-Bot"
+          git config --global user.email "bot@godswing.local"
+          git add python_scanner/signals/
+          git commit -m "Auto-update paper trading portfolio [$(date +'%Y-%m-%d %H:%M IST')]" || echo "No changes to commit"
+          git push

@@ -1,0 +1,288 @@
+//@version=5
+strategy("GOD Swing Strategy v2 India NSE", shorttitle="GOD_SWING", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, commission_value=0.1, slippage=3, initial_capital=1000000, pyramiding=1)
+
+// ============================================================
+// GOD SWING STRATEGY v2.0
+// Timeframe : Daily Chart (D)
+// Market    : NSE / BSE India
+// Layers    : CPR + Fibonacci + Volume + OBV/CVD + Breakout
+// ============================================================
+
+// ─────────────────────────────────────────────
+// INPUTS
+// ─────────────────────────────────────────────
+grpTrend = "Trend Filters"
+grpCPR   = "CPR Settings"
+grpFib   = "Fibonacci"
+grpVol   = "Volume"
+grpRisk  = "Risk"
+
+emaFast  = input.int(21,  "Fast EMA",         group=grpTrend)
+emaSlow  = input.int(50,  "Slow EMA",         group=grpTrend)
+emaBase  = input.int(200, "Base EMA 200",     group=grpTrend)
+rsiLen   = input.int(14,  "RSI Period",       group=grpTrend)
+
+showWCPR = input.bool(true, "Show Weekly CPR",  group=grpCPR)
+showMCPR = input.bool(true, "Show Monthly CPR", group=grpCPR)
+
+swingLB  = input.int(20,    "Swing Lookback",    group=grpFib)
+fibTop   = input.float(0.65, "Fib Golden Top",   group=grpFib, step=0.01)
+fibBot   = input.float(0.618,"Fib Golden Bottom",group=grpFib, step=0.01)
+
+volMA    = input.int(20,    "Volume SMA",        group=grpVol)
+volMult  = input.float(2.0, "Volume Surge Mult", group=grpVol, step=0.5)
+
+atrLen   = input.int(14,   "ATR Period",         group=grpRisk)
+atrBuf   = input.float(0.5,"ATR Stop Buffer",     group=grpRisk, step=0.1)
+rrT1     = input.float(2.0,"RR Target 1",         group=grpRisk, step=0.5)
+rrT2     = input.float(3.0,"RR Target 2",         group=grpRisk, step=0.5)
+
+// ─────────────────────────────────────────────
+// LAYER 1 - TREND (EMA + RSI)
+// ─────────────────────────────────────────────
+e21  = ta.ema(close, emaFast)
+e50  = ta.ema(close, emaSlow)
+e200 = ta.ema(close, emaBase)
+rsi  = ta.rsi(close, rsiLen)
+atr  = ta.atr(atrLen)
+
+isBull = close > e50 and e21 > e50 and close > e200
+isBear = close < e50 and e21 < e50 and close < e200
+rsiOK  = rsi >= 40 and rsi <= 55
+
+// ─────────────────────────────────────────────
+// LAYER 2 - WEEKLY CPR
+// ─────────────────────────────────────────────
+wH = request.security(syminfo.tickerid, "W", high[1],  lookahead=barmerge.lookahead_on)
+wL = request.security(syminfo.tickerid, "W", low[1],   lookahead=barmerge.lookahead_on)
+wC = request.security(syminfo.tickerid, "W", close[1], lookahead=barmerge.lookahead_on)
+
+wPivot = (wH + wL + wC) / 3
+wBC    = (wH + wL) / 2
+wTC    = (wPivot - wBC) + wPivot
+wWidth    = math.abs(wTC - wBC)
+wWidthAvg = ta.sma(wWidth, 20)
+
+isNarrow   = wWidth < wWidthAvg * 0.8
+aboveW     = close > wTC
+belowW     = close < wBC
+
+// MONTHLY CPR
+mH = request.security(syminfo.tickerid, "M", high[1],  lookahead=barmerge.lookahead_on)
+mL = request.security(syminfo.tickerid, "M", low[1],   lookahead=barmerge.lookahead_on)
+mC = request.security(syminfo.tickerid, "M", close[1], lookahead=barmerge.lookahead_on)
+
+mPivot = (mH + mL + mC) / 3
+mBC    = (mH + mL) / 2
+mTC    = (mPivot - mBC) + mPivot
+
+aboveM = close > mTC
+belowM = close < mBC
+
+// ─────────────────────────────────────────────
+// LAYER 3 - FIBONACCI
+// ─────────────────────────────────────────────
+swH  = ta.highest(high, swingLB)
+swL  = ta.lowest(low,  swingLB)
+swR  = swH - swL
+
+f618 = swH - swR * 0.618
+f65  = swH - swR * 0.65
+f786 = swH - swR * 0.786
+f127 = swH + swR * 0.272
+f161 = swH + swR * 0.618
+
+inGP   = close <= f618 and close >= f65  and isBull
+inDeep = close <= f618 * 1.02 and close >= f786 * 0.98 and isBull
+
+// ─────────────────────────────────────────────
+// LAYER 4 - VOLUME + OBV + CVD
+// ─────────────────────────────────────────────
+vSMA    = ta.sma(volume, volMA)
+vSurge  = volume > vSMA * volMult
+vDecl   = volume < vSMA * 0.7
+
+obvVal  = ta.obv
+obvEma  = ta.ema(obvVal, 21)
+obvUp   = obvVal > obvEma
+
+bVol    = close > open ? volume : 0
+beVol   = close < open ? volume : 0
+cvd     = ta.cum(bVol - beVol)
+cvdEma  = ta.ema(cvd, 14)
+cvdUp   = cvd > cvdEma
+
+// ─────────────────────────────────────────────
+// LAYER 5 - BREAKOUT
+// ─────────────────────────────────────────────
+res  = ta.highest(high, swingLB)[1]
+isBO = close > res and vSurge
+
+// ─────────────────────────────────────────────
+// SCORE SYSTEM (max 10)
+// ─────────────────────────────────────────────
+int sc = 0
+sc := sc + (isBull           ? 2 : 0)
+sc := sc + (isNarrow         ? 1 : 0)
+sc := sc + (aboveW           ? 1 : 0)
+sc := sc + (aboveM           ? 1 : 0)
+sc := sc + ((inGP or inDeep) ? 2 : 0)
+sc := sc + (rsiOK            ? 1 : 0)
+sc := sc + (obvUp            ? 1 : 0)
+sc := sc + (cvdUp            ? 1 : 0)
+
+int ss = 0
+ss := ss + (isBear   ? 2 : 0)
+ss := ss + (isNarrow ? 1 : 0)
+ss := ss + (belowW   ? 1 : 0)
+ss := ss + (belowM   ? 1 : 0)
+ss := ss + (rsi < 45 ? 1 : 0)
+ss := ss + (not obvUp ? 1 : 0)
+ss := ss + (not cvdUp ? 1 : 0)
+
+isAP  = sc >= 8
+isA   = sc >= 6
+isB   = sc >= 4
+
+isSAP = ss >= 7
+isSA  = ss >= 5
+
+// ─────────────────────────────────────────────
+// ENTRY / EXIT
+// ─────────────────────────────────────────────
+longCond  = (isA or isAP) and (inGP or inDeep or isBO) and (vSurge or vDecl)
+shortCond = (isSA or isSAP) and not isBull and vSurge
+
+longSL  = math.min(swL, f786) - atr * atrBuf
+shortSL = math.max(swH, f618) + atr * atrBuf
+
+if longCond and strategy.position_size == 0
+    strategy.entry("LONG", strategy.long, comment="BUY " + str.tostring(sc))
+
+if strategy.position_size > 0
+    strategy.exit("TP1", "LONG", qty_percent=50, limit=strategy.position_avg_price + (strategy.position_avg_price - longSL) * rrT1, stop=longSL)
+    strategy.exit("TP2", "LONG", qty_percent=50, limit=strategy.position_avg_price + (strategy.position_avg_price - longSL) * rrT2, stop=longSL)
+
+if shortCond and strategy.position_size == 0
+    strategy.entry("SHORT", strategy.short, comment="SELL " + str.tostring(ss))
+
+if strategy.position_size < 0
+    strategy.exit("STP1", "SHORT", qty_percent=50, limit=strategy.position_avg_price - (shortSL - strategy.position_avg_price) * rrT1, stop=shortSL)
+    strategy.exit("STP2", "SHORT", qty_percent=50, limit=strategy.position_avg_price - (shortSL - strategy.position_avg_price) * rrT2, stop=shortSL)
+
+// ─────────────────────────────────────────────
+// PLOTS
+// ─────────────────────────────────────────────
+plot(e21,  "EMA 21",  color=color.new(color.green,  0), linewidth=1)
+plot(e50,  "EMA 50",  color=color.new(color.orange, 0), linewidth=1)
+plot(e200, "EMA 200", color=color.new(color.red,    0), linewidth=2)
+
+// Weekly CPR band
+wTCc = aboveW ? color.new(color.teal, 60) : color.new(color.red, 60)
+wBCc = aboveW ? color.new(color.teal, 60) : color.new(color.red, 60)
+pWT  = plot(showWCPR ? wTC : na, "W-TC", color=wTCc, linewidth=1, style=plot.style_stepline)
+pWB  = plot(showWCPR ? wBC : na, "W-BC", color=wBCc, linewidth=1, style=plot.style_stepline)
+plot(showWCPR ? wPivot : na, "W-Pivot", color=color.new(color.blue, 60), linewidth=1, style=plot.style_stepline)
+fill(pWT, pWB, color=color.new(aboveW ? color.teal : color.red, 90))
+
+// Monthly CPR band
+pMT = plot(showMCPR ? mTC : na, "M-TC", color=color.new(color.purple, 40), linewidth=2, style=plot.style_stepline)
+pMB = plot(showMCPR ? mBC : na, "M-BC", color=color.new(color.purple, 40), linewidth=2, style=plot.style_stepline)
+fill(pMT, pMB, color=color.new(color.purple, 92))
+
+// Fibonacci golden pocket
+pFT = plot(f618, "Fib 0.618", color=color.new(color.yellow, 50), linewidth=1, style=plot.style_circles)
+pFB = plot(f65,  "Fib 0.650", color=color.new(color.yellow, 50), linewidth=1, style=plot.style_circles)
+fill(pFT, pFB, color=color.new(color.yellow, 88))
+
+// Fibonacci targets
+plot(f127, "Fib 1.272 Target", color=color.new(color.lime, 40), linewidth=1, style=plot.style_cross)
+plot(f161, "Fib 1.618 Target", color=color.new(color.lime, 10), linewidth=2, style=plot.style_cross)
+
+// Volume bar color overlay
+barcolor(vSurge ? color.new(color.aqua, 20) : vDecl ? color.new(color.gray, 50) : na)
+
+// Signal arrows
+plotshape(longCond and isAP,
+     title="A+ BUY", location=location.belowbar,
+     style=shape.triangleup, color=color.new(color.lime, 0),
+     size=size.normal, text="A+\nBUY")
+
+plotshape(longCond and isA and not isAP,
+     title="A BUY", location=location.belowbar,
+     style=shape.triangleup, color=color.new(color.green, 10),
+     size=size.small, text="A\nBUY")
+
+plotshape(shortCond and isSAP,
+     title="A+ SELL", location=location.abovebar,
+     style=shape.triangledown, color=color.new(color.red, 0),
+     size=size.normal, text="A+\nSELL")
+
+plotshape(shortCond and isSA and not isSAP,
+     title="A SELL", location=location.abovebar,
+     style=shape.triangledown, color=color.new(color.orange, 0),
+     size=size.small, text="A\nSELL")
+
+// ─────────────────────────────────────────────
+// SCORE TABLE
+// ─────────────────────────────────────────────
+var table tbl = table.new(position.top_right, 2, 11, border_color=color.new(color.white, 50), border_width=1, frame_color=color.new(color.white, 40), frame_width=1, bgcolor=color.new(color.black, 20))
+
+if barstate.islast
+    table.cell(tbl, 0, 0, "GOD SWING v2",   text_color=color.white, bgcolor=color.new(color.blue,30), text_size=size.small)
+    table.cell(tbl, 1, 0, "India NSE/BSE",  text_color=color.white, bgcolor=color.new(color.blue,30), text_size=size.small)
+
+    scCol = sc >= 8 ? color.lime : sc >= 6 ? color.green : sc >= 4 ? color.orange : color.red
+    table.cell(tbl, 0, 1, "LONG Score /10", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 1, str.tostring(sc) + "/10", text_color=scCol, text_size=size.small)
+
+    ssCol = ss >= 7 ? color.red : ss >= 5 ? color.orange : color.gray
+    table.cell(tbl, 0, 2, "SHORT Score /8", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 2, str.tostring(ss) + "/8",  text_color=ssCol, text_size=size.small)
+
+    tTxt = isBull ? "BULL" : isBear ? "BEAR" : "NEUTRAL"
+    tCol = isBull ? color.lime : isBear ? color.red : color.yellow
+    table.cell(tbl, 0, 3, "Trend",   text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 3, tTxt,      text_color=tCol,        text_size=size.small)
+
+    nTxt = isNarrow ? "NARROW OK" : "WIDE SKIP"
+    nCol = isNarrow ? color.lime : color.red
+    table.cell(tbl, 0, 4, "Weekly CPR", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 4, nTxt,         text_color=nCol,        text_size=size.small)
+
+    fTxt = inGP ? "IN POCKET" : inDeep ? "DEEP ZONE" : "OUT"
+    fCol = inGP or inDeep ? color.lime : color.gray
+    table.cell(tbl, 0, 5, "Fib Zone", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 5, fTxt,       text_color=fCol,        text_size=size.small)
+
+    vTxt = vSurge ? "SURGE" : vDecl ? "DECLINING" : "NORMAL"
+    vCol = vSurge ? color.aqua : vDecl ? color.lime : color.gray
+    table.cell(tbl, 0, 6, "Volume",  text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 6, vTxt,      text_color=vCol,        text_size=size.small)
+
+    oTxt = (obvUp and cvdUp) ? "ACCUM" : "DISTRIB"
+    oCol = (obvUp and cvdUp) ? color.lime : color.red
+    table.cell(tbl, 0, 7, "OBV/CVD", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 7, oTxt,      text_color=oCol,        text_size=size.small)
+
+    rCol = rsi > 60 ? color.lime : rsi < 40 ? color.red : color.orange
+    table.cell(tbl, 0, 8, "RSI", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 8, str.tostring(math.round(rsi, 1)), text_color=rCol, text_size=size.small)
+
+    mTxt = aboveM ? "ABOVE" : "BELOW"
+    mCol = aboveM ? color.lime : color.red
+    table.cell(tbl, 0, 9, "Monthly CPR", text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 9, mTxt,          text_color=mCol,        text_size=size.small)
+
+    gTxt = isAP ? "A+ TRADE" : isA ? "A TRADE" : isB ? "B TRADE" : "SKIP"
+    gCol = isAP ? color.lime  : isA ? color.green : isB ? color.orange : color.red
+    table.cell(tbl, 0, 10, "GRADE",  text_color=color.white, text_size=size.small)
+    table.cell(tbl, 1, 10, gTxt,     text_color=gCol,        text_size=size.small)
+
+// ─────────────────────────────────────────────
+// ALERTS
+// ─────────────────────────────────────────────
+alertcondition(longCond and isAP,              title="A+ BUY",       message="GOD SWING | {{ticker}} | A+ BUY | Price: {{close}}")
+alertcondition(longCond and isA and not isAP,  title="A BUY",        message="GOD SWING | {{ticker}} | A BUY  | Price: {{close}}")
+alertcondition(shortCond and isSAP,            title="A+ SHORT",     message="GOD SWING | {{ticker}} | A+ SHORT | Price: {{close}}")
+alertcondition(isBO and vSurge,                title="VOL BREAKOUT",  message="GOD SWING | {{ticker}} | BREAKOUT | Price: {{close}}")

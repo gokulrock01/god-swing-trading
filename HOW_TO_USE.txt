@@ -1,0 +1,30 @@
+# ============================================================
+# HOW TO USE — GOD SWING SYSTEM (INDIA NSE 500)
+# ============================================================
+
+## ONE SCANNER TO RUN (Evening after 3:45 PM IST):
+cd /Users/gokul/Downloads/GOD/SwingTradingSystem/python_scanner
+python3 run_all.py
+
+(Both `python3 run_all.py` and `python3 swing_scanner_v2.py` run the exact same engine across all 501 Nifty 500 stocks)
+
+## HOW TO READ THE OUTPUT TABLE:
+1. 🏆 BUY NOW:
+   - All layers confirmed (CPR + Golden Pocket Fib + Trend + Volume + Order Flow).
+   - Instant actionable trade for tomorrow morning.
+
+2. 🎯 NEAR ENTRY:
+   - Price is within 2-3% of the Golden Pocket Fib level.
+   - It prints the exact "Entry target" limit price. Place a limit order at that price.
+
+3. 🔄 WAIT FOR PULLBACK:
+   - High-quality trending stocks, but currently overextended.
+   - Do NOT chase. Wait for them to pull back to the printed Fib level.
+
+4. 🚫 SKIP / AVOID:
+   - High regulatory risk, low liquidity, or broken trend. Automatically filtered out.
+
+## TRADINGVIEW CHART CONFIRMATION:
+- Open TradingView on the Daily chart.
+- Check the top-right table of the "GOD_SWING" indicator.
+- Matches BUY NOW / NEAR ENTRY? Place the trade!
