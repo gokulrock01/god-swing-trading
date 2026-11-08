@@ -62,6 +62,11 @@ def update_open_positions(portfolio):
         print("  ℹ️  No open US positions to update.")
         return
 
+    # Guard: Markets are closed on Saturday and Sunday
+    if datetime.now().weekday() in [5, 6]:
+        print("  ⏸️ Weekend Notice: US market is closed. Skipping price checks.")
+        return
+
     print(f"\n  🔍 Monitoring {len(open_pos)} Open US Positions...")
     closed_syms = []
 
@@ -148,6 +153,11 @@ def take_new_trades(portfolio, scan_results):
     candidates = buynow + near
 
     print(f"\n  🎯 Actionable US Candidates: {len(candidates)} | Available Slots: {slots}")
+
+    # Guard: Markets are closed on Saturday and Sunday. Queue orders for Monday.
+    if datetime.now().weekday() in [5, 6]:
+        print(f"  ⏸️ Weekend Notice: US Market is CLOSED today. All {len(candidates)} candidates are queued for Monday Market Open (9:30 AM EST).")
+        return
 
     for r in candidates[:slots]:
         sym = r["symbol"]

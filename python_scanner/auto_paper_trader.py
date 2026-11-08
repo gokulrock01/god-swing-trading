@@ -64,6 +64,11 @@ def update_open_positions(portfolio):
         print("  ℹ️  No existing open positions to update.")
         return
 
+    # Guard: Markets are closed on Saturday and Sunday
+    if datetime.now().weekday() in [5, 6]:
+        print("  ⏸️ Weekend Notice: Indian market is closed. Skipping price checks.")
+        return
+
     print(f"\n  🔍 Monitoring {len(open_pos)} Open Positions against today's prices...")
     symbols_to_close = []
 
@@ -157,6 +162,11 @@ def take_new_paper_trades(portfolio, scan_results):
     candidates = buynow_picks + near_picks
 
     print(f"\n  🎯 Found {len(candidates)} actionable candidates. Slots available: {slots_available}")
+
+    # Guard: Markets are closed on Saturday and Sunday. Queue orders for Monday.
+    if datetime.now().weekday() in [5, 6]:
+        print(f"  ⏸️ Weekend Notice: Market is CLOSED today. All {len(candidates)} candidates are queued for Monday Market Open (9:15 AM IST).")
+        return
 
     for r in candidates[:slots_available]:
         sym = r["symbol"]
