@@ -20,6 +20,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(__file__))
 from swing_scanner_v2 import run_deep_scan, FULL_NIFTY500, CAPITAL, MAX_OPEN_TRADES
+from telegram_notifier import send_telegram_message, format_daily_alert
 
 PORTFOLIO_FILE = os.path.join(os.path.dirname(__file__), "signals", "paper_portfolio.json")
 HISTORY_FILE   = os.path.join(os.path.dirname(__file__), "signals", "paper_trade_history.csv")
@@ -248,6 +249,7 @@ def run_auto_paper_trading():
     print("█"*65)
 
     portfolio = load_portfolio()
+    actions_taken = []
 
     # Step 1: Manage and update existing open positions
     update_open_positions(portfolio)
@@ -263,6 +265,14 @@ def run_auto_paper_trading():
     save_portfolio(portfolio)
     print_portfolio_summary(portfolio)
     print("  💾 State saved to paper_portfolio.json & paper_trade_history.csv")
+
+    # Step 5: Send Telegram alert
+    try:
+        top_candidates = [r for r in scan_results if r["verdict"] in ("BUY NOW", "NEAR ENTRY")]
+        tg_msg = format_daily_alert("IN", portfolio, actions_taken, top_candidates)
+        send_telegram_message(tg_msg)
+    except Exception as e:
+        print(f"  ⚠️ Telegram dispatch error: {e}")
 
 if __name__ == "__main__":
     run_auto_paper_trading()

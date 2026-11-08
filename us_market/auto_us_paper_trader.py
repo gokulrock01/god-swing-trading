@@ -17,7 +17,9 @@ import yfinance as yf
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "python_scanner"))
 from us_swing_scanner import run_us_deep_scan, CAPITAL_USD, MAX_OPEN_TRADES
+from telegram_notifier import send_telegram_message, format_daily_alert
 
 PORTFOLIO_FILE = os.path.join(os.path.dirname(__file__), "signals", "us_paper_portfolio.json")
 HISTORY_FILE   = os.path.join(os.path.dirname(__file__), "signals", "us_trade_history.csv")
@@ -242,6 +244,14 @@ def run_us_paper_trading():
     save_portfolio(portfolio)
     print_portfolio_snapshot(portfolio)
     print("  💾 State saved to us_paper_portfolio.json & us_trade_history.csv")
+
+    # Send Telegram alert
+    try:
+        top_candidates = [r for r in results if r["verdict"] in ("BUY NOW", "NEAR ENTRY")]
+        tg_msg = format_daily_alert("US", portfolio, [], top_candidates)
+        send_telegram_message(tg_msg)
+    except Exception as e:
+        print(f"  ⚠️ Telegram dispatch error: {e}")
 
 if __name__ == "__main__":
     run_us_paper_trading()

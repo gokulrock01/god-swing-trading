@@ -28,6 +28,9 @@ jobs:
           pip install -r python_scanner/requirements.txt
 
       - name: Run US Autonomous Paper Trader
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python us_market/auto_us_paper_trader.py
 
