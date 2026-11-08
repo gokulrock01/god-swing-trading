@@ -65,8 +65,15 @@ def format_daily_alert(market, portfolio, actions_taken, top_signals):
 
     pnl_sign = "+" if realized >= 0 else ""
 
-    msg = f"<b>⚡ GOD SWING SYSTEM — DAILY REPORT {flag}</b>\n"
-    msg += f"<i>{market_name} | Post-Market Summary</i>\n\n"
+    is_muhurat = market == "IN" and (datetime.now().strftime("%Y-%m-%d") == "2026-11-08" or os.getenv("FORCE_MUHURAT", "").lower() in ["1", "true"])
+
+    if is_muhurat:
+        msg = f"<b>🪔 GOD SWING SYSTEM — DIWALI MUHURAT TRADING 2026 (SAMVAT 2083) 🪔</b>\n"
+        msg += f"<i>✨ Wishing you wealth, prosperity & disciplined execution! ✨</i>\n"
+        msg += f"<b>Session:</b> 2:20 PM – 3:40 PM IST (Special Diwali Muhurat Session)\n\n"
+    else:
+        msg = f"<b>⚡ GOD SWING SYSTEM — DAILY REPORT {flag}</b>\n"
+        msg += f"<i>{market_name} | Post-Market Summary</i>\n\n"
 
     msg += "<b>💼 PORTFOLIO STATUS:</b>\n"
     msg += f"• <b>Total Equity:</b> {curr}{total_eq:,.2f} (<code>{ret_pct:+.2f}%</code>)\n"

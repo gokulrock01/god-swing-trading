@@ -4,7 +4,17 @@ on:
   schedule:
     # 4:00 PM IST Monday to Friday (10:30 AM UTC)
     - cron: '30 10 * * 1-5'
-  workflow_dispatch: # Allows manual trigger from GitHub web UI anytime
+    # Diwali Muhurat Trading Session Post-Market (Nov 8, 2026: 3:45 PM IST = 10:15 AM UTC)
+    - cron: '15 10 8 11 *'
+    # Second post-close check (Nov 8, 2026: 4:00 PM IST = 10:30 AM UTC)
+    - cron: '30 10 8 11 *'
+  workflow_dispatch:
+    inputs:
+      force_execute:
+        description: 'Force immediate trade execution'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   run-paper-trader:
@@ -31,6 +41,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || secrets.SWING_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || secrets.GOD_SWING_ID }}
+          FORCE_EXECUTE: ${{ github.event.inputs.force_execute || 'false' }}
         run: |
           python python_scanner/auto_paper_trader.py
 

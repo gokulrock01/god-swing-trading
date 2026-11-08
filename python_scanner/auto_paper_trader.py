@@ -57,6 +57,35 @@ def log_trade_history(trade_record):
     else:
         df_new.to_csv(HISTORY_FILE, mode='w', header=True, index=False)
 
+def is_market_open_today():
+    """
+    Checks if today is a regular market day or special Muhurat trading session.
+    Returns: (is_market_day, can_execute, session_title)
+    """
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    MUHURAT_DATES = ["2026-11-08"]
+    force = os.getenv("FORCE_EXECUTE", "").lower() in ["1", "true"]
+    is_muhurat = (today_str in MUHURAT_DATES) or (os.getenv("FORCE_MUHURAT", "").lower() in ["1", "true"])
+
+    if is_muhurat:
+        # Muhurat market normal hours: 2:20 PM to 3:30 PM IST (Closing session up to 3:45 PM IST)
+        utc_now = datetime.utcnow()
+        ist_minutes = (utc_now.hour * 60 + utc_now.minute + 330) % 1440
+        ist_time_dec = ist_minutes / 60.0
+
+        if force or ist_time_dec >= 15.5:  # Post-Muhurat close (3:30 PM IST onwards)
+            return True, True, "🪔 Diwali Muhurat Trading Session (Samvat 2083) - Post-Market Execution"
+        elif ist_time_dec >= 14.33:        # In-session (2:20 PM to 3:30 PM IST)
+            return True, True, "🪔 Diwali Muhurat Trading Session (Samvat 2083) - Live Session Execution"
+        else:
+            return True, False, "🪔 Diwali Muhurat Trading Session (Samvat 2083) - Pre-Market (Opens 2:20 PM IST)"
+
+    weekday = datetime.now().weekday()
+    if weekday in [5, 6] and not force:
+        return False, False, "Market Closed (Weekend)"
+
+    return True, True, "Regular Market Session"
+
 def update_open_positions(portfolio):
     """Checks today's High, Low, Close for all open positions and triggers exits."""
     open_pos = portfolio["open_positions"]
@@ -64,9 +93,9 @@ def update_open_positions(portfolio):
         print("  ℹ️  No existing open positions to update.")
         return
 
-    # Guard: Markets are closed on Saturday and Sunday
-    if datetime.now().weekday() in [5, 6]:
-        print("  ⏸️ Weekend Notice: Indian market is closed. Skipping price checks.")
+    is_market_day, can_execute, session_title = is_market_open_today()
+    if not is_market_day or not can_execute:
+        print(f"  ⏸️ {session_title}. Skipping live exit checks.")
         return
 
     print(f"\n  🔍 Monitoring {len(open_pos)} Open Positions against today's prices...")
@@ -163,9 +192,13 @@ def take_new_paper_trades(portfolio, scan_results):
 
     print(f"\n  🎯 Found {len(candidates)} actionable candidates. Slots available: {slots_available}")
 
-    # Guard: Markets are closed on Saturday and Sunday. Queue orders for Monday.
-    if datetime.now().weekday() in [5, 6]:
-        print(f"  ⏸️ Weekend Notice: Market is CLOSED today. All {len(candidates)} candidates are queued for Monday Market Open (9:15 AM IST).")
+    is_market_day, can_execute, session_title = is_market_open_today()
+    if not is_market_day:
+        print(f"  ⏸️ {session_title}. All {len(candidates)} candidates are queued for Monday Market Open (9:15 AM IST).")
+        return
+
+    if not can_execute:
+        print(f"  🪔 {session_title}. Top {min(slots_available, len(candidates))} candidates queued for Muhurat Trading Session at 2:20 PM IST.")
         return
 
     for r in candidates[:slots_available]:

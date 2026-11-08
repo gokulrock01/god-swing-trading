@@ -230,12 +230,12 @@
       </div>
     </header>
 
-    <!-- WEEKEND MARKET NOTICE -->
-    <div class="weekend-notice">
-      <div class="weekend-notice-text">
-        <strong>⏸️ Markets are Closed for the Weekend:</strong> All positions reset to 100% Cash. Top setups have been analyzed and queued for <strong>Monday Open Execution</strong>!
+    <!-- MARKET NOTICE -->
+    <div class="weekend-notice" id="market-notice-banner">
+      <div class="weekend-notice-text" id="market-notice-text">
+        <strong>🪔 Special Diwali Muhurat Trading Session Today (Samvat 2083):</strong> Market opens from <strong>2:20 PM to 3:40 PM IST</strong>! Top high-confluence setups are queued for Muhurat session execution.
       </div>
-      <span class="tag tag-queued" id="session-tag">Next Execution: Monday 9:15 AM IST</span>
+      <span class="tag tag-queued" id="session-tag" style="background:rgba(245, 158, 11, 0.2); color:#f59e0b; border:1px solid rgba(245, 158, 11, 0.4);">🪔 Muhurat Session: Today 2:20 PM – 3:40 PM IST</span>
     </div>
 
     <!-- METRICS -->
@@ -334,15 +334,16 @@
       invested: 0,
       realized: 0,
       currency: '₹',
-      sessionTag: 'Next Execution: Monday 9:15 AM IST',
+      noticeText: '<strong>🪔 Special Diwali Muhurat Trading Session Today (Samvat 2083):</strong> Market opens from <strong>2:20 PM to 3:40 PM IST</strong>! Top high-confluence setups are queued for Muhurat session execution.',
+      sessionTag: '🪔 Muhurat Session: Today 2:20 PM – 3:40 PM IST',
       positions: [],
       queued: [
-        { symbol: "ABDL", verdict: "BUY NOW", entry: 708.00, shares: 219, cost: 155052, sl: 639.52, tp1: 844.96, tp2: 913.44, score: 10, session: "Monday 9:15 AM Open" },
-        { symbol: "PTCIL", verdict: "BUY NOW", entry: 24335.00, shares: 8, cost: 194680, sl: 22645.67, tp1: 27713.66, tp2: 29402.99, score: 10, session: "Monday 9:15 AM Open" },
-        { symbol: "BHEL", verdict: "BUY NOW", entry: 418.80, shares: 306, cost: 128152.80, sl: 369.79, tp1: 516.82, tp2: 565.83, score: 9, session: "Monday 9:15 AM Open" },
-        { symbol: "JINDALSAW", verdict: "BUY NOW", entry: 251.00, shares: 501, cost: 125751, sl: 221.10, tp1: 310.80, tp2: 340.70, score: 9, session: "Monday 9:15 AM Open" },
-        { symbol: "PWL", verdict: "BUY NOW", entry: 130.00, shares: 960, cost: 124800, sl: 114.39, tp1: 161.22, tp2: 176.83, score: 9, session: "Monday 9:15 AM Open" },
-        { symbol: "TBOTEK", verdict: "BUY NOW", entry: 1564.70, shares: 130, cost: 203411, sl: 1449.84, tp1: 1794.42, tp2: 1909.28, score: 9, session: "Monday 9:15 AM Open" }
+        { symbol: "ABDL", verdict: "BUY NOW", entry: 708.00, shares: 219, cost: 155052, sl: 639.52, tp1: 844.96, tp2: 913.44, score: 10, session: "🪔 Muhurat 2:20 PM" },
+        { symbol: "PTCIL", verdict: "BUY NOW", entry: 24335.00, shares: 8, cost: 194680, sl: 22645.67, tp1: 27713.66, tp2: 29402.99, score: 10, session: "🪔 Muhurat 2:20 PM" },
+        { symbol: "BHEL", verdict: "BUY NOW", entry: 418.80, shares: 306, cost: 128152.80, sl: 369.79, tp1: 516.82, tp2: 565.83, score: 9, session: "🪔 Muhurat 2:20 PM" },
+        { symbol: "JINDALSAW", verdict: "BUY NOW", entry: 251.00, shares: 501, cost: 125751, sl: 221.10, tp1: 310.80, tp2: 340.70, score: 9, session: "🪔 Muhurat 2:20 PM" },
+        { symbol: "PWL", verdict: "BUY NOW", entry: 130.00, shares: 960, cost: 124800, sl: 114.39, tp1: 161.22, tp2: 176.83, score: 9, session: "🪔 Muhurat 2:20 PM" },
+        { symbol: "TBOTEK", verdict: "BUY NOW", entry: 1564.70, shares: 130, cost: 203411, sl: 1449.84, tp1: 1794.42, tp2: 1909.28, score: 9, session: "🪔 Muhurat 2:20 PM" }
       ]
     };
 
@@ -352,12 +353,16 @@
       invested: 0,
       realized: 0,
       currency: '$',
+      noticeText: '<strong>⏸️ US Markets are Closed for the Weekend:</strong> All positions reset to 100% Cash ($100,000 USD). Top setups are queued for <strong>Monday Open Execution (9:30 AM EST)</strong>!',
       sessionTag: 'Next Execution: Monday 9:30 AM EST',
       positions: [],
       queued: [
         { symbol: "AMT", verdict: "BUY NOW", entry: 188.79, shares: 94, cost: 17746.26, sl: 172.88, tp1: 220.61, tp2: 236.47, score: 8, session: "Monday 9:30 AM EST" },
         { symbol: "A", verdict: "NEAR ENTRY", entry: 174.71, shares: 125, cost: 21838.75, sl: 166.81, tp1: 190.66, tp2: 198.61, score: 7, session: "Monday 9:30 AM EST" },
         { symbol: "AFL", verdict: "NEAR ENTRY", entry: 121.18, shares: 96, cost: 11633.28, sl: 113.66, tp1: 144.86, tp2: 152.38, score: 7, session: "Monday 9:30 AM EST" },
+        { symbol: "AMCR", verdict: "NEAR ENTRY", entry: 44.54, shares: 228, cost: 10155.12, sl: 40.49, tp1: 53.63, tp2: 57.68, score: 7, session: "Monday 9:30 AM EST" }
+      ]
+    };
         { symbol: "AMCR", verdict: "NEAR ENTRY", entry: 44.54, shares: 228, cost: 10155.12, sl: 40.49, tp1: 53.63, tp2: 57.68, score: 7, session: "Monday 9:30 AM EST" }
       ]
     };
@@ -382,6 +387,9 @@
       document.getElementById('m-open-count').innerText = `${data.positions.length} / 6 open positions`;
       document.getElementById('m-realized').innerText = (data.realized >= 0 ? '+' : '') + formatMoney(data.realized, c);
       document.getElementById('session-tag').innerText = data.sessionTag;
+      if (data.noticeText) {
+        document.getElementById('market-notice-text').innerHTML = data.noticeText;
+      }
 
       // Render Queued Orders
       const qTbody = document.getElementById('queued-orders-tbody');
