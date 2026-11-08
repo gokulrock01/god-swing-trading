@@ -103,17 +103,36 @@ def update_open_positions(portfolio, actions_taken=None):
 
     for sym, pos in list(open_pos.items()):
         ticker = sym + ".NS"
+        h, l, c = None, None, None
+
+        # 1. Primary: Try official Angel One SmartAPI Feed (0 delay, zero rate-limiting)
         try:
-            df = yf.download(ticker, period="5d", interval="1d", auto_adjust=True, progress=False)
-            if df is None or len(df) == 0:
+            from angel_feed import get_live_ltp
+            quote = get_live_ltp(sym)
+            if quote and quote.get("high", 0) > 0:
+                h = quote["high"]
+                l = quote["low"]
+                c = quote["close"]
+        except Exception:
+            pass
+
+        # 2. Secondary Fallback: yfinance
+        if h is None:
+            try:
+                df = yf.download(ticker, period="5d", interval="1d", auto_adjust=True, progress=False)
+                if df is not None and len(df) > 0:
+                    df.columns = df.columns.droplevel(1) if isinstance(df.columns, pd.MultiIndex) else df.columns
+                    today = df.iloc[-1]
+                    h = float(today["High"])
+                    l = float(today["Low"])
+                    c = float(today["Close"])
+            except Exception:
                 continue
-            df.columns = df.columns.droplevel(1) if isinstance(df.columns, pd.MultiIndex) else df.columns
 
-            today = df.iloc[-1]
-            h = float(today["High"])
-            l = float(today["Low"])
-            c = float(today["Close"])
+        if h is None:
+            continue
 
+        try:
             entry = float(pos["entry"])
             sl    = float(pos["sl"])
             tp1   = float(pos["tp1"])
@@ -261,15 +280,27 @@ def print_portfolio_summary(portfolio):
     current_val = 0.0
     for sym, pos in open_pos.items():
         invested += pos["cost"]
+        c = None
         try:
-            df = yf.download(sym + ".NS", period="1d", auto_adjust=True, progress=False)
-            if df is not None and len(df) > 0:
-                c = float(df.iloc[-1]["Close"])
-                current_val += c * pos["shares"]
-            else:
-                current_val += pos["cost"]
+            from angel_feed import get_live_ltp
+            quote = get_live_ltp(sym)
+            if quote and quote.get("ltp", 0) > 0:
+                c = float(quote["ltp"])
         except Exception:
-            current_val += pos["cost"]
+            pass
+
+        if c is not None:
+            current_val += c * pos["shares"]
+        else:
+            try:
+                df = yf.download(sym + ".NS", period="1d", auto_adjust=True, progress=False)
+                if df is not None and len(df) > 0:
+                    c = float(df.iloc[-1]["Close"])
+                    current_val += c * pos["shares"]
+                else:
+                    current_val += pos["cost"]
+            except Exception:
+                current_val += pos["cost"]
 
     unrealized = current_val - invested
     total_equity = cash + current_val
