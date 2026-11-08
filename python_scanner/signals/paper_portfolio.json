@@ -1,7 +1,86 @@
 {
   "initial_capital": 1000000,
-  "cash_balance": 1000000.0,
+  "cash_balance": 60089.77000000002,
   "realized_pnl": 0.0,
-  "open_positions": {},
+  "open_positions": {
+    "BBOX": {
+      "symbol": "BBOX",
+      "verdict": "BUY NOW",
+      "entry": 840.75,
+      "sl": 748.74,
+      "tp1": 1024.77,
+      "tp2": 1116.78,
+      "shares": 163,
+      "cost": 137042.25,
+      "date": "2026-11-08",
+      "score": 10,
+      "tp1_booked": false
+    },
+    "PTCIL": {
+      "symbol": "PTCIL",
+      "verdict": "BUY NOW",
+      "entry": 24415.0,
+      "sl": 22684.58,
+      "tp1": 27875.84,
+      "tp2": 29606.26,
+      "shares": 8,
+      "cost": 195320.0,
+      "date": "2026-11-08",
+      "score": 10,
+      "tp1_booked": false
+    },
+    "ABDL": {
+      "symbol": "ABDL",
+      "verdict": "BUY NOW",
+      "entry": 709.05,
+      "sl": 640.87,
+      "tp1": 845.41,
+      "tp2": 913.59,
+      "shares": 220,
+      "cost": 155991.0,
+      "date": "2026-11-08",
+      "score": 9,
+      "tp1_booked": false
+    },
+    "BHEL": {
+      "symbol": "BHEL",
+      "verdict": "BUY NOW",
+      "entry": 417.2,
+      "sl": 370.48,
+      "tp1": 510.64,
+      "tp2": 557.36,
+      "shares": 321,
+      "cost": 133921.2,
+      "date": "2026-11-08",
+      "score": 9,
+      "tp1_booked": false
+    },
+    "JINDALSAW": {
+      "symbol": "JINDALSAW",
+      "verdict": "BUY NOW",
+      "entry": 254.78,
+      "sl": 221.56,
+      "tp1": 321.22,
+      "tp2": 354.44,
+      "shares": 451,
+      "cost": 114905.78,
+      "date": "2026-11-08",
+      "score": 9,
+      "tp1_booked": false
+    },
+    "OFSS": {
+      "symbol": "OFSS",
+      "verdict": "BUY NOW",
+      "entry": 10136.5,
+      "sl": 9392.15,
+      "tp1": 11625.2,
+      "tp2": 12369.55,
+      "shares": 20,
+      "cost": 202730.0,
+      "date": "2026-11-08",
+      "score": 9,
+      "tp1_booked": false
+    }
+  },
   "closed_positions": []
 }
