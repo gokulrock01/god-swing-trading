@@ -86,7 +86,7 @@ def is_market_open_today():
 
     return True, True, "Regular Market Session"
 
-def update_open_positions(portfolio):
+def update_open_positions(portfolio, actions_taken=None):
     """Checks today's High, Low, Close for all open positions and triggers exits."""
     open_pos = portfolio["open_positions"]
     if not open_pos:
@@ -127,6 +127,8 @@ def update_open_positions(portfolio):
                 portfolio["cash_balance"] += (exit_price * shares)
                 portfolio["realized_pnl"] += pnl
                 symbols_to_close.append((sym, "STOP_LOSS", exit_price, pnl))
+                if actions_taken is not None:
+                    actions_taken.append(f"❌ <b>STOP LOSS HIT {sym}</b>: Exit @ ₹{exit_price:,.2f} | P&L: ₹{pnl:+,.2f}")
                 print(f"  ❌ STOP LOSS HIT on {sym}: Exit ₹{exit_price:.2f} | P&L: ₹{pnl:,.2f}")
 
             # 2. TP1 Hit (Partial 50% Profit Booking)
@@ -138,6 +140,8 @@ def update_open_positions(portfolio):
                 pnl = (tp1 - entry) * half_shares
                 portfolio["cash_balance"] += (tp1 * half_shares)
                 portfolio["realized_pnl"] += pnl
+                if actions_taken is not None:
+                    actions_taken.append(f"🎉 <b>TARGET 1 HIT {sym}</b>: Booked 50% ({half_shares} shs) @ ₹{tp1:,.2f} | P&L: +₹{pnl:,.2f} (SL to BE)")
                 print(f"  🎉 TARGET 1 HIT on {sym}: Booked 50% ({half_shares} shares) at ₹{tp1:.2f} | P&L: +₹{pnl:,.2f} | SL moved to Entry ₹{entry:.2f}")
                 log_trade_history({
                     "Date": datetime.now().strftime("%Y-%m-%d"),
@@ -156,6 +160,8 @@ def update_open_positions(portfolio):
                 portfolio["cash_balance"] += (tp2 * rem_shares)
                 portfolio["realized_pnl"] += pnl
                 symbols_to_close.append((sym, "TARGET_2", tp2, pnl))
+                if actions_taken is not None:
+                    actions_taken.append(f"🏆 <b>TARGET 2 HIT {sym}</b>: Full Exit @ ₹{tp2:,.2f} | P&L: +₹{pnl:,.2f}")
                 print(f"  🏆 TARGET 2 HIT on {sym}: Full Exit at ₹{tp2:.2f} | P&L: +₹{pnl:,.2f}")
 
         except Exception as e:
@@ -176,7 +182,7 @@ def update_open_positions(portfolio):
         portfolio["closed_positions"].append(record)
         log_trade_history(record)
 
-def take_new_paper_trades(portfolio, scan_results):
+def take_new_paper_trades(portfolio, scan_results, actions_taken=None):
     """Takes simulated paper trade entries on BUY NOW and NEAR ENTRY signals."""
     open_pos = portfolio["open_positions"]
     slots_available = MAX_OPEN_TRADES - len(open_pos)
@@ -230,6 +236,8 @@ def take_new_paper_trades(portfolio, scan_results):
             "tp1_booked": False
         }
         open_pos[sym] = pos_record
+        if actions_taken is not None:
+            actions_taken.append(f"✅ <b>BOUGHT {sym}</b>: {shares} shares @ ₹{price:,.2f} (Allocated: ₹{cost:,.2f} | SL: ₹{r['sl']} | TP1: ₹{r['tp1']})")
         print(f"  ✅ EXECUTED PAPER BUY: {sym} | {shares} shares @ ₹{price:.2f} | Total ₹{cost:,.2f} | SL: ₹{r['sl']} | TP1: ₹{r['tp1']}")
 
         log_trade_history({
@@ -295,14 +303,14 @@ def run_auto_paper_trading():
     actions_taken = []
 
     # Step 1: Manage and update existing open positions
-    update_open_positions(portfolio)
+    update_open_positions(portfolio, actions_taken)
 
     # Step 2: Run fresh 501-stock scan to find today's actionable setups
     print("\n  🚀 Running full 501 Nifty 500 Market Scan...")
     scan_results = run_deep_scan(FULL_NIFTY500)
 
     # Step 3: Take simulated entries
-    take_new_paper_trades(portfolio, scan_results)
+    take_new_paper_trades(portfolio, scan_results, actions_taken)
 
     # Step 4: Save & display state
     save_portfolio(portfolio)

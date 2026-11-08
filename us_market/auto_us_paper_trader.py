@@ -141,7 +141,7 @@ def update_open_positions(portfolio):
         portfolio["closed_positions"].append(record)
         log_trade(record)
 
-def take_new_trades(portfolio, scan_results):
+def take_new_trades(portfolio, scan_results, actions_taken=None):
     open_pos = portfolio["open_positions"]
     slots = MAX_OPEN_TRADES - len(open_pos)
     if slots <= 0:
@@ -185,6 +185,8 @@ def take_new_trades(portfolio, scan_results):
             "score": r["score"],
             "tp1_booked": False
         }
+        if actions_taken is not None:
+            actions_taken.append(f"✅ <b>BOUGHT {sym}</b>: {shares} shs @ ${price:,.2f} (Invested: ${cost:,.2f} | SL: ${r['sl']} | TP1: ${r['tp1']})")
         print(f"  ✅ EXECUTED US PAPER BUY: {sym} | {shares} shs @ ${price:.2f} | Total ${cost:,.2f} | SL: ${r['sl']} | TP1: ${r['tp1']}")
 
         log_trade({
@@ -245,12 +247,13 @@ def run_us_paper_trading():
     print("█"*65)
 
     portfolio = load_portfolio()
+    actions_taken = []
     update_open_positions(portfolio)
 
     print("\n  🚀 Running full 503 S&P 500 Market Scan...")
     results = run_us_deep_scan()
 
-    take_new_trades(portfolio, results)
+    take_new_trades(portfolio, results, actions_taken)
     save_portfolio(portfolio)
     print_portfolio_snapshot(portfolio)
     print("  💾 State saved to us_paper_portfolio.json & us_trade_history.csv")
@@ -258,7 +261,7 @@ def run_us_paper_trading():
     # Send Telegram alert
     try:
         top_candidates = [r for r in results if r["verdict"] in ("BUY NOW", "NEAR ENTRY")]
-        tg_msg = format_daily_alert("US", portfolio, [], top_candidates)
+        tg_msg = format_daily_alert("US", portfolio, actions_taken, top_candidates)
         send_telegram_message(tg_msg)
     except Exception as e:
         print(f"  ⚠️ Telegram dispatch error: {e}")

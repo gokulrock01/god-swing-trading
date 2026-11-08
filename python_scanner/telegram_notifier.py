@@ -88,15 +88,30 @@ def format_daily_alert(market, portfolio, actions_taken, top_signals):
         for act in actions_taken:
             msg += f"• {act}\n"
         msg += "\n"
+    elif open_pos:
+        msg += "<b>🎯 ACTIONS TAKEN:</b> Holding all active positions (No new fills/exits today).\n\n"
     else:
-        msg += "<b>🎯 ACTIONS TAKEN:</b> No changes today (Holding active positions).\n\n"
+        msg += "<b>🎯 ACTIONS TAKEN:</b> No trades taken.\n\n"
 
-    # Top Watchlist
-    if top_signals:
-        msg += "<b>👀 TOP WATCHLIST FOR NEXT SESSION:</b>\n"
-        for i, s in enumerate(top_signals[:4], 1):
+    # Current Active Positions
+    if open_pos:
+        msg += f"<b>📌 ACTIVE PAPER POSITIONS ({len(open_pos)}/6):</b>\n"
+        for sym, pos in open_pos.items():
+            entry_p = pos.get('entry', 0)
+            shs = pos.get('shares', 0)
+            sl_p = pos.get('sl', 0)
+            tp1_p = pos.get('tp1', 0)
+            score = pos.get('score', 0)
+            msg += f"• <b>{sym}</b>: {shs} shs @ {curr}{entry_p:,.2f} | SL: {curr}{sl_p:,.2f} | TP1: {curr}{tp1_p:,.2f}\n"
+        msg += "\n"
+
+    # Next Session Watchlist (Excluding already held symbols)
+    next_watchlist = [s for s in top_signals if s['symbol'] not in open_pos]
+    if next_watchlist:
+        msg += "<b>👀 TOP WATCHLIST FOR NEXT SESSION (Unfilled Candidates):</b>\n"
+        for i, s in enumerate(next_watchlist[:4], 1):
             target_p = s.get("confirm_at") if s.get("verdict") == "NEAR ENTRY" and s.get("confirm_at") else s.get("close")
-            msg += f"{i}. <b>{s['symbol']}</b> (<code>{s['verdict']}</code>) — Target: {curr}{target_p:,.2f} | Score: {s['score']}/10\n"
+            msg += f"{i}. <b>{s['symbol']}</b> (<code>{s['verdict']}</code>) — Entry/Target: {curr}{target_p:,.2f} | Score: {s['score']}/10\n"
         msg += "\n"
 
     msg += f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/"><b>View Live Web Dashboard</b></a>'
