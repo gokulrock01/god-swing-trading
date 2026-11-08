@@ -40,4 +40,5 @@ jobs:
           git config --global user.email "us-bot@godswing.local"
           git add us_market/signals/
           git commit -m "Auto-update US paper trading portfolio [$(date +'%Y-%m-%d %H:%M EST')]" || echo "No changes to commit"
+          git pull --rebase origin main || true
           git push

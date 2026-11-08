@@ -51,4 +51,5 @@ jobs:
           git config --global user.email "bot@godswing.local"
           git add python_scanner/signals/
           git commit -m "Auto-update paper trading portfolio [$(date +'%Y-%m-%d %H:%M IST')]" || echo "No changes to commit"
+          git pull --rebase origin main || true
           git push
