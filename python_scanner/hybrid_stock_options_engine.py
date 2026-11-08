@@ -10,6 +10,10 @@ Dual-Regime Autonomous Stock Options Trading Engine:
       - Sells 1 strike OTM & Buys 2 strike OTM Hedge (Bull Put / Bear Call)
       - Collects intraday theta decay -> Auto square-off at 15:15 PM
   • 100% Intraday: Zero overnight risk. All positions closed before market bell.
+  • NEWS GUARD (3 Layers):
+      - Layer 1 Pre-Trade:  Checks Google News RSS + NSE RSS + Earnings Calendar
+      - Layer 2 Intraday:   Monitors breaking news every 60s during active position
+      - Layer 3 Earnings:   Special CE/PE bias on quarterly results day
 ==============================================================================
 """
 
@@ -24,10 +28,17 @@ sys.path.insert(0, os.path.dirname(__file__))
 from angel_feed import get_angel_session, get_live_ltp
 from nfo_resolver import get_atm_option, get_credit_spread_contracts
 from telegram_notifier import send_telegram_message
+from news_guard import (
+    get_news_signal, should_allow_options_trade, check_active_trade_news,
+    is_earnings_day,
+    SIGNAL_EARNINGS_CE, SIGNAL_EARNINGS_PE, SIGNAL_AVOID_CE, SIGNAL_AVOID_PE, SIGNAL_CLEAR,
+)
 
 PORTFOLIO_FILE = os.path.join(os.path.dirname(__file__), "signals", "hybrid_options_portfolio.json")
 HISTORY_FILE   = os.path.join(os.path.dirname(__file__), "signals", "hybrid_options_history.csv")
 LOG_FILE       = os.path.join(os.path.dirname(__file__), "signals", "hybrid_options_daily.log")
+
+_LAST_NEWS_CHECK_TIME = 0.0  # Tracks timestamp of last Layer 2 news check (~60s cadence)
 
 TOP_FO_UNIVERSE = [
     "TATASTEEL", "RELIANCE", "SBIN", "ICICIBANK", "TATAMOTORS",
@@ -87,16 +98,19 @@ def get_option_ltp(contract_symbol, token):
 
 def scan_morning_regimes():
     """
-    Evaluates market regime across Top 25 F&O stocks at 09:30 AM:
+    Evaluates market regime across Top 25 F&O stocks at 09:30 AM.
+    Integrates 3-layer News Guard per stock:
+      - Earnings day candidates get boosted score and Mode 2 skipped
+      - Bad-news stocks are filtered from momentum buying
     Returns (regime_type, candidate_info)
     """
-    print("\n  🔍 Scanning Top 25 F&O Universe for Morning Regimes...")
+    print("\n  🔍 Scanning Top 25 F&O Universe for Morning Regimes + News Guard...")
     session = get_angel_session()
     if not session:
         return None, None
 
     momentum_candidates = []
-    spread_candidates = []
+    spread_candidates   = []
 
     for name in TOP_FO_UNIVERSE:
         q = get_live_ltp(name)
@@ -106,44 +120,98 @@ def scan_morning_regimes():
         day_open  = q["open"]
         day_high  = q["high"]
         day_low   = q["low"]
-        day_close = q["close"]
         ltp       = q["ltp"]
 
-        chg_pct = ((ltp - day_open) / day_open) * 100
-        # Open = Low condition: within 0.18%
-        is_open_low = (abs(day_open - day_low) / day_open) < 0.0018
+        chg_pct      = ((ltp - day_open) / day_open) * 100
+        is_open_low  = (abs(day_open - day_low)  / day_open) < 0.0018
         is_open_high = (abs(day_open - day_high) / day_open) < 0.0018
 
-        # 1. Check for Explosive Momentum (Regime 1)
-        if is_open_low and chg_pct >= 1.0 and ltp >= day_high * 0.998:
-            momentum_candidates.append({
-                "name": name, "type": "CALL_BUY_CE", "spot": ltp,
-                "chg": chg_pct, "score": chg_pct * 2.0
-            })
-        elif is_open_high and chg_pct <= -1.0 and ltp <= day_low * 1.002:
-            momentum_candidates.append({
-                "name": name, "type": "PUT_BUY_PE", "spot": ltp,
-                "chg": chg_pct, "score": abs(chg_pct) * 2.0
-            })
+        is_m1_ce = is_open_low and chg_pct >= 1.0 and ltp >= day_high * 0.998
+        is_m1_pe = is_open_high and chg_pct <= -1.0 and ltp <= day_low * 1.002
+        is_m2_bull = chg_pct >= 0.7
+        is_m2_bear = chg_pct <= -0.7
 
-        # 2. Check for Orderly Trend (Regime 2 Credit Spread)
-        if chg_pct >= 0.7:
-            spread_candidates.append({
-                "name": name, "type": "BULL_PUT_SPREAD", "spot": ltp,
-                "chg": chg_pct, "score": chg_pct
-            })
-        elif chg_pct <= -0.7:
-            spread_candidates.append({
-                "name": name, "type": "BEAR_CALL_SPREAD", "spot": ltp,
-                "chg": chg_pct, "score": abs(chg_pct)
-            })
+        # Performance optimization: skip news check for stocks with no technical setup
+        if not (is_m1_ce or is_m1_pe or is_m2_bull or is_m2_bear):
+            continue
 
-    # Priority 1: If an explosive momentum setup exists -> MODEL 1
+        # ── Layer 1: Get News Guard Signal for qualified setup ──────────
+        try:
+            ng = get_news_signal(name, max_news_age_minutes=60)
+            ng_signal         = ng["signal"]
+            ng_is_earnings    = ng["is_earnings_day"]
+            ng_earn_src       = ng["earnings_source"]
+            ng_reason         = ng["reason"]
+        except Exception as e:
+            print(f"  [NewsGuard] ⚠️ Signal fetch failed for {name}: {e}")
+            ng_signal      = SIGNAL_CLEAR
+            ng_is_earnings = False
+            ng_earn_src    = "error"
+            ng_reason      = ""
+
+        # ── 1. Explosive Momentum (Regime 1) ──────────────────────
+        if is_m1_ce:
+            # Block CE if strong bearish news
+            if ng_signal == SIGNAL_AVOID_CE:
+                print(f"  🔴 NewsGuard BLOCKED CE on {name}: {ng_reason[:60]}")
+            else:
+                score = chg_pct * 2.0
+                # Earnings day → boost score, flag for wider SL
+                if ng_is_earnings:
+                    score *= 1.5
+                    print(f"  🟡 Earnings Day ({ng_earn_src}): {name} CE score boosted")
+                momentum_candidates.append({
+                    "name": name, "type": "CALL_BUY_CE", "spot": ltp,
+                    "chg": chg_pct, "score": score,
+                    "is_earnings": ng_is_earnings, "news_signal": ng_signal,
+                    "news_reason": ng_reason,
+                })
+
+        elif is_m1_pe:
+            # Block PE if strong bullish news
+            if ng_signal == SIGNAL_AVOID_PE:
+                print(f"  🟢 NewsGuard BLOCKED PE on {name}: {ng_reason[:60]}")
+            else:
+                score = abs(chg_pct) * 2.0
+                if ng_is_earnings:
+                    score *= 1.5
+                    print(f"  🟡 Earnings Day ({ng_earn_src}): {name} PE score boosted")
+                momentum_candidates.append({
+                    "name": name, "type": "PUT_BUY_PE", "spot": ltp,
+                    "chg": chg_pct, "score": score,
+                    "is_earnings": ng_is_earnings, "news_signal": ng_signal,
+                    "news_reason": ng_reason,
+                })
+
+        # ── 2. Orderly Trend (Regime 2 Credit Spread) ─────────────
+        # Skip credit spreads on earnings day (IV crush risk)
+        if ng_is_earnings:
+            print(f"  🟡 Earnings Day: Skipping credit spread on {name} (IV crush risk)")
+        elif is_m2_bull:
+            if ng_signal == SIGNAL_AVOID_CE:
+                print(f"  🔴 NewsGuard BLOCKED Bull Put Spread on {name}: {ng_reason[:60]}")
+            else:
+                spread_candidates.append({
+                    "name": name, "type": "BULL_PUT_SPREAD", "spot": ltp,
+                    "chg": chg_pct, "score": chg_pct,
+                    "is_earnings": False, "news_signal": ng_signal, "news_reason": ng_reason,
+                })
+        elif is_m2_bear:
+            if ng_signal == SIGNAL_AVOID_PE:
+                print(f"  🟢 NewsGuard BLOCKED Bear Call Spread on {name}: {ng_reason[:60]}")
+            else:
+                spread_candidates.append({
+                    "name": name, "type": "BEAR_CALL_SPREAD", "spot": ltp,
+                    "chg": chg_pct, "score": abs(chg_pct),
+                    "is_earnings": False, "news_signal": ng_signal, "news_reason": ng_reason,
+                })
+
+    # Priority 1: Explosive momentum → Model 1
     if momentum_candidates:
         momentum_candidates.sort(key=lambda x: x["score"], reverse=True)
         return "MODEL_1_MOMENTUM_SNIPER", momentum_candidates[0]
 
-    # Priority 2: If orderly trend exists -> MODEL 2
+    # Priority 2: Orderly trend → Model 2
     if spread_candidates:
         spread_candidates.sort(key=lambda x: x["score"], reverse=True)
         return "MODEL_2_CREDIT_SPREAD", spread_candidates[0]
@@ -151,77 +219,109 @@ def scan_morning_regimes():
     return "NO_REGIME_FOUND", None
 
 def execute_model_1_entry(portfolio, candidate):
-    """Executes Model 1 (ATM Option Buying) with live Angel One quote."""
-    name = candidate["name"]
-    spot = candidate["spot"]
-    opt_type = "CE" if candidate["type"] == "CALL_BUY_CE" else "PE"
+    """Executes Model 1 (ATM Option Buying) with live Angel One quote.
+    Applies News Guard pre-trade filter and Earnings Day special mode:
+      - Earnings Day: wider SL (-30%), quicker TP (+30%/+60%), bigger alert
+      - news_signal/is_earnings stored in trade record for intraday monitor
+    """
+    name      = candidate["name"]
+    spot      = candidate["spot"]
+    opt_type  = "CE" if candidate["type"] == "CALL_BUY_CE" else "PE"
+    is_earn   = candidate.get("is_earnings", False)
+    ng_signal = candidate.get("news_signal", SIGNAL_CLEAR)
+    ng_reason = candidate.get("news_reason", "")
+
+    # ── Earnings Day alert ──────────────────────────────────────────
+    if is_earn:
+        earn_tg = (
+            f"📅 <b>EARNINGS DAY ALERT: {name} Results Today!</b>\n\n"
+            f"• <b>Signal:</b> {ng_signal}\n"
+            f"• <b>Strategy:</b> Model 1 Momentum Sniper ({opt_type})\n"
+            f"• <b>Mode:</b> Earnings mode — wider SL (-30%), quick TP (+30%)\n"
+        )
+        send_telegram_message(earn_tg)
+        print(f"  📅 EARNINGS MODE activated for {name} ({opt_type})")
 
     contract = get_atm_option(name, spot, opt_type)
     if not contract:
         print(f"  ⚠️ Could not resolve ATM {opt_type} contract for {name}")
         return
 
-    sym = contract["symbol"]
-    token = contract["token"]
+    sym     = contract["symbol"]
+    token   = contract["token"]
     lotsize = contract["lotsize"]
-    strike = contract["strike"]
+    strike  = contract["strike"]
 
     opt_ltp = get_option_ltp(sym, token)
     if not opt_ltp or opt_ltp <= 0.05:
-        # Fallback realistic premium estimate (2.0% of spot)
         opt_ltp = round(spot * 0.020, 2)
 
     cost = opt_ltp * lotsize
-    sl_opt  = round(opt_ltp * 0.75, 2)  # -25% SL
-    tp1_opt = round(opt_ltp * 1.40, 2)  # +40% TP1 (Book 50% + Trail SL to BE)
-    tp2_opt = round(opt_ltp * 1.80, 2)  # +80% TP2 (Max runner)
+
+    # ── Earnings Day: wider SL, quicker TP ─────────────────────────
+    if is_earn:
+        sl_opt  = round(opt_ltp * 0.70, 2)   # -30% SL (wider for earnings volatility)
+        tp1_opt = round(opt_ltp * 1.30, 2)   # +30% TP1 (quick profit on earnings spike)
+        tp2_opt = round(opt_ltp * 1.60, 2)   # +60% TP2
+    else:
+        sl_opt  = round(opt_ltp * 0.75, 2)   # -25% SL (standard)
+        tp1_opt = round(opt_ltp * 1.40, 2)   # +40% TP1
+        tp2_opt = round(opt_ltp * 1.80, 2)   # +80% TP2
 
     portfolio["cash_balance"] -= cost
     trade_record = {
-        "model": "MODEL_1_MOMENTUM_SNIPER",
-        "stock": name,
-        "contract": sym,
-        "token": token,
-        "strike": strike,
-        "type": opt_type,
-        "entry_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "spot_entry": spot,
-        "opt_entry": opt_ltp,
-        "shares": lotsize,
-        "cost": round(cost, 2),
-        "sl": sl_opt,
-        "tp1": tp1_opt,
-        "tp2": tp2_opt,
-        "tp1_booked": False
+        "model":            "MODEL_1_MOMENTUM_SNIPER",
+        "stock":            name,
+        "contract":         sym,
+        "token":            token,
+        "strike":           strike,
+        "type":             opt_type,
+        "entry_time":       datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "spot_entry":       spot,
+        "opt_entry":        opt_ltp,
+        "shares":           lotsize,
+        "cost":             round(cost, 2),
+        "sl":               sl_opt,
+        "tp1":              tp1_opt,
+        "tp2":              tp2_opt,
+        "tp1_booked":       False,
+        "is_earnings":      is_earn,
+        "news_signal":      ng_signal,
+        "news_poll_count":  0,   # Increments each 20s cycle; news check every 3rd = 60s
     }
     portfolio["active_trade"] = trade_record
     save_portfolio(portfolio)
 
     log_trade({
-        "Date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Model": "MOMENTUM_SNIPER",
-        "Contract": sym,
-        "Action": f"BUY_{opt_type}",
-        "Entry": opt_ltp,
-        "Exit": None,
-        "Shares": lotsize,
+        "Date":         datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Model":        "MOMENTUM_SNIPER" + ("_EARNINGS" if is_earn else ""),
+        "Contract":     sym,
+        "Action":       f"BUY_{opt_type}",
+        "Entry":        opt_ltp,
+        "Exit":         None,
+        "Shares":       lotsize,
         "Realized_PnL": 0.0,
-        "Notes": f"Open=Low/High Breakout on {name} | SL: ₹{sl_opt} | TP1: ₹{tp1_opt}"
+        "Notes":        f"Open=Low/High Breakout on {name} | SL: ₹{sl_opt} | TP1: ₹{tp1_opt}" +
+                        (" | EARNINGS DAY" if is_earn else ""),
     })
 
+    earn_badge = " 📅 EARNINGS DAY" if is_earn else ""
     tg = (
-        f"⚡ <b>ANGEL ONE LIVE: HYBRID OPTION SNIPER ACTIVATED</b>\n\n"
+        f"⚡ <b>ANGEL ONE LIVE: HYBRID OPTION SNIPER ACTIVATED{earn_badge}</b>\n\n"
         f"• <b>Stock:</b> #{name} (Breakout at ₹{spot:,.2f})\n"
         f"• <b>Contract:</b> <code>{sym}</code> (ATM {strike} {opt_type})\n"
         f"• <b>Entry Premium:</b> ₹{opt_ltp:,.2f}\n"
         f"• <b>Lot Size:</b> {lotsize} shares (Capital: ₹{cost:,.2f})\n"
-        f"• <b>Stop Loss:</b> ₹{sl_opt:,.2f} (-25%)\n"
-        f"• <b>Target 1:</b> ₹{tp1_opt:,.2f} (+40% — 50% Booking & SL to Breakeven)\n"
-        f"• <b>Target 2:</b> ₹{tp2_opt:,.2f} (+80% Runner)\n\n"
+        f"• <b>Stop Loss:</b> ₹{sl_opt:,.2f} ({'-30% Earnings Mode' if is_earn else '-25%'})\n"
+        f"• <b>Target 1:</b> ₹{tp1_opt:,.2f} ({'+30%' if is_earn else '+40%'} — 50% Booking & SL to Breakeven)\n"
+        f"• <b>Target 2:</b> ₹{tp2_opt:,.2f} ({'+60%' if is_earn else '+80%'} Runner)\n"
+        f"• <b>News Guard:</b> {ng_signal}\n\n"
         f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
     )
     send_telegram_message(tg)
-    print(f"  ⚡ EXECUTED MOMENTUM SNIPER: {sym} @ ₹{opt_ltp} | Cost: ₹{cost:,.2f}")
+    earn_tag = " [EARNINGS]" if is_earn else ""
+    print(f"  ⚡ EXECUTED MOMENTUM SNIPER{earn_tag}: {sym} @ ₹{opt_ltp} | Cost: ₹{cost:,.2f}")
+
 
 def execute_model_2_entry(portfolio, candidate):
     """Executes Model 2 (Hedged Credit Spread) with live Angel One quotes."""
@@ -261,7 +361,8 @@ def execute_model_2_entry(portfolio, candidate):
         "net_credit": round(net_credit, 2),
         "total_credit": round(total_credit, 2),
         "sl_spread": round(net_credit + sl_points, 2),
-        "lotsize": lotsize
+        "lotsize": lotsize,
+        "news_signal": candidate.get("news_signal", "CLEAR")
     }
     portfolio["active_trade"] = trade_record
     save_portfolio(portfolio)
@@ -275,7 +376,7 @@ def execute_model_2_entry(portfolio, candidate):
         "Exit": None,
         "Shares": lotsize,
         "Realized_PnL": 0.0,
-        "Notes": f"Net Credit: ₹{net_credit:.2f} (Total ₹{total_credit:,.2f}) | SL Spread: ₹{trade_record['sl_spread']:.2f}"
+        "Notes": f"Net Credit: ₹{net_credit:.2f} (Total ₹{total_credit:,.2f}) | SL Spread: ₹{trade_record['sl_spread']:.2f} | News: {candidate.get('news_signal', 'CLEAR')}"
     })
 
     tg = (
@@ -285,7 +386,8 @@ def execute_model_2_entry(portfolio, candidate):
         f"• <b>Buy Hedge:</b> <code>{buy_leg['symbol']}</code> @ ₹{buy_p:,.2f}\n"
         f"• <b>Net Credit Collected:</b> <b>₹{net_credit:,.2f}</b> (Total ₹{total_credit:,.2f})\n"
         f"• <b>Edge:</b> Theta Decay pays you automatically by 03:15 PM EOD.\n"
-        f"• <b>Stop Loss Spread:</b> ₹{trade_record['sl_spread']:,.2f}\n\n"
+        f"• <b>Stop Loss Spread:</b> ₹{trade_record['sl_spread']:,.2f}\n"
+        f"• <b>News Guard:</b> {candidate.get('news_signal', 'CLEAR')}\n\n"
         f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
     )
     send_telegram_message(tg)
@@ -293,6 +395,7 @@ def execute_model_2_entry(portfolio, candidate):
 
 def monitor_hybrid_trade():
     """Monitors the active option trade against live market ticks."""
+    global _LAST_NEWS_CHECK_TIME
     portfolio = load_portfolio()
     tr = portfolio.get("active_trade")
     if not tr:
@@ -312,6 +415,57 @@ def monitor_hybrid_trade():
         tp1   = tr["tp1"]
         tp2   = tr["tp2"]
         shares = tr["shares"]
+
+        # LAYER 2: News Sentinel Active Monitor (runs every ~60s)
+        now_ts = time.time()
+        if now_ts - _LAST_NEWS_CHECK_TIME >= 60.0:
+            _LAST_NEWS_CHECK_TIME = now_ts
+            stock_name = tr.get("stock", "")
+            trade_action = f"BUY_{tr.get('opt_type', 'CE')}"
+            try:
+                news_res = check_active_trade_news(stock_name, trade_action)
+                if news_res.get("emergency_exit"):
+                    exit_p = opt_cur
+                    rem_shares = tr["shares"]
+                    pnl = (exit_p - entry) * rem_shares
+                    portfolio["cash_balance"] += (exit_p * rem_shares)
+                    portfolio["realized_pnl"] += pnl
+
+                    tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                    tr["exit_price"] = exit_p
+                    tr["final_pnl"] = round(pnl, 2)
+                    tr["exit_reason"] = "NEWS_GUARD_EXIT"
+                    tr["news_exit_note"] = news_res.get("exit_note", "")
+                    portfolio.setdefault("closed_trades", []).append(tr)
+                    portfolio["active_trade"] = None
+                    save_portfolio(portfolio)
+
+                    log_trade({
+                        "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                        "Model": "MOMENTUM_SNIPER",
+                        "Contract": tr["contract"],
+                        "Action": "EXIT_NEWS_GUARD",
+                        "Entry": entry,
+                        "Exit": exit_p,
+                        "Shares": rem_shares,
+                        "Realized_PnL": round(pnl, 2),
+                        "Notes": f"EMERGENCY EXIT: {news_res.get('exit_note', '')}"
+                    })
+
+                    tg = (
+                        f"🛑 <b>NEWS SENTINEL: EMERGENCY EXIT TRIGGERED!</b>\n\n"
+                        f"• <b>Contract:</b> {tr['contract']} ({trade_action})\n"
+                        f"• <b>Reason:</b> {news_res.get('exit_note', 'Breaking adverse news detected')}\n"
+                        f"• <b>Exit Price:</b> ₹{exit_p:,.2f} (Entry: ₹{entry:,.2f})\n"
+                        f"• <b>Realized P&L:</b> <code>₹{pnl:+,.2f}</code>\n"
+                        f"• <b>Action:</b> Position squared off immediately to protect capital.\n\n"
+                        f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
+                    )
+                    send_telegram_message(tg)
+                    print(f"  🛑 NEWS GUARD EMERGENCY EXIT on {tr['contract']}: {news_res.get('exit_note', '')} | P&L: ₹{pnl:+,.2f}")
+                    return
+            except Exception as e:
+                print(f"  [NewsGuard] ⚠️ Intraday news check error for {stock_name}: {e}")
 
         # Stop Loss Hit
         if opt_cur <= sl:
@@ -469,6 +623,57 @@ def monitor_hybrid_trade():
         net_credit = tr["net_credit"]
         sl_spread  = tr["sl_spread"]
         lotsize    = tr["lotsize"]
+
+        # LAYER 2: News Sentinel Active Monitor for Credit Spread (Runs every ~60s)
+        now_ts = time.time()
+        if now_ts - _LAST_NEWS_CHECK_TIME >= 60.0:
+            _LAST_NEWS_CHECK_TIME = now_ts
+            stock_name = tr.get("stock", "")
+            spread_type = tr.get("spread_type", "")
+            # BULL_PUT is hurt by bearish news (same as BUY_CE); BEAR_CALL by bullish news
+            equiv_action = "BUY_CE" if spread_type == "BULL_PUT" else "BUY_PE"
+            try:
+                news_res = check_active_trade_news(stock_name, equiv_action)
+                if news_res.get("emergency_exit"):
+                    loss = (cur_spread - net_credit) * lotsize
+                    portfolio["cash_balance"] -= loss
+                    portfolio["realized_pnl"] -= loss
+
+                    tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                    tr["exit_price"] = cur_spread
+                    tr["final_pnl"] = round(-loss, 2)
+                    tr["exit_reason"] = "NEWS_GUARD_EXIT"
+                    tr["news_exit_note"] = news_res.get("exit_note", "")
+                    portfolio.setdefault("closed_trades", []).append(tr)
+                    portfolio["active_trade"] = None
+                    save_portfolio(portfolio)
+
+                    log_trade({
+                        "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                        "Model": "CREDIT_SPREAD",
+                        "Contract": f"{tr['sell_leg']} / {tr['buy_leg']}",
+                        "Action": "EXIT_NEWS_GUARD",
+                        "Entry": net_credit,
+                        "Exit": cur_spread,
+                        "Shares": lotsize,
+                        "Realized_PnL": round(-loss, 2),
+                        "Notes": f"EMERGENCY SPREAD EXIT: {news_res.get('exit_note', '')}"
+                    })
+
+                    tg = (
+                        f"🛑 <b>NEWS SENTINEL: EMERGENCY EXIT FOR CREDIT SPREAD!</b>\n\n"
+                        f"• <b>Stock:</b> #{stock_name} ({spread_type})\n"
+                        f"• <b>Reason:</b> {news_res.get('exit_note', '')}\n"
+                        f"• <b>Spread Exit:</b> ₹{cur_spread:,.2f} (Entry: ₹{net_credit:,.2f})\n"
+                        f"• <b>Realized P&L:</b> <code>₹{-loss:+,.2f}</code>\n"
+                        f"• <b>Action:</b> Spread closed immediately to avoid tail-risk blowout.\n\n"
+                        f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
+                    )
+                    send_telegram_message(tg)
+                    print(f"  🛑 NEWS GUARD SPREAD EXIT on {stock_name}: {news_res.get('exit_note', '')} | P&L: ₹{-loss:+,.2f}")
+                    return
+            except Exception as e:
+                print(f"  [NewsGuard] ⚠️ Intraday news check error for {stock_name}: {e}")
 
         # Stop Loss Hit
         if cur_spread >= sl_spread:
