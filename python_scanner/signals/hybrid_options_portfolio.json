@@ -1,7 +1,26 @@
 {
   "initial_capital": 100000.0,
-  "cash_balance": 100000.0,
+  "cash_balance": 83665.0,
   "realized_pnl": 0.0,
-  "active_trade": null,
+  "active_trade": {
+    "model": "MODEL_1_MOMENTUM_SNIPER",
+    "stock": "JSWSTEEL",
+    "contract": "JSWSTEEL23NOV261350PE",
+    "token": "134146",
+    "strike": 1350.0,
+    "type": "PE",
+    "entry_time": "2026-11-08 17:18:34",
+    "spot_entry": 1351.1,
+    "opt_entry": 24.2,
+    "shares": 675,
+    "cost": 16335.0,
+    "sl": 18.15,
+    "tp1": 33.88,
+    "tp2": 43.56,
+    "tp1_booked": false,
+    "is_earnings": false,
+    "news_signal": "CLEAR",
+    "news_poll_count": 0
+  },
   "closed_trades": []
 }
