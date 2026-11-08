@@ -315,13 +315,31 @@ def monitor_hybrid_trade():
 
         # Stop Loss Hit
         if opt_cur <= sl:
-            rem_shares = shares // 2 if tr["tp1_booked"] else shares
-            exit_p = entry if tr["tp1_booked"] else sl
+            rem_shares = tr["shares"]
+            exit_p = entry if tr["tp1_booked"] else opt_cur
             pnl = 0.0 if tr["tp1_booked"] else (exit_p - entry) * rem_shares
             portfolio["cash_balance"] += (exit_p * rem_shares)
             portfolio["realized_pnl"] += pnl
+            
+            tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            tr["exit_price"] = exit_p
+            tr["final_pnl"] = round(pnl, 2)
+            tr["exit_reason"] = "BREAKEVEN_SL" if tr["tp1_booked"] else "STOP_LOSS"
+            portfolio.setdefault("closed_trades", []).append(tr)
             portfolio["active_trade"] = None
             save_portfolio(portfolio)
+
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "MOMENTUM_SNIPER",
+                "Contract": tr["contract"],
+                "Action": "EXIT_SL",
+                "Entry": entry,
+                "Exit": exit_p,
+                "Shares": rem_shares,
+                "Realized_PnL": round(pnl, 2),
+                "Notes": tr["exit_reason"]
+            })
 
             tg = (
                 f"🚨 <b>ANGEL ONE LIVE: OPTION STOP LOSS TRIGGERED</b>\n\n"
@@ -344,6 +362,18 @@ def monitor_hybrid_trade():
             tr["sl"] = entry # Move SL to Breakeven!
             save_portfolio(portfolio)
 
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "MOMENTUM_SNIPER",
+                "Contract": tr["contract"],
+                "Action": "PARTIAL_TP1",
+                "Entry": entry,
+                "Exit": tp1,
+                "Shares": half_shares,
+                "Realized_PnL": round(pnl, 2),
+                "Notes": "50% Profit Booked (+40%) | SL -> Breakeven"
+            })
+
             tg = (
                 f"🎉 <b>ANGEL ONE LIVE: TARGET 1 HIT (+40% PROFIT LOCKED)!</b>\n\n"
                 f"• <b>Contract:</b> {tr['contract']}\n"
@@ -361,8 +391,26 @@ def monitor_hybrid_trade():
             pnl = (tp2 - entry) * rem_shares
             portfolio["cash_balance"] += (tp2 * rem_shares)
             portfolio["realized_pnl"] += pnl
+
+            tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            tr["exit_price"] = tp2
+            tr["final_pnl"] = round(pnl, 2)
+            tr["exit_reason"] = "TARGET_2_MAX_PROFIT"
+            portfolio.setdefault("closed_trades", []).append(tr)
             portfolio["active_trade"] = None
             save_portfolio(portfolio)
+
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "MOMENTUM_SNIPER",
+                "Contract": tr["contract"],
+                "Action": "EXIT_TP2",
+                "Entry": entry,
+                "Exit": tp2,
+                "Shares": rem_shares,
+                "Realized_PnL": round(pnl, 2),
+                "Notes": "Max Target Hit (+80%)"
+            })
 
             tg = (
                 f"🏆 <b>ANGEL ONE LIVE: TARGET 2 REACHED (+80% MAX PROFIT)!</b>\n\n"
@@ -380,8 +428,26 @@ def monitor_hybrid_trade():
             pnl = (opt_cur - entry) * rem_shares
             portfolio["cash_balance"] += (opt_cur * rem_shares)
             portfolio["realized_pnl"] += pnl
+
+            tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            tr["exit_price"] = opt_cur
+            tr["final_pnl"] = round(pnl, 2)
+            tr["exit_reason"] = "EOD_SQUAREOFF"
+            portfolio.setdefault("closed_trades", []).append(tr)
             portfolio["active_trade"] = None
             save_portfolio(portfolio)
+
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "MOMENTUM_SNIPER",
+                "Contract": tr["contract"],
+                "Action": "EXIT_EOD",
+                "Entry": entry,
+                "Exit": opt_cur,
+                "Shares": rem_shares,
+                "Realized_PnL": round(pnl, 2),
+                "Notes": "15:15 PM Intraday Square-off"
+            })
 
             tg = (
                 f"🏁 <b>ANGEL ONE LIVE: 03:15 PM EOD INTRADAY EXIT</b>\n\n"
@@ -409,8 +475,26 @@ def monitor_hybrid_trade():
             loss = (cur_spread - net_credit) * lotsize
             portfolio["cash_balance"] -= loss
             portfolio["realized_pnl"] -= loss
+
+            tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            tr["exit_price"] = cur_spread
+            tr["final_pnl"] = round(-loss, 2)
+            tr["exit_reason"] = "CREDIT_SPREAD_SL"
+            portfolio.setdefault("closed_trades", []).append(tr)
             portfolio["active_trade"] = None
             save_portfolio(portfolio)
+
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "CREDIT_SPREAD",
+                "Contract": f"{tr['sell_leg']} / {tr['buy_leg']}",
+                "Action": "EXIT_SL",
+                "Entry": net_credit,
+                "Exit": cur_spread,
+                "Shares": lotsize,
+                "Realized_PnL": round(-loss, 2),
+                "Notes": f"SL Spread Breached: ₹{cur_spread:.2f} >= ₹{sl_spread:.2f}"
+            })
 
             tg = f"🚨 <b>CREDIT SPREAD SL TRIGGERED</b> on #{tr['stock']}: Loss ₹{loss:,.2f}"
             send_telegram_message(tg)
@@ -420,8 +504,26 @@ def monitor_hybrid_trade():
         elif t_str >= "15:15":
             pnl = (net_credit - cur_spread) * lotsize
             portfolio["realized_pnl"] += pnl
+
+            tr["exit_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            tr["exit_price"] = cur_spread
+            tr["final_pnl"] = round(pnl, 2)
+            tr["exit_reason"] = "EOD_THETA_COLLECTION"
+            portfolio.setdefault("closed_trades", []).append(tr)
             portfolio["active_trade"] = None
             save_portfolio(portfolio)
+
+            log_trade({
+                "Date": now.strftime("%Y-%m-%d %H:%M:%S"),
+                "Model": "CREDIT_SPREAD",
+                "Contract": f"{tr['sell_leg']} / {tr['buy_leg']}",
+                "Action": "EXIT_EOD_THETA",
+                "Entry": net_credit,
+                "Exit": cur_spread,
+                "Shares": lotsize,
+                "Realized_PnL": round(pnl, 2),
+                "Notes": "03:15 PM EOD Theta Decay Harvested"
+            })
 
             tg = (
                 f"🏁 <b>03:15 PM EOD SPREAD CLOSED (THETA PROFIT KEPT)</b>\n\n"
@@ -432,29 +534,92 @@ def monitor_hybrid_trade():
             send_telegram_message(tg)
             print(f"  🏁 EOD SPREAD CLOSED on {tr['stock']}: P&L +₹{pnl:,.2f}")
 
-def run_hybrid_engine():
-    print("=" * 65)
-    print("  🚀 HYBRID STOCK OPTIONS ENGINE (ANGEL ONE SMARTAPI)")
-    print(f"  📅 {datetime.now().strftime('%A, %d %B %Y  %I:%M:%S %p IST')}")
-    print("=" * 65)
-
+def run_hybrid_cycle(force=False):
+    """Runs a single live check across active trade or scans for morning regime."""
     portfolio = load_portfolio()
+    now = datetime.now()
+    t_str = now.strftime("%H:%M")
+    
     if portfolio.get("active_trade") is not None:
-        print(f"  📌 Active trade already open: {portfolio['active_trade'].get('contract', portfolio['active_trade'].get('stock'))}")
+        tr = portfolio["active_trade"]
+        name = tr.get("contract") or tr.get("stock")
+        print(f"[{now.strftime('%H:%M:%S')}] 📌 Active trade open: {name} | Monitoring ticks...")
         monitor_hybrid_trade()
         return
 
-    regime, candidate = scan_morning_regimes()
-    print(f"\n  🎯 Detected Regime: {regime}")
+    # If within morning entry window (09:30 - 11:30 IST) or forced
+    if force or ("09:30" <= t_str <= "11:30"):
+        regime, candidate = scan_morning_regimes()
+        print(f"[{now.strftime('%H:%M:%S')}] 🎯 Detected Regime: {regime}")
 
-    if regime == "MODEL_1_MOMENTUM_SNIPER":
-        print(f"  ⚡ Activating Model 1 (Momentum Sniper CE/PE Buying) for {candidate['name']}...")
-        execute_model_1_entry(portfolio, candidate)
-    elif regime == "MODEL_2_CREDIT_SPREAD":
-        print(f"  🛡️ Activating Model 2 (Hedged Credit Spread) for {candidate['name']}...")
-        execute_model_2_entry(portfolio, candidate)
+        if regime == "MODEL_1_MOMENTUM_SNIPER":
+            print(f"  ⚡ Activating Model 1 (Momentum Sniper CE/PE Buying) for {candidate['name']}...")
+            execute_model_1_entry(portfolio, candidate)
+        elif regime == "MODEL_2_CREDIT_SPREAD":
+            print(f"  🛡️ Activating Model 2 (Hedged Credit Spread) for {candidate['name']}...")
+            execute_model_2_entry(portfolio, candidate)
+        else:
+            print(f"[{now.strftime('%H:%M:%S')}] ⏸️ No high-confluence institutional setup detected. Staying 100% Cash.")
     else:
-        print("  ⏸️ No high-confluence institutional setup detected today. Staying 100% Cash.")
+        print(f"[{now.strftime('%H:%M:%S')}] 🛡️ Outside entry window (09:30-11:30 IST). Monitoring only.")
+
+def start_hybrid_daemon(poll_seconds=20, force=False):
+    """Continuous intraday daemon loop running during market hours."""
+    print("=" * 65)
+    print("  🚀 HYBRID STOCK OPTIONS DAEMON (ANGEL ONE SMARTAPI)")
+    print(f"  📅 {datetime.now().strftime('%A, %d %B %Y  %I:%M:%S %p IST')}")
+    print("  ⚡ Dual-Regime: Model 1 Momentum Sniper & Model 2 Credit Spreads")
+    print("  ⏱️ Real-Time Polling: Every 20 seconds | Auto EOD Square-Off: 15:15 PM")
+    print("=" * 65)
+
+    session = get_angel_session()
+    if not session:
+        print("  ❌ Failed to start Daemon: Angel One authentication failed.")
+        return
+
+    while True:
+        try:
+            now = datetime.now()
+            t_str = now.strftime("%H:%M")
+            weekday = now.weekday()
+
+            if not force:
+                # Weekend check
+                if weekday in [5, 6]:
+                    print(f"[{now.strftime('%H:%M:%S')}] ⏸️ Weekend: Market is closed. Standby mode...")
+                    time.sleep(300)
+                    continue
+
+                # Pre-market wait until 09:30 AM
+                if t_str < "09:30":
+                    print(f"[{now.strftime('%H:%M:%S')}] ⏳ Waiting for 09:30 AM IST opening scan...")
+                    time.sleep(30)
+                    continue
+
+                # Post-market exit (15:20 IST)
+                if t_str >= "15:20":
+                    print(f"[{now.strftime('%H:%M:%S')}] 🏁 Market session completed (15:20 IST). Hybrid Options Engine finished for today.")
+                    break
+
+            run_hybrid_cycle(force=force)
+            time.sleep(poll_seconds)
+
+        except KeyboardInterrupt:
+            print("\n  🛑 Hybrid Options Daemon stopped by user.")
+            break
+        except Exception as e:
+            print(f"  ⚠️ Error in Hybrid Options loop: {e}")
+            time.sleep(10)
 
 if __name__ == "__main__":
-    run_hybrid_engine()
+    import argparse
+    parser = argparse.ArgumentParser(description="Hybrid Stock Options Autonomous Engine")
+    parser.add_argument("--once", action="store_true", help="Run a single check and exit")
+    parser.add_argument("--force", action="store_true", help="Force execute scan ignoring market hours")
+    parser.add_argument("--interval", type=int, default=20, help="Polling interval in seconds (default: 20)")
+    args = parser.parse_args()
+
+    if args.once:
+        run_hybrid_cycle(force=args.force)
+    else:
+        start_hybrid_daemon(poll_seconds=args.interval, force=args.force)
