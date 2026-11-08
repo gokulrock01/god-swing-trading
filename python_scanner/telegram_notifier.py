@@ -16,12 +16,23 @@ Credentials read securely from environment variables:
 """
 
 import os
+import sys
 import requests
 import json
 from datetime import datetime
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
+
+if not BOT_TOKEN or not CHAT_ID:
+    try:
+        ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        sys.path.insert(0, ROOT_DIR)
+        import config
+        BOT_TOKEN = getattr(config, "TELEGRAM_BOT_TOKEN", BOT_TOKEN)
+        CHAT_ID   = getattr(config, "TELEGRAM_CHAT_ID", CHAT_ID)
+    except Exception:
+        pass
 
 def send_telegram_message(message_text):
     """Sends a markdown/HTML formatted message to your Telegram account."""
