@@ -39,6 +39,7 @@ HISTORY_FILE   = os.path.join(os.path.dirname(__file__), "signals", "hybrid_opti
 LOG_FILE       = os.path.join(os.path.dirname(__file__), "signals", "hybrid_options_daily.log")
 
 _LAST_NEWS_CHECK_TIME = 0.0  # Tracks timestamp of last Layer 2 news check (~60s cadence)
+_SENT_MORNING_HEARTBEAT = False  # Ensures user receives at least 1 confirmation scan message daily
 
 TOP_FO_UNIVERSE = [
     "TATASTEEL", "RELIANCE", "SBIN", "ICICIBANK", "TATAMOTORS",
@@ -765,6 +766,19 @@ def run_hybrid_cycle(force=False):
             execute_model_2_entry(portfolio, candidate)
         else:
             print(f"[{now.strftime('%H:%M:%S')}] ⏸️ No high-confluence institutional setup detected. Staying 100% Cash.")
+            global _SENT_MORNING_HEARTBEAT
+            if not _SENT_MORNING_HEARTBEAT:
+                _SENT_MORNING_HEARTBEAT = True
+                msg = (
+                    f"🔍 <b>ANGEL ONE OPTIONS: MORNING SCAN COMPLETED</b>\n\n"
+                    f"• <b>Status:</b> Market scanned across Top 25 F&O stocks.\n"
+                    f"• <b>News Sentinel:</b> Vetted with Google News RSS & NSE Archives.\n"
+                    f"• <b>Regime:</b> No setup met the strict institutional breakout threshold.\n"
+                    f"• <b>Capital:</b> Staying 100% Cash (Capital Protected).\n"
+                    f"• <b>Monitoring:</b> Intraday daemon active until 03:15 PM EOD.\n\n"
+                    f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Dashboard</a>'
+                )
+                send_telegram_message(msg)
     else:
         print(f"[{now.strftime('%H:%M:%S')}] 🛡️ Outside entry window (09:30-11:30 IST). Monitoring only.")
 
