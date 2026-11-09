@@ -1,7 +1,24 @@
 {
   "initial_capital": 100000.0,
-  "cash_balance": 100000.0,
+  "cash_balance": 103225.0,
   "realized_pnl": 0.0,
-  "active_trade": null,
+  "active_trade": {
+    "model": "MODEL_2_CREDIT_SPREAD",
+    "stock": "BAJFINANCE",
+    "spread_type": "BEAR_CALL_SPREAD",
+    "sell_leg": "BAJFINANCE23NOV261070CE",
+    "buy_leg": "BAJFINANCE23NOV261080CE",
+    "sell_token": "85575",
+    "buy_token": "76521",
+    "entry_time": "2026-11-09 08:21:06",
+    "spot_entry": 1065.15,
+    "sell_entry": 22.15,
+    "buy_entry": 17.85,
+    "net_credit": 4.3,
+    "total_credit": 3225.0,
+    "sl_spread": 10.75,
+    "lotsize": 750,
+    "news_signal": "CLEAR"
+  },
   "closed_trades": []
 }
