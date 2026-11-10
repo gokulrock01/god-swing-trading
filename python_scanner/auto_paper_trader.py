@@ -84,6 +84,16 @@ def is_market_open_today():
     if weekday in [5, 6] and not force:
         return False, False, "Market Closed (Weekend)"
 
+    try:
+        from nse_holiday_guard import is_market_open_today as check_nse_holiday
+        res = check_nse_holiday()
+        is_open = res[0]
+        reason = res[1] if len(res) > 1 else "Holiday"
+        if not is_open and not force:
+            return False, False, f"Market Closed (NSE Holiday: {reason})"
+    except Exception:
+        pass
+
     return True, True, "Regular Market Session"
 
 def update_open_positions(portfolio, actions_taken=None):

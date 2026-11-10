@@ -21,8 +21,21 @@ import os
 import sys
 import time
 import json
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import pandas as pd
+
+def get_ist_now():
+    """Returns current datetime strictly in Indian Standard Time (IST)."""
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("Asia/Kolkata"))
+    except Exception:
+        pass
+    try:
+        import pytz
+        return datetime.now(pytz.timezone("Asia/Kolkata"))
+    except Exception:
+        return datetime.now(timezone(timedelta(hours=5, minutes=30)))
 
 sys.path.insert(0, os.path.dirname(__file__))
 from angel_feed import get_angel_session, get_live_ltp
@@ -754,9 +767,23 @@ def monitor_hybrid_trade():
 
 def run_hybrid_cycle(force=False):
     """Runs a single live check across active trade or scans for morning regime."""
-    portfolio = load_portfolio()
-    now = datetime.now()
+    now = get_ist_now()
     t_str = now.strftime("%H:%M")
+
+    # Holiday Check first
+    if not force:
+        try:
+            from nse_holiday_guard import is_market_open_today
+            res = is_market_open_today()
+            is_open = res[0]
+            reason = res[1] if len(res) > 1 else "Holiday"
+            if not is_open:
+                print(f"[{now.strftime('%H:%M:%S')}] 🏖️ NSE Market Holiday ({reason}). Skipping cycle.")
+                return
+        except Exception as e:
+            print(f"  ⚠️ Holiday check error: {e}")
+
+    portfolio = load_portfolio()
 
     if portfolio.get("active_trade") is not None:
         tr = portfolio["active_trade"]
@@ -777,16 +804,6 @@ def run_hybrid_cycle(force=False):
 
     # If within morning entry window (09:30 - 11:30 IST) or forced
     if force or ("09:30" <= t_str <= "11:30"):
-        # Market Holiday Check
-        try:
-            from nse_holiday_guard import is_market_open_today
-            is_open, reason = is_market_open_today()
-            if not is_open and not force:
-                print(f"[{now.strftime('%H:%M:%S')}] 🏖️ NSE Market Holiday ({reason}). Engine in standby.")
-                return
-        except Exception:
-            pass
-
         regime, candidate = scan_morning_regimes()
         print(f"[{now.strftime('%H:%M:%S')}] 🎯 Detected Regime: {regime}")
 
@@ -816,12 +833,37 @@ def run_hybrid_cycle(force=False):
 
 def start_hybrid_daemon(poll_seconds=20, force=False):
     """Continuous intraday daemon loop running during market hours."""
+    now_ist = get_ist_now()
     print("=" * 65)
     print("  🚀 HYBRID STOCK OPTIONS DAEMON (ANGEL ONE SMARTAPI)")
-    print(f"  📅 {datetime.now().strftime('%A, %d %B %Y  %I:%M:%S %p IST')}")
+    print(f"  📅 {now_ist.strftime('%A, %d %B %Y  %I:%M:%S %p IST')}")
     print("  ⚡ Dual-Regime: Model 1 Momentum Sniper & Model 2 Credit Spreads")
     print("  ⏱️ Real-Time Polling: Every 20 seconds | Auto EOD Square-Off: 15:15 PM")
     print("=" * 65)
+
+    if not force:
+        # Pre-check 1: Holiday Check
+        try:
+            from nse_holiday_guard import is_market_open_today
+            res = is_market_open_today()
+            is_open = res[0]
+            reason = res[1] if len(res) > 1 else "Holiday"
+            if not is_open:
+                print(f"[{now_ist.strftime('%H:%M:%S')}] 🏖️ NSE Market Holiday ({reason}). Engine terminating.")
+                return
+        except Exception as e:
+            print(f"  ⚠️ Holiday check error: {e}")
+
+        # Pre-check 2: Post-market check
+        t_str = now_ist.strftime("%H:%M")
+        if t_str >= "15:20":
+            print(f"[{now_ist.strftime('%H:%M:%S')}] 🏁 Market session completed ({t_str} IST >= 15:20 IST). Terminating immediately.")
+            return
+
+        # Pre-check 3: Weekend check
+        if now_ist.weekday() in [5, 6]:
+            print(f"[{now_ist.strftime('%H:%M:%S')}] ⏸️ Weekend: Market is closed. Terminating.")
+            return
 
     session = get_angel_session()
     if not session:
@@ -830,16 +872,15 @@ def start_hybrid_daemon(poll_seconds=20, force=False):
 
     while True:
         try:
-            now = datetime.now()
+            now = get_ist_now()
             t_str = now.strftime("%H:%M")
             weekday = now.weekday()
 
             if not force:
                 # Weekend check
                 if weekday in [5, 6]:
-                    print(f"[{now.strftime('%H:%M:%S')}] ⏸️ Weekend: Market is closed. Standby mode...")
-                    time.sleep(300)
-                    continue
+                    print(f"[{now.strftime('%H:%M:%S')}] ⏸️ Weekend: Market is closed. Terminating.")
+                    break
 
                 # Pre-market wait until 09:30 AM
                 if t_str < "09:30":
@@ -849,7 +890,7 @@ def start_hybrid_daemon(poll_seconds=20, force=False):
 
                 # Post-market exit (15:20 IST)
                 if t_str >= "15:20":
-                    print(f"[{now.strftime('%H:%M:%S')}] 🏁 Market session completed (15:20 IST). Hybrid Options Engine finished for today.")
+                    print(f"[{now.strftime('%H:%M:%S')}] 🏁 Market session completed ({t_str} IST >= 15:20 IST). Hybrid Options Engine finished for today.")
                     break
 
             run_hybrid_cycle(force=force)
