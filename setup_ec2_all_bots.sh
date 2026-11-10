@@ -77,13 +77,13 @@ echo "🔐 Configuring API Credentials..."
 cat << 'EOF' > "$WORK_DIR/config.py"
 import os
 
-ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "uoY0Ego2")
-ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "D216926")
-ANGEL_PIN          = os.getenv("ANGEL_PIN", "0514")
-ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "JV37OTDOLAZEGFH3VXCCCJ66EA")
+ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "")
+ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "")
+ANGEL_PIN          = os.getenv("ANGEL_PIN", "")
+ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "")
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "9195212668:AAFRAxvb8GNdXxyYekIfJknkmrDEAgF0lfw")
-TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "607732212")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "")
 EOF
 
 # Copy config.py to each bot directory
