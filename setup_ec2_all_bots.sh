@@ -71,26 +71,72 @@ source "$WORK_DIR/venv/bin/activate"
 pip install --upgrade pip
 pip install smartapi-python pyotp logzero websocket-client requests pandas numpy yfinance vaderSentiment
 
-# 6. Configure Unified Credentials (config.py)
-echo "🔐 Configuring API Credentials..."
+# 6. Configure Unified Credentials for All 3 Bots
+echo "🔐 Configuring API & Telegram Credentials for all 3 engines..."
 
-cat << 'EOF' > "$WORK_DIR/config.py"
+# Shared Angel One Credentials
+ANGEL_KEY="${ANGEL_API_KEY:-uoY0Ego2}"
+ANGEL_CODE="${ANGEL_CLIENT_CODE:-D216926}"
+ANGEL_P="${ANGEL_PIN:-0514}"
+ANGEL_TOTP="${ANGEL_TOTP_KEY:-JV37OTDOLAZEGFH3VXCCCJ66EA}"
+
+SWING_TOKEN="${SWING_BOT_TOKEN:-9087683073:AAHrRxkXIXpG3RIc61tEoINvo1WmpijH7f4}"
+NIFTY_TOKEN="${NIFTY_BOT_TOKEN:-9195212668:AAFRAxvb8GNdXxyYekIfJknkmrDEAgF0lfw}"
+BTST_TOKEN="${BTST_BOT_TOKEN:-9047159970:AAHYxR3STsJO83ACYlFIjrP9UP1t97VFGTk}"
+CHAT_ID="${TELEGRAM_CHAT_ID:-607732212}"
+
+# Bot 1: God Swing Trading (Hybrid Stock Options)
+cat << EOF > "$WORK_DIR/god-swing-trading/python_scanner/config.py"
 import os
+SWING_BOT_TOKEN    = os.getenv("SWING_BOT_TOKEN", "$SWING_TOKEN")
+GOD_SWING_ID       = os.getenv("GOD_SWING_ID", "$CHAT_ID")
+TELEGRAM_BOT_TOKEN = SWING_BOT_TOKEN
+TELEGRAM_CHAT_ID   = GOD_SWING_ID
 
-ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "")
-ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "")
-ANGEL_PIN          = os.getenv("ANGEL_PIN", "")
-ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "")
+ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "$ANGEL_KEY")
+ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "$ANGEL_CODE")
+ANGEL_PIN          = os.getenv("ANGEL_PIN", "$ANGEL_P")
+ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "$ANGEL_TOTP")
+EOF
+cp "$WORK_DIR/god-swing-trading/python_scanner/config.py" "$WORK_DIR/god-swing-trading/config.py"
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
-TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "")
+# Bot 2: Nifty & Sensex Index Options Sentinel
+cat << EOF > "$WORK_DIR/nifty-options-sentinel/config.py"
+import os
+ACTIVE_DATA_SOURCE = os.getenv("ACTIVE_DATA_SOURCE", "ANGELONE")
+ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "$ANGEL_KEY")
+ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "$ANGEL_CODE")
+ANGEL_PIN          = os.getenv("ANGEL_PIN", "$ANGEL_P")
+ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "$ANGEL_TOTP")
+
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "$NIFTY_TOKEN")
+TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "$CHAT_ID")
+
+INDEX_NAME            = os.getenv("INDEX_NAME", "NIFTY")
+ENTRY_TIME            = os.getenv("ENTRY_TIME", "09:35")
+EXIT_TIME             = os.getenv("EXIT_TIME", "15:10")
+STOP_LOSS_PERCENT     = float(os.getenv("STOP_LOSS_PERCENT", "30.0"))
+PROFIT_LOCK_DECAY_PCT = float(os.getenv("PROFIT_LOCK_DECAY_PCT", "50.0"))
+PROFIT_LOCK_SL_PCT    = float(os.getenv("PROFIT_LOCK_SL_PCT", "70.0"))
+TAKE_PROFIT_DECAY_PCT = float(os.getenv("TAKE_PROFIT_DECAY_PCT", "80.0"))
+OTM_STRIKE_OFFSET     = int(os.getenv("OTM_STRIKE_OFFSET", "100"))
+HEDGE_STRIKE_OFFSET   = int(os.getenv("HEDGE_STRIKE_OFFSET", "250"))
+LOT_SIZE              = int(os.getenv("LOT_SIZE", "25"))
 EOF
 
-# Copy config.py to each bot directory
-cp "$WORK_DIR/config.py" "$WORK_DIR/god-swing-trading/config.py"
-cp "$WORK_DIR/config.py" "$WORK_DIR/god-swing-trading/python_scanner/config.py"
-cp "$WORK_DIR/config.py" "$WORK_DIR/nifty-options-sentinel/config.py"
-cp "$WORK_DIR/config.py" "$WORK_DIR/GOD_BTST/config.py"
+# Bot 3: GOD BTST Engine
+cat << EOF > "$WORK_DIR/GOD_BTST/config.py"
+import os
+BTST_BOT_TOKEN     = os.getenv("BTST_BOT_TOKEN", "$BTST_TOKEN")
+BTST_ID            = os.getenv("BTST_ID", "$CHAT_ID")
+TELEGRAM_BOT_TOKEN = BTST_BOT_TOKEN
+TELEGRAM_CHAT_ID   = BTST_ID
+
+ANGEL_API_KEY      = os.getenv("ANGEL_API_KEY", "$ANGEL_KEY")
+ANGEL_CLIENT_CODE  = os.getenv("ANGEL_CLIENT_CODE", "$ANGEL_CODE")
+ANGEL_PIN          = os.getenv("ANGEL_PIN", "$ANGEL_P")
+ANGEL_TOTP_KEY     = os.getenv("ANGEL_TOTP_KEY", "$ANGEL_TOTP")
+EOF
 
 # 7. Create Systemd Service for Bot 1 (Hybrid Stock Options Engine)
 echo "⚙️ Creating Linux background services (systemd)..."
