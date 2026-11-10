@@ -777,6 +777,16 @@ def run_hybrid_cycle(force=False):
 
     # If within morning entry window (09:30 - 11:30 IST) or forced
     if force or ("09:30" <= t_str <= "11:30"):
+        # Market Holiday Check
+        try:
+            from nse_holiday_guard import is_market_open_today
+            is_open, reason = is_market_open_today()
+            if not is_open and not force:
+                print(f"[{now.strftime('%H:%M:%S')}] 🏖️ NSE Market Holiday ({reason}). Engine in standby.")
+                return
+        except Exception:
+            pass
+
         regime, candidate = scan_morning_regimes()
         print(f"[{now.strftime('%H:%M:%S')}] 🎯 Detected Regime: {regime}")
 

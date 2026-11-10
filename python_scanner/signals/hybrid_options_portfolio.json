@@ -1,24 +1,7 @@
 {
   "initial_capital": 100000.0,
-  "cash_balance": 102970.0,
+  "cash_balance": 100000.0,
   "realized_pnl": 0.0,
-  "active_trade": {
-    "model": "MODEL_2_CREDIT_SPREAD",
-    "stock": "TATASTEEL",
-    "spread_type": "BEAR_CALL_SPREAD",
-    "sell_leg": "TATASTEEL23NOV26185CE",
-    "buy_leg": "TATASTEEL23NOV26187.5CE",
-    "sell_token": "129562",
-    "buy_token": "147143",
-    "entry_time": "2026-11-10 11:16:22",
-    "spot_entry": 184.85,
-    "sell_entry": 4.79,
-    "buy_entry": 3.71,
-    "net_credit": 1.08,
-    "total_credit": 2970.0,
-    "sl_spread": 2.7,
-    "lotsize": 2750,
-    "news_signal": "CLEAR"
-  },
+  "active_trade": null,
   "closed_trades": []
 }
