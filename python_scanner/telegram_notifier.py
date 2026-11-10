@@ -21,16 +21,24 @@ import requests
 import json
 from datetime import datetime
 
-BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
+BOT_TOKEN = os.getenv("SWING_BOT_TOKEN") or os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID   = os.getenv("GOD_SWING_ID") or os.getenv("TELEGRAM_CHAT_ID")
 
 if not BOT_TOKEN or not CHAT_ID:
     try:
-        ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-        sys.path.insert(0, ROOT_DIR)
-        import config
-        BOT_TOKEN = getattr(config, "TELEGRAM_BOT_TOKEN", BOT_TOKEN)
-        CHAT_ID   = getattr(config, "TELEGRAM_CHAT_ID", CHAT_ID)
+        # Check current directory and parent directory for config.py
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+        root_dir = os.path.abspath(os.path.join(parent_dir, ".."))
+        for d in [current_dir, parent_dir, root_dir]:
+            if os.path.exists(os.path.join(d, "config.py")):
+                if d not in sys.path:
+                    sys.path.insert(0, d)
+                import config as cfg
+                BOT_TOKEN = getattr(cfg, "SWING_BOT_TOKEN", None) or getattr(cfg, "TELEGRAM_BOT_TOKEN", BOT_TOKEN)
+                CHAT_ID   = getattr(cfg, "GOD_SWING_ID", None) or getattr(cfg, "TELEGRAM_CHAT_ID", CHAT_ID)
+                if BOT_TOKEN and CHAT_ID:
+                    break
     except Exception:
         pass
 
