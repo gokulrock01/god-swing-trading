@@ -405,6 +405,18 @@ def monitor_hybrid_trade():
     now = datetime.now()
     t_str = now.strftime("%H:%M")
 
+    # Safety check: if active trade is from a previous day, auto-archive to unblock today's scan
+    entry_date = tr.get("entry_time", "")[:10]
+    today_date = now.strftime("%Y-%m-%d")
+    if entry_date and entry_date != today_date:
+        print(f"  ⚠️ Stale intraday trade from {entry_date}. Auto-closing for new session {today_date}...")
+        tr["exit_time"] = f"{entry_date} 15:15:00"
+        tr["exit_reason"] = "PREVIOUS_DAY_EOD_CLOSED"
+        portfolio.setdefault("closed_trades", []).append(tr)
+        portfolio["active_trade"] = None
+        save_portfolio(portfolio)
+        return
+
     # 1. MONITOR MODEL 1 (ATM BUYING)
     if tr["model"] == "MODEL_1_MOMENTUM_SNIPER":
         opt_cur = get_option_ltp(tr["contract"], tr["token"])
@@ -745,13 +757,23 @@ def run_hybrid_cycle(force=False):
     portfolio = load_portfolio()
     now = datetime.now()
     t_str = now.strftime("%H:%M")
-    
+
     if portfolio.get("active_trade") is not None:
         tr = portfolio["active_trade"]
-        name = tr.get("contract") or tr.get("stock")
-        print(f"[{now.strftime('%H:%M:%S')}] 📌 Active trade open: {name} | Monitoring ticks...")
-        monitor_hybrid_trade()
-        return
+        entry_date = tr.get("entry_time", "")[:10]
+        today_date = now.strftime("%Y-%m-%d")
+        if entry_date and entry_date != today_date:
+            print(f"  ⚠️ Stale intraday trade from {entry_date}. Auto-closing for new session {today_date}...")
+            tr["exit_time"] = f"{entry_date} 15:15:00"
+            tr["exit_reason"] = "PREVIOUS_DAY_EOD_CLOSED"
+            portfolio.setdefault("closed_trades", []).append(tr)
+            portfolio["active_trade"] = None
+            save_portfolio(portfolio)
+        else:
+            name = tr.get("contract") or tr.get("stock")
+            print(f"[{now.strftime('%H:%M:%S')}] 📌 Active trade open: {name} | Monitoring ticks...")
+            monitor_hybrid_trade()
+            return
 
     # If within morning entry window (09:30 - 11:30 IST) or forced
     if force or ("09:30" <= t_str <= "11:30"):
