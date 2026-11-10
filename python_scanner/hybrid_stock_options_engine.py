@@ -320,16 +320,20 @@ def execute_model_1_entry(portfolio, candidate):
     })
 
     earn_badge = " 📅 EARNINGS DAY" if is_earn else ""
+    direction = "BULLISH (Call Buying)" if opt_type == "CE" else "BEARISH (Put Buying)"
     tg = (
-        f"⚡ <b>ANGEL ONE LIVE: HYBRID OPTION SNIPER ACTIVATED{earn_badge}</b>\n\n"
+        f"⚡ <b>ANGEL ONE LIVE: STOCK OPTION SNIPER ACTIVATED{earn_badge}</b>\n\n"
+        f"• <b>Strategy:</b> 🎯 <b>DIRECT {opt_type} BUYING ({direction})</b>\n"
         f"• <b>Stock:</b> #{name} (Breakout at ₹{spot:,.2f})\n"
         f"• <b>Contract:</b> <code>{sym}</code> (ATM {strike} {opt_type})\n"
-        f"• <b>Entry Premium:</b> ₹{opt_ltp:,.2f}\n"
-        f"• <b>Lot Size:</b> {lotsize} shares (Capital: ₹{cost:,.2f})\n"
+        f"• <b>Order Action:</b> 🟢 <b>BUY 1 Lot</b> ({lotsize} shares)\n"
+        f"• <b>Entry Premium:</b> ₹{opt_ltp:,.2f} (Total Cost: ₹{cost:,.2f})\n"
         f"• <b>Stop Loss:</b> ₹{sl_opt:,.2f} ({'-30% Earnings Mode' if is_earn else '-25%'})\n"
-        f"• <b>Target 1:</b> ₹{tp1_opt:,.2f} ({'+30%' if is_earn else '+40%'} — 50% Booking & SL to Breakeven)\n"
+        f"• <b>Target 1:</b> ₹{tp1_opt:,.2f} ({'+30%' if is_earn else '+40%'} — Book 50% & SL to Breakeven)\n"
         f"• <b>Target 2:</b> ₹{tp2_opt:,.2f} ({'+60%' if is_earn else '+80%'} Runner)\n"
         f"• <b>News Guard:</b> {ng_signal}\n\n"
+        f"💡 <b>Angel One Execution:</b>\n"
+        f"Search <code>{sym}</code> → Tap <b>BUY</b> → 1 Lot → Place Limit/Market Order.\n\n"
         f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
     )
     send_telegram_message(tg)
@@ -393,15 +397,23 @@ def execute_model_2_entry(portfolio, candidate):
         "Notes": f"Net Credit: ₹{net_credit:.2f} (Total ₹{total_credit:,.2f}) | SL Spread: ₹{trade_record['sl_spread']:.2f} | News: {candidate.get('news_signal', 'CLEAR')}"
     })
 
+    formatted_spread_name = spread_type.replace('_', ' ')
+    bias = "Mildly Bearish / Sideways" if "BEAR" in spread_type else "Mildly Bullish / Sideways"
     tg = (
-        f"🛡️ <b>ANGEL ONE LIVE: HEDGED CREDIT SPREAD ACTIVATED</b>\n\n"
-        f"• <b>Stock:</b> #{name} ({spread_type.replace('_', ' ')})\n"
-        f"• <b>Sell Leg:</b> <code>{sell_leg['symbol']}</code> @ ₹{sell_p:,.2f}\n"
-        f"• <b>Buy Hedge:</b> <code>{buy_leg['symbol']}</code> @ ₹{buy_p:,.2f}\n"
-        f"• <b>Net Credit Collected:</b> <b>₹{net_credit:,.2f}</b> (Total ₹{total_credit:,.2f})\n"
-        f"• <b>Edge:</b> Theta Decay pays you automatically by 03:15 PM EOD.\n"
+        f"🛡️ <b>ANGEL ONE LIVE: {formatted_spread_name} ACTIVATED</b>\n\n"
+        f"• <b>Strategy:</b> 🛡️ <b>{formatted_spread_name}</b> ({bias})\n"
+        f"• <b>Stock:</b> #{name} (Spot: ₹{spot:,.2f})\n"
+        f"• <b>Net Credit Collected:</b> <b>₹{net_credit:,.2f} / share</b> (Total: <b>₹{total_credit:,.2f}</b>)\n"
+        f"• <b>Est. Hedged Margin:</b> ~₹32,000 – ₹42,000\n"
         f"• <b>Stop Loss Spread:</b> ₹{trade_record['sl_spread']:,.2f}\n"
+        f"• <b>Edge:</b> Full theta decay harvested automatically by 03:15 PM EOD.\n"
         f"• <b>News Guard:</b> {candidate.get('news_signal', 'CLEAR')}\n\n"
+        f"📋 <b>ANGEL ONE BASKET EXECUTION GUIDE:</b>\n"
+        f"1️⃣ <b>Add Leg 1 (BUY HEDGE FIRST):</b>\n"
+        f"   <code>{buy_leg['symbol']}</code> → <b>BUY</b> @ ₹{buy_p:,.2f} (1 Lot)\n"
+        f"2️⃣ <b>Add Leg 2 (SELL MAIN STRIKE SECOND):</b>\n"
+        f"   <code>{sell_leg['symbol']}</code> → <b>SELL</b> @ ₹{sell_p:,.2f} (1 Lot)\n"
+        f"👉 <i>Executing BUY first unlocks the ~70% margin reduction!</i>\n\n"
         f'👉 <a href="https://gokulrock01.github.io/god-swing-trading/">View Live Web Dashboard</a>'
     )
     send_telegram_message(tg)
