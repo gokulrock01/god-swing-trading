@@ -1,7 +1,73 @@
 {
   "initial_capital_usd": 100000.0,
-  "cash_balance_usd": 100000.0,
+  "cash_balance_usd": 58.61999999999898,
   "realized_pnl_usd": 0.0,
-  "open_positions": {},
+  "open_positions": {
+    "CNP": {
+      "symbol": "CNP",
+      "verdict": "BUY NOW",
+      "entry": 40.81,
+      "sl": 38.14,
+      "tp1": 46.15,
+      "tp2": 48.82,
+      "shares": 561,
+      "cost": 22894.41,
+      "date": "2026-11-10",
+      "score": 9,
+      "tp1_booked": false
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "verdict": "BUY NOW",
+      "entry": 342.08,
+      "sl": 321.74,
+      "tp1": 382.76,
+      "tp2": 403.1,
+      "shares": 73,
+      "cost": 24971.84,
+      "date": "2026-11-10",
+      "score": 8,
+      "tp1_booked": false
+    },
+    "MET": {
+      "symbol": "MET",
+      "verdict": "BUY NOW",
+      "entry": 101.67,
+      "sl": 95.57,
+      "tp1": 113.87,
+      "tp2": 119.97,
+      "shares": 245,
+      "cost": 24909.15,
+      "date": "2026-11-10",
+      "score": 8,
+      "tp1_booked": false
+    },
+    "NDSN": {
+      "symbol": "NDSN",
+      "verdict": "BUY NOW",
+      "entry": 323.84,
+      "sl": 303.5,
+      "tp1": 364.52,
+      "tp2": 384.86,
+      "shares": 73,
+      "cost": 23640.32,
+      "date": "2026-11-10",
+      "score": 8,
+      "tp1_booked": false
+    },
+    "PTC": {
+      "symbol": "PTC",
+      "verdict": "BUY NOW",
+      "entry": 195.87,
+      "sl": 192.08,
+      "tp1": 203.45,
+      "tp2": 207.24,
+      "shares": 18,
+      "cost": 3525.66,
+      "date": "2026-11-10",
+      "score": 8,
+      "tp1_booked": false
+    }
+  },
   "closed_positions": []
 }
