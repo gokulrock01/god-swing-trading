@@ -5,3 +5,4 @@ Date,Symbol,Action,Entry,Exit,Shares,Realized_PnL,Notes
 2026-11-08,BHEL,BUY_BUY NOW,417.2,,321,0.0,"Score 9/10, SL: ₹370.48"
 2026-11-08,JINDALSAW,BUY_BUY NOW,254.78,,451,0.0,"Score 9/10, SL: ₹221.56"
 2026-11-08,OFSS,BUY_BUY NOW,10136.5,,20,0.0,"Score 9/10, SL: ₹9392.15"
+2026-11-18,ABDL,PARTIAL_TP1,845.41,110,14999.6,"50% booked at TP1, trailing remaining to TP2"

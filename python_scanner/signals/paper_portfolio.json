@@ -1,7 +1,7 @@
 {
   "initial_capital": 1000000,
-  "cash_balance": 60089.77000000002,
-  "realized_pnl": 0.0,
+  "cash_balance": 153084.87,
+  "realized_pnl": 14999.600000000002,
   "open_positions": {
     "BBOX": {
       "symbol": "BBOX",
@@ -33,14 +33,14 @@
       "symbol": "ABDL",
       "verdict": "BUY NOW",
       "entry": 709.05,
-      "sl": 640.87,
+      "sl": 709.05,
       "tp1": 845.41,
       "tp2": 913.59,
-      "shares": 220,
+      "shares": 110,
       "cost": 155991.0,
       "date": "2026-11-08",
       "score": 9,
-      "tp1_booked": false
+      "tp1_booked": true
     },
     "BHEL": {
       "symbol": "BHEL",
