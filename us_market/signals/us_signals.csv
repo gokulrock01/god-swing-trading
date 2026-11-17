@@ -1,272 +1,204 @@
 symbol,score,grade,verdict,verdict_why,close,sl,tp1,tp2,rr,atr,rsi,shares,pos_val,risk_amt,risk_pct,confirm_at,f618,f786,wTC,wBC
-KDP,9,A+,NEAR ENTRY,Price is 0.9% from Golden Pocket ($35.73). Set limit buy at $35.73.,35.42,33.43,39.4,41.39,2.0,1.42,44.3,753,26671.26,1500.0,1.5,35.73,35.73,35.03,36.46,36.13
-PTC,9,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,196.25,192.15,204.45,208.55,2.0,1.21,71.2,365,71631.25,1500.0,1.5,,194.3,193.62,194.97,194.77
-RTX,9,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,198.36,184.84,225.4,238.92,2.0,5.75,53.5,110,21819.6,1500.0,1.5,,194.55,191.54,191.91,196.67
-WTW,9,A+,NEAR ENTRY,Price is 1.4% from Golden Pocket ($324.17). Set limit buy at $324.17.,328.78,306.81,372.72,394.69,2.0,9.08,52.9,68,22357.04,1500.0,1.5,324.17,324.17,318.53,330.19,332.85
-APA,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,47.66,41.83,59.32,65.15,2.0,2.12,54.4,257,12248.62,1500.0,1.5,,46.74,45.04,45.57,47.45
-BALL,8,A+,SKIP,Insufficient confluence.,64.91,60.82,73.09,77.18,2.0,2.14,47.1,366,23757.06,1500.0,1.5,,64.83,63.54,66.04,66.28
-BIIB,8,A+,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.2% above Fib pocket. Wait for pullback to $242.48.",250.48,227.0,297.44,320.92,2.0,8.07,52.7,63,15780.24,1500.0,1.5,242.48,242.48,237.45,248.18,247.85
-TECH,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,72.84,72.39,73.74,74.19,2.0,0.11,67.0,3333,242775.71,1500.0,1.5,,72.61,72.54,72.76,72.73
-BMY,8,A+,NEAR ENTRY,Price is 1.9% from Golden Pocket ($61.15). Set limit buy at $61.15.,62.32,57.56,71.84,76.6,2.0,1.76,50.8,315,19630.8,1500.0,1.5,61.15,61.15,59.96,62.57,63.43
-CDNS,8,A+,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $321.85.",333.32,298.17,403.62,438.77,2.0,14.04,54.4,42,13999.44,1500.0,1.5,321.85,321.85,314.52,319.94,319.96
-CNC,8,A+,NEAR ENTRY,Price is 0.5% from Golden Pocket ($69.9). Set limit buy at $69.9.,70.27,63.21,84.39,91.45,2.0,3.28,51.9,212,14897.24,1500.0,1.5,69.9,69.9,67.68,70.31,71.47
-CNP,8,A+,SKIP,Insufficient confluence.,40.95,38.57,45.71,48.09,2.0,0.91,48.7,630,25798.5,1500.0,1.5,,40.45,39.82,40.74,40.89
-CTSH,8,A+,SKIP,Insufficient confluence.,63.75,60.32,70.61,74.04,2.0,2.45,43.3,437,27858.75,1500.0,1.5,,66.28,64.2,64.87,65.17
-COP,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,140.06,129.0,162.18,173.24,2.0,4.23,49.1,135,18908.1,1500.0,1.5,,139.97,136.08,138.65,143.4
-EL,8,A+,NEAR ENTRY,Price is 2.9% from Golden Pocket ($107.31). Set limit buy at $107.31.,110.51,100.19,131.15,141.47,2.0,4.39,54.2,145,16023.95,1500.0,1.5,107.31,107.31,105.14,109.76,109.17
-XOM,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,169.78,157.83,193.68,205.63,2.0,4.57,45.6,125,21222.5,1500.0,1.5,,170.95,166.19,168.6,174.05
-FE,8,A+,SKIP,Insufficient confluence.,46.5,44.36,50.78,52.92,2.0,0.72,57.5,700,32550.0,1500.0,1.5,,45.68,45.26,46.45,46.49
-FOXA,8,A+,SKIP,Insufficient confluence.,65.71,60.77,75.59,80.53,2.0,2.65,46.5,303,19910.13,1500.0,1.5,,65.3,63.89,66.52,66.28
-FOX,8,A+,SKIP,Insufficient confluence.,58.71,54.17,67.79,72.33,2.0,2.42,47.1,330,19374.3,1500.0,1.5,,58.09,56.9,59.31,58.92
-GD,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,363.07,334.73,419.75,448.09,2.0,9.04,53.6,52,18879.64,1500.0,1.5,,357.34,349.38,357.08,363.12
-MET,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,101.87,95.79,114.03,120.11,2.0,2.6,55.5,246,25060.02,1500.0,1.5,,100.77,99.15,99.6,102.25
-PFG,8,A+,SKIP,Insufficient confluence.,112.97,104.67,129.57,137.87,2.0,3.2,49.6,180,20334.6,1500.0,1.5,,111.18,109.02,112.26,114.97
-RMD,8,A+,NEAR ENTRY,Price is 2.1% from Golden Pocket ($233.92). Set limit buy at $233.92.,238.89,216.93,282.81,304.77,2.0,8.09,52.4,68,16244.52,1500.0,1.5,233.92,233.92,228.23,234.26,233.49
-ROST,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,237.24,221.68,268.36,283.92,2.0,7.24,52.9,96,22775.04,1500.0,1.5,,234.47,230.44,233.16,237.3
-SJM,8,A+,NEAR ENTRY,Price is 2.0% from Golden Pocket ($129.09). Set limit buy at $129.09.,131.71,122.93,149.27,158.05,2.0,3.51,54.4,170,22390.7,1500.0,1.5,129.09,129.09,127.15,130.84,131.42
-TEL,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,217.82,200.76,251.94,269.0,2.0,7.75,53.1,87,18950.34,1500.0,1.5,,214.32,210.06,209.33,213.97
-TMO,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,699.44,650.46,797.4,846.38,2.0,21.68,49.8,30,20983.2,1500.0,1.5,,686.61,675.48,692.13,686.88
-UNH,8,A+,SKIP,Insufficient confluence.,405.13,382.69,450.01,472.45,2.0,10.61,53.6,66,26738.58,1500.0,1.5,,402.73,396.25,396.77,402.01
-VMRK,8,A+,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",63.93,59.84,72.11,76.2,2.0,1.4,51.1,366,23398.38,1500.0,1.5,,62.92,61.87,64.86,63.55
-AMD,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 18.8% above Fib pocket. Wait for pullback to $475.41.",585.3,379.09,997.72,1203.93,2.0,46.02,65.1,4,2341.2,1000.0,1.0,475.41,475.41,443.17,452.15,458.35
-MMM,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $175.3.",186.24,159.42,239.88,266.7,2.0,5.07,58.7,37,6890.88,1000.0,1.0,175.3,175.3,169.43,185.38,185.85
-ACN,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.1% above Fib pocket. Wait for pullback to $242.22.",249.95,219.07,311.71,342.59,2.0,9.77,47.9,32,7998.4,1000.0,1.0,242.22,242.22,234.19,260.1,259.31
-AKAM,7,A,SKIP,Price $86.56 below key EMAs. Macro trend is not bullish.,86.56,74.76,110.16,121.96,2.0,5.23,47.3,84,7271.04,1000.0,1.0,,85.99,82.2,83.79,85.19
-ALLE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.5% above Fib pocket. Wait for pullback to $170.04.",190.07,152.04,266.13,304.16,2.0,4.62,65.0,26,4941.82,1000.0,1.0,170.04,170.04,163.14,186.81,189.66
-GOOGL,7,A,SKIP,Price $298.7 below key EMAs. Macro trend is not bullish.,298.7,271.73,352.64,379.61,2.0,10.38,51.7,37,11051.9,1000.0,1.0,,305.09,292.7,285.45,286.78
-LNT,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.8% above Fib pocket. Wait for pullback to $69.52.",73.05,65.36,88.43,96.12,2.0,1.42,61.8,130,9496.5,1000.0,1.0,69.52,69.52,68.0,72.86,73.25
-GOOG,7,A,SKIP,Price $295.35 below key EMAs. Macro trend is not bullish.,295.35,266.9,352.25,380.7,2.0,10.2,50.3,35,10337.25,1000.0,1.0,,300.5,287.96,283.69,283.2
-AEE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $108.14.",113.52,102.78,135.0,145.74,2.0,1.85,71.0,93,10557.36,1000.0,1.0,108.14,108.14,106.18,112.76,112.59
-AEP,7,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($125.99). Set limit buy at $125.99.,128.91,121.42,143.89,151.38,2.0,2.73,59.8,133,17145.03,1000.0,1.0,125.99,125.99,124.58,125.92,126.61
-ARES,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $123.01.",133.29,108.76,182.35,206.88,2.0,5.14,53.9,40,5331.6,1000.0,1.0,123.01,123.01,117.87,133.99,134.01
-AIZ,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.3% above Fib pocket. Wait for pullback to $297.81.",321.09,276.54,410.19,454.74,2.0,7.45,81.3,22,7063.98,1000.0,1.0,297.81,297.81,290.09,306.25,304.74
-T,7,A,SKIP,Price $22.18 below key EMAs. Macro trend is not bullish.,22.18,20.25,26.04,27.97,2.0,0.54,58.1,518,11489.24,1000.0,1.0,,21.79,21.23,21.64,21.65
-ADP,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.6% above Fib pocket. Wait for pullback to $293.87.",307.92,279.02,365.72,394.62,2.0,7.41,67.4,34,10469.28,1000.0,1.0,293.87,293.87,288.97,302.78,301.64
-BBY,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.2% above Fib pocket. Wait for pullback to $97.02.",103.41,88.91,132.41,146.91,2.0,4.09,59.6,68,7031.88,1000.0,1.0,97.02,97.02,94.36,99.26,98.53
-CDW,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.6% above Fib pocket. Wait for pullback to $156.12.",172.79,140.08,238.21,270.92,2.0,8.52,66.3,30,5183.7,1000.0,1.0,156.12,156.12,150.94,157.75,159.25
-CBOE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.0% above Fib pocket. Wait for pullback to $332.12.",368.89,297.25,512.17,583.81,2.0,12.59,79.1,13,4795.57,1000.0,1.0,332.12,332.12,319.55,350.71,345.6
-CMG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 12.2% above Fib pocket. Wait for pullback to $30.89.",35.17,26.68,52.15,60.64,2.0,1.27,62.0,117,4114.89,1000.0,1.0,30.89,30.89,29.32,34.18,33.69
-CVX,7,A,SKIP,Insufficient confluence.,216.35,203.39,242.27,255.23,2.0,5.24,44.7,77,16658.95,1000.0,1.0,,217.65,212.53,215.69,221.84
-CI,7,A,SKIP,Insufficient confluence.,296.27,287.15,314.51,323.63,2.0,8.83,46.4,109,32293.43,1000.0,1.0,,301.69,297.24,297.39,304.99
-CME,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.4% above Fib pocket. Wait for pullback to $301.66.",315.5,285.99,374.52,404.03,2.0,7.01,73.8,33,10411.5,1000.0,1.0,301.66,301.66,296.31,306.11,306.54
-KO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.0% above Fib pocket. Wait for pullback to $93.56.",97.44,89.69,112.94,120.69,2.0,1.77,73.7,129,12569.76,1000.0,1.0,93.56,93.56,92.25,95.51,95.19
-CMCSA,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.6% above Fib pocket. Wait for pullback to $22.66.",24.8,20.62,33.16,37.34,2.0,0.75,67.7,239,5927.2,1000.0,1.0,22.66,22.66,21.93,24.33,24.2
-STZ,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $136.22.",144.6,125.98,181.84,200.46,2.0,4.16,65.5,53,7663.8,1000.0,1.0,136.22,136.22,132.63,142.22,142.73
-COST,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $1026.23.",1092.21,968.38,1339.87,1463.7,2.0,20.99,77.8,8,8737.68,1000.0,1.0,1026.23,1026.23,1005.4,1051.69,1047.95
-DHR,7,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($225.54). Set limit buy at $225.54.,232.16,214.34,267.8,285.62,2.0,6.41,50.6,56,13000.96,1000.0,1.0,225.54,225.54,222.02,230.4,230.71
-DRI,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $219.75.",227.9,207.96,267.78,287.72,2.0,6.0,62.6,50,11395.0,1000.0,1.0,219.75,219.75,215.89,226.26,226.07
-DXCM,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",81.39,74.94,94.29,100.74,2.0,3.16,48.4,155,12615.45,1000.0,1.0,,81.76,79.46,81.18,84.72
-DG,7,A,NEAR ENTRY,Price is 1.7% from Golden Pocket ($132.26). Set limit buy at $132.26.,134.61,122.17,159.49,171.93,2.0,4.91,50.3,80,10768.8,1000.0,1.0,132.26,132.26,128.9,134.93,137.28
-DOV,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.8% above Fib pocket. Wait for pullback to $201.56.",209.47,188.79,250.83,271.51,2.0,5.55,53.8,48,10054.56,1000.0,1.0,201.56,201.56,197.16,205.71,209.44
-DTE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.2% above Fib pocket. Wait for pullback to $131.99.",139.2,125.1,167.4,181.5,2.0,2.82,69.3,70,9744.0,1000.0,1.0,131.99,131.99,129.58,134.88,134.49
-ECHO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $92.21.",98.13,81.51,131.37,147.99,2.0,5.54,51.9,60,5887.8,1000.0,1.0,92.21,92.21,88.72,94.73,94.94
-ECL,7,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($297.18). Set limit buy at $297.18.,304.41,280.09,353.05,377.37,2.0,7.29,54.3,41,12480.81,1000.0,1.0,297.18,297.18,291.27,303.11,307.96
-ELV,7,A,SKIP,Insufficient confluence.,429.9,400.66,488.38,517.62,2.0,12.49,55.8,34,14616.6,1000.0,1.0,,423.63,416.27,426.32,427.72
-ETR,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $106.96.",111.95,102.24,131.37,141.08,2.0,1.98,69.0,102,11418.9,1000.0,1.0,106.96,106.96,105.32,110.4,110.09
-EQIX,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.9% above Fib pocket. Wait for pullback to $987.71.",1072.77,912.92,1392.47,1552.32,2.0,36.57,65.3,6,6436.62,1000.0,1.0,987.71,987.71,962.86,1013.93,1016.36
-EXPD,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",195.67,181.29,224.43,238.81,2.0,5.85,53.8,69,13501.23,1000.0,1.0,,193.28,189.29,188.45,196.13
-FICO,7,A,SKIP,Price $717.38 below key EMAs. Macro trend is not bullish.,717.38,635.07,882.0,964.31,2.0,36.66,45.5,12,8608.56,1000.0,1.0,,720.46,690.97,705.38,707.03
-GE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.3% above Fib pocket. Wait for pullback to $303.28.",330.86,272.52,447.54,505.88,2.0,11.7,57.8,17,5624.62,1000.0,1.0,303.28,303.28,292.33,322.48,320.96
-HAS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 11.2% above Fib pocket. Wait for pullback to $107.83.",121.48,95.74,172.96,198.7,2.0,3.43,64.3,38,4616.24,1000.0,1.0,107.83,107.83,103.26,119.46,120.56
-HSIC,7,A,NEAR ENTRY,Price is 2.1% from Golden Pocket ($84.33). Set limit buy at $84.33.,86.14,79.56,99.3,105.88,2.0,2.93,48.4,151,13007.14,1000.0,1.0,84.33,84.33,82.88,85.82,85.35
-HON,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.5% above Fib pocket. Wait for pullback to $215.66.",223.45,202.05,266.25,287.65,2.0,6.3,51.9,46,10278.7,1000.0,1.0,215.66,215.66,211.06,220.79,222.26
-HUBB,7,A,SKIP,Price $437.98 below key EMAs. Macro trend is not bullish.,437.98,404.21,505.52,539.29,2.0,14.92,47.9,29,12701.42,1000.0,1.0,,435.77,425.17,430.16,431.59
-IR,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.3% above Fib pocket. Wait for pullback to $78.21.",85.31,70.99,113.95,128.27,2.0,2.7,65.1,69,5886.39,1000.0,1.0,78.21,78.21,75.63,83.14,83.48
-ICE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.6% above Fib pocket. Wait for pullback to $164.4.",177.86,151.74,230.1,256.22,2.0,4.32,68.1,38,6758.68,1000.0,1.0,164.4,164.4,159.78,172.42,172.72
-ISRG,7,A,SKIP,Insufficient confluence.,439.89,391.26,537.15,585.78,2.0,15.46,43.7,20,8797.8,1000.0,1.0,,432.17,417.58,455.18,459.95
-JPM,7,A,SKIP,Insufficient confluence.,342.82,326.62,375.22,391.42,2.0,7.56,54.9,61,20912.02,1000.0,1.0,,341.63,336.69,338.46,346.4
-KMB,7,A,SKIP,Insufficient confluence.,107.19,102.09,117.39,122.49,2.0,3.59,45.7,196,21009.24,1000.0,1.0,,107.34,105.82,108.5,108.63
-KHC,7,A,NEAR ENTRY,Price is 0.6% from Golden Pocket ($24.32). Set limit buy at $24.32.,24.48,22.75,27.94,29.67,2.0,0.73,51.9,578,14149.44,1000.0,1.0,24.32,24.32,23.79,24.83,25.26
-LH,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.3% above Fib pocket. Wait for pullback to $337.77.",372.32,309.76,497.44,560.0,2.0,9.87,73.7,15,5584.8,1000.0,1.0,337.77,337.77,327.62,365.05,362.0
-L,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",111.83,106.37,122.75,128.21,2.0,2.04,59.6,183,20464.89,1000.0,1.0,,110.11,108.92,110.12,110.95
-MRSH,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.4% above Fib pocket. Wait for pullback to $196.7.",205.69,183.59,249.89,271.99,2.0,4.81,60.7,45,9256.05,1000.0,1.0,196.7,196.7,191.99,205.49,206.82
-MCK,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.5% above Fib pocket. Wait for pullback to $1018.02.",1077.05,941.09,1348.97,1484.93,2.0,25.91,73.5,7,7539.35,1000.0,1.0,1018.02,1018.02,989.88,1058.08,1052.56
-MSI,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.2% above Fib pocket. Wait for pullback to $492.34.",530.4,451.34,688.52,767.58,2.0,12.83,79.1,12,6364.8,1000.0,1.0,492.34,492.34,477.13,514.66,514.96
-NDSN,7,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($319.16). Set limit buy at $319.16.,326.6,304.52,370.76,392.84,2.0,8.71,53.6,45,14697.0,1000.0,1.0,319.16,319.16,314.64,314.02,322.34
-NCLH,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.9% above Fib pocket. Wait for pullback to $16.28.",18.06,14.13,25.92,29.85,2.0,0.82,56.4,254,4587.24,1000.0,1.0,16.28,16.28,15.51,17.96,18.05
-NSC,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",333.24,316.24,367.24,384.24,2.0,6.9,53.6,58,19327.92,1000.0,1.0,,329.83,325.37,324.24,332.84
-OXY,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",58.4,52.91,69.38,74.87,2.0,1.9,46.2,182,10628.8,1000.0,1.0,,58.1,56.24,57.35,59.29
-OKTA,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",182.54,157.32,232.98,258.2,2.0,13.72,41.7,39,7119.06,1000.0,1.0,,188.83,177.99,174.16,185.09
-OKE,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",88.86,83.01,100.56,106.41,2.0,2.48,46.6,170,15106.2,1000.0,1.0,,88.96,86.89,86.82,90.08
-PYPL,7,A,NEAR ENTRY,Price is 2.5% from Golden Pocket ($56.83). Set limit buy at $56.83.,58.3,53.53,67.84,72.61,2.0,1.62,49.7,209,12184.7,1000.0,1.0,56.83,56.83,55.74,59.18,59.07
-PEP,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.0% above Fib pocket. Wait for pullback to $135.21.",142.26,127.14,172.5,187.62,2.0,3.36,61.4,66,9389.16,1000.0,1.0,135.21,135.21,132.4,141.33,141.32
-PNW,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $103.37.",107.03,98.69,123.71,132.05,2.0,2.41,61.4,119,12736.57,1000.0,1.0,103.37,103.37,101.84,104.48,105.0
-PSX,7,A,SKIP,Insufficient confluence.,262.91,235.64,317.45,344.72,2.0,10.59,49.1,36,9464.76,1000.0,1.0,,263.26,253.44,251.56,263.25
-PPL,7,A,SKIP,Insufficient confluence.,35.21,33.62,38.39,39.98,2.0,0.59,42.5,628,22111.88,1000.0,1.0,,34.9,34.47,35.77,35.71
-PG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.9% above Fib pocket. Wait for pullback to $161.4.",168.03,154.12,195.85,209.76,2.0,3.3,67.1,71,11930.13,1000.0,1.0,161.4,161.4,158.93,165.6,166.0
-RL,7,A,SKIP,Insufficient confluence.,390.8,364.16,444.08,470.72,2.0,13.07,49.9,37,14459.6,1000.0,1.0,,387.08,379.87,382.02,392.93
-REG,7,A,SKIP,Insufficient confluence.,75.74,71.41,84.4,88.73,2.0,1.43,54.4,230,17420.2,1000.0,1.0,,74.36,73.38,75.32,76.27
-RSG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $238.41.",253.0,225.88,307.24,334.36,2.0,5.31,75.5,36,9108.0,1000.0,1.0,238.41,238.41,234.06,247.16,247.76
-RF,7,A,SKIP,Insufficient confluence.,28.51,26.83,31.87,33.55,2.0,0.64,49.9,595,16963.45,1000.0,1.0,,28.15,27.71,28.5,28.9
-RVTY,7,A,SKIP,Insufficient confluence.,157.02,145.52,180.02,191.52,2.0,7.73,48.6,86,13503.72,1000.0,1.0,,157.92,154.17,156.93,160.56
-SWKS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.4% above Fib pocket. Wait for pullback to $80.66.",90.03,70.54,129.01,148.5,2.0,4.69,72.4,51,4591.53,1000.0,1.0,80.66,80.66,77.24,82.03,81.69
-LUV,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $41.75.",45.23,37.63,60.43,68.03,2.0,1.74,56.0,131,5925.13,1000.0,1.0,41.75,41.75,40.32,44.68,45.14
-SO,7,A,SKIP,Insufficient confluence.,92.47,88.23,100.95,105.19,2.0,1.93,47.6,235,21730.45,1000.0,1.0,,91.69,90.6,92.58,93.06
-SNPS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.7% above Fib pocket. Wait for pullback to $445.79.",462.69,408.77,570.53,624.45,2.0,17.66,51.3,18,8328.42,1000.0,1.0,445.79,445.79,433.39,452.39,456.26
-TGT,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $152.76.",160.9,141.47,199.76,219.19,2.0,5.66,57.2,51,8205.9,1000.0,1.0,152.76,152.76,149.04,157.59,158.16
-TKO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $182.3.",194.08,166.82,248.6,275.86,2.0,6.65,60.6,36,6986.88,1000.0,1.0,182.3,182.3,176.95,190.77,190.31
-TT,7,A,SKIP,Price $424.05 below key EMAs. Macro trend is not bullish.,424.05,384.31,503.53,543.27,2.0,14.45,49.1,25,10601.25,1000.0,1.0,,422.24,408.73,403.75,407.73
-TWLO,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",212.21,172.77,291.09,330.53,2.0,14.46,39.3,25,5305.25,1000.0,1.0,,217.6,201.06,203.34,205.99
-TYL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.7% above Fib pocket. Wait for pullback to $382.45.",423.59,341.32,588.13,670.4,2.0,14.4,68.8,12,5083.08,1000.0,1.0,382.45,382.45,367.53,417.76,412.17
-USB,7,A,SKIP,Insufficient confluence.,60.47,57.15,67.11,70.43,2.0,1.34,54.9,301,18201.47,1000.0,1.0,,59.63,58.83,59.89,60.78
-UAL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.6% above Fib pocket. Wait for pullback to $105.06.",111.25,91.75,150.25,169.75,2.0,5.59,49.4,51,5673.75,1000.0,1.0,105.06,105.06,100.43,112.5,112.03
-VTR,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.2% above Fib pocket. Wait for pullback to $82.32.",89.65,75.67,117.61,131.59,2.0,2.15,63.3,71,6365.15,1000.0,1.0,82.32,82.32,79.87,88.39,87.66
-VRSK,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.4% above Fib pocket. Wait for pullback to $197.18.",206.32,181.38,256.2,281.14,2.0,7.8,62.5,40,8252.8,1000.0,1.0,197.18,197.18,191.94,204.76,205.11
-VZ,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.9% above Fib pocket. Wait for pullback to $44.26.",46.55,41.93,55.79,60.41,2.0,1.08,66.6,216,10054.8,1000.0,1.0,44.26,44.26,43.47,45.63,45.5
-GWW,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $1387.26.",1502.61,1287.84,1932.15,2146.92,2.0,36.25,77.8,4,6010.44,1000.0,1.0,1387.26,1387.26,1351.5,1439.19,1441.16
-DIS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.1% above Fib pocket. Wait for pullback to $113.35.",118.23,107.46,139.77,150.54,2.0,2.58,64.8,92,10877.16,1000.0,1.0,113.35,113.35,111.33,116.59,116.28
-WEC,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $111.52.",117.48,105.1,142.24,154.62,2.0,2.16,66.3,80,9398.4,1000.0,1.0,111.52,111.52,109.17,116.41,117.49
-WM,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.8% above Fib pocket. Wait for pullback to $232.32.",244.11,220.26,291.81,315.66,2.0,5.49,68.8,41,10008.51,1000.0,1.0,232.32,232.32,228.22,237.38,239.62
-WSM,7,A,SKIP,Insufficient confluence.,250.38,241.79,267.56,276.15,2.0,9.32,42.6,116,29044.08,1000.0,1.0,,257.15,252.44,256.9,262.59
-ABBV,6,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($287.53). Set limit buy at $287.53.,294.45,274.37,334.61,354.69,2.0,7.27,61.4,49,14428.05,1000.0,1.0,287.53,287.53,283.34,291.54,292.0
-A,6,A,SKIP,Insufficient confluence.,173.01,166.95,185.13,191.19,2.0,5.28,43.7,165,28546.65,1000.0,1.0,,174.71,172.46,174.99,175.47
-AES,6,A,SKIP,Insufficient confluence.,14.91,14.73,15.27,15.45,2.0,0.05,61.3,5555,82825.05,1000.0,1.0,,14.83,14.79,14.88,14.89
-AFL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.3% above Fib pocket. Wait for pullback to $122.27.",126.51,115.51,148.51,159.51,2.0,2.5,65.8,90,11385.9,1000.0,1.0,122.27,122.27,119.85,125.06,127.06
-APD,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $305.57.",316.2,291.12,366.36,391.44,2.0,6.1,63.4,39,12331.8,1000.0,1.0,305.57,305.57,300.55,307.42,312.58
-ALGN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $157.49.",166.97,142.01,216.89,241.85,2.0,6.78,58.6,40,6678.8,1000.0,1.0,157.49,157.49,152.17,163.5,158.51
-AMZN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $246.92.",267.44,224.25,353.82,397.01,2.0,10.23,61.7,23,6151.12,1000.0,1.0,246.92,246.92,239.2,258.78,257.76
-AMT,6,A,NEAR ENTRY,Price is 2.0% from Golden Pocket ($185.99). Set limit buy at $185.99.,189.79,173.4,222.57,238.96,2.0,4.76,56.4,61,11577.19,1000.0,1.0,185.99,185.99,181.5,189.45,190.77
-AIG,6,A,NEAR ENTRY,Price is 3.0% from Golden Pocket ($80.09). Set limit buy at $80.09.,82.57,76.71,94.29,100.15,2.0,2.04,59.4,170,14036.9,1000.0,1.0,80.09,80.09,79.05,78.62,80.36
-AON,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.8% above Fib pocket. Wait for pullback to $310.9.",333.42,282.11,436.04,487.35,2.0,8.68,62.3,19,6334.98,1000.0,1.0,310.9,310.9,300.15,335.28,336.23
-ACGL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.4% above Fib pocket. Wait for pullback to $104.45.",109.24,97.49,132.74,144.49,2.0,2.58,64.7,85,9285.4,1000.0,1.0,104.45,104.45,101.96,108.21,110.06
-ANET,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 14.3% above Fib pocket. Wait for pullback to $177.0.",206.63,151.74,316.41,371.3,2.0,13.22,69.1,18,3719.34,1000.0,1.0,177.0,177.0,168.79,171.68,173.44
-AJG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.8% above Fib pocket. Wait for pullback to $266.84.",277.28,245.44,340.96,372.8,2.0,8.58,53.9,31,8595.68,1000.0,1.0,266.84,266.84,259.32,282.15,283.23
-ATO,6,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($170.82). Set limit buy at $170.82.,175.92,162.67,202.42,215.67,2.0,3.11,66.9,75,13194.0,1000.0,1.0,170.82,170.82,167.92,174.27,176.38
-BAX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $24.25.",25.74,21.96,33.3,37.08,2.0,1.08,52.4,264,6795.36,1000.0,1.0,24.25,24.25,23.48,25.59,25.18
-BRK-B,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $554.33.",589.83,522.23,725.03,792.63,2.0,11.54,83.5,14,8257.62,1000.0,1.0,554.33,554.33,542.75,569.05,565.37
-BDX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.3% above Fib pocket. Wait for pullback to $199.94.",215.71,187.03,273.07,301.75,2.0,4.91,76.6,34,7334.14,1000.0,1.0,199.94,199.94,195.35,209.77,205.56
-XYZ,6,A,NEAR ENTRY,Price is 3.0% from Golden Pocket ($79.75). Set limit buy at $79.75.,82.26,71.91,102.96,113.31,2.0,3.76,50.5,96,7896.96,1000.0,1.0,79.75,79.75,77.13,84.28,81.89
-BR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.4% above Fib pocket. Wait for pullback to $181.06.",191.47,169.49,235.43,257.41,2.0,4.98,66.2,45,8616.15,1000.0,1.0,181.06,181.06,177.07,189.28,187.06
-BNY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.1% above Fib pocket. Wait for pullback to $146.54.",152.79,139.64,179.09,192.24,2.0,3.27,66.7,76,11612.04,1000.0,1.0,146.54,146.54,144.22,148.67,150.58
-BRO,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 2.1% above Fib pocket. Wait for pullback to $69.05.",70.55,63.48,84.69,91.76,2.0,2.45,48.7,141,9947.55,1000.0,1.0,69.05,69.05,67.14,72.25,72.5
-CVNA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.9% above Fib pocket. Wait for pullback to $64.53.",70.84,53.79,104.94,121.99,2.0,4.25,52.1,58,4108.72,1000.0,1.0,64.53,64.53,60.74,73.68,73.89
-CCL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $27.84.",29.34,25.04,37.94,42.24,2.0,1.18,50.6,232,6806.88,1000.0,1.0,27.84,27.84,26.87,29.78,30.19
-CAH,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.6% above Fib pocket. Wait for pullback to $259.84.",278.14,240.06,354.3,392.38,2.0,6.85,84.8,26,7231.64,1000.0,1.0,259.84,259.84,252.65,270.35,267.6
-COR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $336.83.",349.38,315.32,417.5,451.56,2.0,9.49,62.5,29,10132.02,1000.0,1.0,336.83,336.83,329.45,337.89,346.55
-SCHW,6,A,SKIP,Price $91.72 below key EMAs. Macro trend is not bullish.,91.72,86.34,102.48,107.86,2.0,2.06,49.1,185,16968.2,1000.0,1.0,,90.39,89.06,91.58,91.76
-CF,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.7% above Fib pocket. Wait for pullback to $116.6.",124.92,108.14,158.48,175.26,2.0,4.95,65.8,59,7370.28,1000.0,1.0,116.6,116.6,113.97,118.52,116.78
-CHD,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $107.01.",111.73,101.02,133.15,143.86,2.0,2.56,65.8,93,10390.89,1000.0,1.0,107.01,107.01,104.94,109.73,110.51
-CB,6,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($363.26). Set limit buy at $363.26.,371.76,346.84,421.6,446.52,2.0,6.88,64.4,40,14870.4,1000.0,1.0,363.26,363.26,357.55,367.77,373.28
-CTAS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.0% above Fib pocket. Wait for pullback to $218.34.",227.52,206.43,269.7,290.79,2.0,5.14,64.4,47,10693.44,1000.0,1.0,218.34,218.34,214.23,223.84,226.81
-CSCO,6,A,SKIP,Price $102.01 below key EMAs. Macro trend is not bullish.,102.01,91.37,123.29,133.93,2.0,3.95,49.5,93,9486.93,1000.0,1.0,,100.74,97.49,95.69,99.38
-CFG,6,A,SKIP,Insufficient confluence.,64.86,61.08,72.42,76.2,2.0,1.55,52.4,264,17123.04,1000.0,1.0,,64.05,63.09,63.95,65.37
-CLX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 13.7% above Fib pocket. Wait for pullback to $93.39.",108.2,81.02,162.56,189.74,2.0,4.41,92.5,36,3895.2,1000.0,1.0,93.39,93.39,88.92,98.19,94.64
-ED,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $114.35.",119.35,107.98,142.09,153.46,2.0,2.35,63.1,87,10383.45,1000.0,1.0,114.35,114.35,112.07,118.76,119.17
-CEG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 11.1% above Fib pocket. Wait for pullback to $250.93.",282.4,224.13,398.94,457.21,2.0,14.35,64.4,17,4800.8,1000.0,1.0,250.93,250.93,242.3,249.96,249.97
-CCI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.6% above Fib pocket. Wait for pullback to $82.86.",89.69,74.95,119.17,133.91,2.0,2.68,61.8,67,6009.23,1000.0,1.0,82.86,82.86,79.97,88.84,89.31
-DECK,6,A,SKIP,Price $84.53 below key EMAs. Macro trend is not bullish.,84.53,76.37,100.85,109.01,2.0,3.51,43.9,122,10312.66,1000.0,1.0,,83.31,81.03,86.76,86.86
-DE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.7% above Fib pocket. Wait for pullback to $653.38.",678.79,615.18,806.01,869.62,2.0,20.12,55.9,15,10181.85,1000.0,1.0,653.38,653.38,641.01,671.78,672.03
-DELL,6,A,SKIP,Insufficient confluence.,371.17,296.28,520.95,595.84,2.0,37.45,42.7,13,4825.21,1000.0,1.0,,388.49,356.17,342.21,369.57
-DLTR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.3% above Fib pocket. Wait for pullback to $132.42.",141.27,119.45,184.91,206.73,2.0,6.03,59.9,45,6357.15,1000.0,1.0,132.42,132.42,128.04,133.99,139.69
-DLR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $175.25.",183.47,165.29,219.83,238.01,2.0,6.45,60.4,55,10090.85,1000.0,1.0,175.25,175.25,172.29,175.77,178.9
-D,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.0% above Fib pocket. Wait for pullback to $65.47.",67.51,61.31,79.91,86.11,2.0,1.38,53.8,161,10869.11,1000.0,1.0,65.47,65.47,63.95,68.63,68.7
-EBAY,6,A,SKIP,Insufficient confluence.,120.14,113.86,132.7,138.98,2.0,3.8,46.3,159,19102.26,1000.0,1.0,,120.34,118.32,122.25,122.83
-DUK,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.3% above Fib pocket. Wait for pullback to $124.31.",128.59,117.84,150.09,160.84,2.0,2.23,61.5,93,11958.87,1000.0,1.0,124.31,124.31,121.95,128.4,129.63
-EW,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 11.2% above Fib pocket. Wait for pullback to $94.0.",105.8,84.5,148.4,169.7,2.0,3.17,85.1,46,4866.8,1000.0,1.0,94.0,94.0,90.52,100.1,96.03
-EG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $399.81.",422.33,375.23,516.53,563.63,2.0,10.38,65.9,21,8868.93,1000.0,1.0,399.81,399.81,391.28,413.8,419.18
-P,6,A,NEAR ENTRY,Price is 1.3% from Golden Pocket ($111.56). Set limit buy at $111.56.,110.1,86.68,156.94,180.36,2.0,9.71,45.9,42,4624.2,1000.0,1.0,111.56,111.56,102.75,101.3,110.39
-ESS,6,A,SKIP,Insufficient confluence.,271.8,256.04,303.32,319.08,2.0,5.9,50.4,63,17123.4,1000.0,1.0,,269.49,264.87,271.1,268.95
-EVRG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $84.54.",88.27,80.61,103.59,111.25,2.0,1.54,73.7,130,11475.1,1000.0,1.0,84.54,84.54,83.15,87.18,86.45
-EXR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.9% above Fib pocket. Wait for pullback to $147.22.",158.2,135.7,203.2,225.7,2.0,3.32,69.5,44,6960.8,1000.0,1.0,147.22,147.22,142.89,158.61,157.44
-FDS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.8% above Fib pocket. Wait for pullback to $315.7.",331.71,289.51,416.11,458.31,2.0,12.46,55.4,23,7629.33,1000.0,1.0,315.7,315.7,306.92,330.52,335.77
-FDX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.9% above Fib pocket. Wait for pullback to $306.74.",319.3,286.91,384.08,416.47,2.0,8.45,57.6,30,9579.0,1000.0,1.0,306.74,306.74,299.88,311.99,319.68
-FERG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.5% above Fib pocket. Wait for pullback to $238.29.",254.89,215.37,333.93,373.45,2.0,10.14,61.0,25,6372.25,1000.0,1.0,238.29,238.29,230.44,235.96,240.47
-FISV,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 12.9% above Fib pocket. Wait for pullback to $53.59.",61.5,45.86,92.78,108.42,2.0,2.28,68.9,63,3874.5,1000.0,1.0,53.59,53.59,50.69,60.93,57.04
-FITB,6,A,NEAR ENTRY,Price is 2.5% from Golden Pocket ($52.53). Set limit buy at $52.53.,53.9,49.5,62.7,67.1,2.0,1.27,52.5,227,12235.3,1000.0,1.0,52.53,52.53,51.48,53.56,54.6
-FTV,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.0% above Fib pocket. Wait for pullback to $61.72.",67.85,56.41,90.73,102.17,2.0,1.69,71.4,87,5902.95,1000.0,1.0,61.72,61.72,59.76,65.81,66.69
-BEN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.2% above Fib pocket. Wait for pullback to $32.93.",35.86,29.93,47.72,53.65,2.0,1.21,69.8,168,6024.48,1000.0,1.0,32.93,32.93,31.88,33.47,32.97
-GRMN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 2.9% above Fib pocket. Wait for pullback to $277.82.",286.18,260.55,337.44,363.07,2.0,9.84,50.5,39,11161.02,1000.0,1.0,277.82,277.82,272.39,284.89,283.54
-GEHC,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.3% above Fib pocket. Wait for pullback to $75.88.",81.84,67.39,110.74,125.19,2.0,2.54,61.0,69,5646.96,1000.0,1.0,75.88,75.88,72.71,82.41,82.47
-GEV,6,A,SKIP,Price $818.49 below key EMAs. Macro trend is not bullish.,818.49,715.56,1024.35,1127.28,2.0,62.88,45.0,9,7366.41,1000.0,1.0,,824.72,790.54,796.03,839.89
-GEN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.7% above Fib pocket. Wait for pullback to $26.5.",29.69,23.08,42.91,49.52,2.0,1.04,60.9,151,4483.19,1000.0,1.0,26.5,26.5,25.23,29.9,30.11
-GDDY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.2% above Fib pocket. Wait for pullback to $108.79.",112.33,97.57,141.85,156.61,2.0,4.5,49.3,67,7526.11,1000.0,1.0,108.79,108.79,104.84,115.3,117.15
-DOC,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $19.28.",20.12,18.1,24.16,26.18,2.0,0.49,58.2,495,9959.4,1000.0,1.0,19.28,19.28,18.87,20.11,19.8
-HLT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $352.84.",372.73,330.85,456.49,498.37,2.0,8.75,61.1,23,8572.79,1000.0,1.0,352.84,352.84,345.1,370.58,370.83
-HD,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $327.56.",348.26,301.05,442.68,489.89,2.0,9.89,62.0,21,7313.46,1000.0,1.0,327.56,327.56,318.08,344.5,346.57
-HST,6,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($24.77). Set limit buy at $24.77.,25.52,23.57,29.42,31.37,2.0,0.65,55.5,512,13066.24,1000.0,1.0,24.77,24.77,24.39,24.83,25.26
-HPQ,6,A,SKIP,Insufficient confluence.,28.88,26.29,34.06,36.65,2.0,1.35,41.1,386,11147.68,1000.0,1.0,,29.75,28.52,28.75,29.32
-IEX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.7% above Fib pocket. Wait for pullback to $229.11.",238.03,217.88,278.33,298.48,2.0,6.83,57.0,49,11663.47,1000.0,1.0,229.11,229.11,225.68,228.26,230.81
-IDXX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 13.1% above Fib pocket. Wait for pullback to $606.75.",698.02,526.31,1041.44,1213.15,2.0,28.59,70.5,5,3490.1,1000.0,1.0,606.75,606.75,577.66,673.02,666.97
-INCY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $115.96.",121.7,108.96,147.18,159.92,2.0,4.1,58.2,78,9492.6,1000.0,1.0,115.96,115.96,113.78,119.59,119.48
-PODD,6,A,SKIP,Price $149.29 below key EMAs. Macro trend is not bullish.,149.29,136.26,175.35,188.38,2.0,6.4,48.6,76,11346.04,1000.0,1.0,,150.54,145.67,149.63,155.88
-INTU,6,A,SKIP,Price $340.17 below key EMAs. Macro trend is not bullish.,340.17,311.59,397.33,425.91,2.0,12.68,50.4,34,11565.78,1000.0,1.0,,336.47,328.32,344.56,350.68
-IVZ,6,A,SKIP,Insufficient confluence.,28.47,26.31,32.79,34.95,2.0,1.15,50.1,462,13153.14,1000.0,1.0,,27.98,27.5,27.49,28.31
-IQV,6,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($264.65). Set limit buy at $264.65.,271.11,247.72,317.89,341.28,2.0,9.32,50.4,42,11386.62,1000.0,1.0,264.65,264.65,259.25,268.86,262.92
-J,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.8% above Fib pocket. Wait for pullback to $146.35.",158.69,134.08,207.91,232.52,2.0,5.2,64.9,40,6347.6,1000.0,1.0,146.35,146.35,142.1,150.36,153.28
-JKHY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.1% above Fib pocket. Wait for pullback to $163.62.",176.03,147.51,233.07,261.59,2.0,5.77,67.3,35,6161.05,1000.0,1.0,163.62,163.62,157.8,172.83,172.02
-JCI,6,A,SKIP,Insufficient confluence.,142.55,128.14,171.37,185.78,2.0,5.86,47.0,69,9835.95,1000.0,1.0,,142.14,137.27,137.08,141.18
-KEY,6,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($20.7). Set limit buy at $20.7.,21.33,19.59,24.81,26.55,2.0,0.47,55.0,574,12243.42,1000.0,1.0,20.7,20.7,20.32,21.04,21.43
-KMI,6,A,SKIP,Insufficient confluence.,32.01,29.34,37.35,40.02,2.0,0.95,52.1,374,11971.74,1000.0,1.0,,31.58,30.8,30.53,31.68
-KR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $65.57.",69.81,60.87,87.69,96.63,2.0,1.91,67.8,111,7748.91,1000.0,1.0,65.57,65.57,63.92,68.1,68.9
-LII,6,A,SKIP,Price $348.08 below key EMAs. Macro trend is not bullish.,348.08,315.37,413.5,446.21,2.0,13.27,46.3,30,10442.4,1000.0,1.0,,345.3,335.05,345.84,353.57
-LYV,6,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($175.95). Set limit buy at $175.95.,180.14,165.86,208.7,222.98,2.0,5.45,60.8,70,12609.8,1000.0,1.0,175.95,175.95,172.71,176.68,179.54
-LIN,6,A,NEAR ENTRY,Price is 2.7% from Golden Pocket ($508.27). Set limit buy at $508.27.,522.49,487.95,591.57,626.11,2.0,9.58,60.3,28,14629.72,1000.0,1.0,508.27,508.27,501.44,517.4,521.7
-LLY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.3% above Fib pocket. Wait for pullback to $1323.48.",1427.28,1215.75,1850.34,2061.87,2.0,46.71,67.3,4,5709.12,1000.0,1.0,1323.48,1323.48,1286.37,1367.04,1393.11
-LMT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.5% above Fib pocket. Wait for pullback to $582.65.",604.09,526.52,759.23,836.8,2.0,20.35,53.5,12,7249.08,1000.0,1.0,582.65,582.65,562.44,579.57,604.54
-MPC,6,A,SKIP,Insufficient confluence.,412.85,358.13,522.29,577.01,2.0,19.19,50.0,18,7431.3,1000.0,1.0,,415.95,394.74,384.01,406.54
-MAR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.6% above Fib pocket. Wait for pullback to $401.0.",424.66,375.67,522.64,571.63,2.0,10.74,68.1,20,8493.2,1000.0,1.0,401.0,401.0,392.22,417.45,419.4
-LOW,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.0% above Fib pocket. Wait for pullback to $209.31.",227.46,189.94,302.5,340.02,2.0,6.99,65.3,26,5913.96,1000.0,1.0,209.31,209.31,202.33,224.16,223.38
-MA,6,A,NEAR ENTRY,Price is 2.8% from Golden Pocket ($634.41). Set limit buy at $634.41.,652.6,597.01,763.78,819.37,2.0,15.98,56.8,17,11094.2,1000.0,1.0,634.41,634.41,621.48,655.13,660.0
-MRK,6,A,SKIP,Insufficient confluence.,146.95,137.17,166.51,176.29,2.0,4.08,50.2,102,14988.9,1000.0,1.0,,144.87,142.38,147.18,148.08
-MDT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.1% above Fib pocket. Wait for pullback to $97.84.",100.99,91.39,120.19,129.79,2.0,2.55,56.6,104,10502.96,1000.0,1.0,97.84,97.84,95.57,101.69,101.47
-MSFT,6,A,SKIP,Insufficient confluence.,523.0,496.63,575.74,602.11,2.0,16.66,45.1,37,19351.0,1000.0,1.0,,525.66,516.56,531.09,532.06
-MRNA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $218.22.",231.35,169.0,356.05,418.4,2.0,21.05,46.3,16,3701.6,1000.0,1.0,218.22,218.22,201.2,250.31,242.56
-MDLZ,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $64.28.",66.56,60.77,78.14,83.93,2.0,1.48,61.5,172,11448.32,1000.0,1.0,64.28,64.28,63.06,66.25,66.72
-MPWR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 12.0% above Fib pocket. Wait for pullback to $1273.4.",1447.4,1072.59,2197.02,2571.83,2.0,104.83,65.1,2,2894.8,1000.0,1.0,1273.4,1273.4,1208.14,1208.35,1244.18
-MSCI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.1% above Fib pocket. Wait for pullback to $605.36.",651.51,550.33,853.87,955.05,2.0,16.5,59.8,9,5863.59,1000.0,1.0,605.36,605.36,584.79,644.98,652.91
-MCO,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $485.2.",506.56,448.92,621.84,679.48,2.0,13.46,54.1,17,8611.52,1000.0,1.0,485.2,485.2,472.2,508.45,514.0
-MNST,6,A,SKIP,Insufficient confluence.,45.57,43.31,50.09,52.35,2.0,1.25,43.0,442,20141.94,1000.0,1.0,,46.06,45.12,46.05,46.72
-NDAQ,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.0% above Fib pocket. Wait for pullback to $99.96.",108.65,91.7,142.55,159.5,2.0,2.33,62.6,58,6301.7,1000.0,1.0,99.96,99.96,96.84,107.49,108.22
-NEM,6,A,NEAR ENTRY,Price is 0.5% from Golden Pocket ($113.21). Set limit buy at $113.21.,112.64,101.93,134.06,144.77,2.0,5.15,42.1,93,10475.52,1000.0,1.0,113.21,113.21,109.38,118.93,114.97
-NEE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.2% above Fib pocket. Wait for pullback to $82.56.",85.29,77.06,101.75,109.98,2.0,1.74,54.1,121,10320.09,1000.0,1.0,82.56,82.56,80.52,86.85,86.65
-NI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $43.21.",45.81,40.96,55.51,60.36,2.0,0.87,74.1,206,9436.86,1000.0,1.0,43.21,43.21,42.41,44.38,44.83
-NUE,6,A,SKIP,Insufficient confluence.,260.75,239.62,303.01,324.14,2.0,10.03,51.6,47,12255.25,1000.0,1.0,,261.09,253.85,252.04,266.17
-NXPI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $244.6.",267.29,219.97,361.93,409.25,2.0,12.66,63.5,21,5613.09,1000.0,1.0,244.6,244.6,236.55,251.23,257.1
-ORLY,6,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($89.39). Set limit buy at $89.39.,91.56,85.59,103.5,109.47,2.0,2.22,60.2,167,15290.52,1000.0,1.0,89.39,89.39,88.21,90.37,91.33
-OMC,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.2% above Fib pocket. Wait for pullback to $81.42.",86.84,75.13,110.26,121.97,2.0,2.69,59.6,85,7381.4,1000.0,1.0,81.42,81.42,79.24,85.98,85.19
-PLTR,6,A,SKIP,Insufficient confluence.,171.58,148.08,218.58,242.08,2.0,9.04,42.2,42,7206.36,1000.0,1.0,,172.06,163.5,163.61,170.08
-PH,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.9% above Fib pocket. Wait for pullback to $911.13.",957.98,852.14,1169.66,1275.5,2.0,32.7,57.6,9,8621.82,1000.0,1.0,911.13,911.13,892.37,922.95,933.28
-PAYX,6,A,NEAR ENTRY,Price is 2.1% from Golden Pocket ($112.81). Set limit buy at $112.81.,115.18,105.03,135.48,145.63,2.0,3.3,52.9,98,11287.64,1000.0,1.0,112.81,112.81,110.11,117.07,117.08
-PM,6,A,NEAR ENTRY,Price is 0.5% from Golden Pocket ($195.59). Set limit buy at $195.59.,196.66,181.32,227.34,242.68,2.0,5.36,40.6,65,12782.9,1000.0,1.0,195.59,195.59,190.49,199.9,203.94
-PNC,6,A,NEAR ENTRY,Price is 2.6% from Golden Pocket ($225.01). Set limit buy at $225.01.,231.03,213.33,266.43,284.13,2.0,5.33,57.1,56,12937.68,1000.0,1.0,225.01,225.01,221.04,227.58,231.97
-PRU,6,A,NEAR ENTRY,Price is 2.8% from Golden Pocket ($118.93). Set limit buy at $118.93.,122.41,111.25,144.73,155.89,2.0,3.18,58.7,89,10894.49,1000.0,1.0,118.93,118.93,116.25,120.44,122.85
-DGX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.3% above Fib pocket. Wait for pullback to $238.21.",259.65,220.53,337.89,377.01,2.0,5.94,73.8,25,6491.25,1000.0,1.0,238.21,238.21,231.74,254.35,251.79
-QCOM,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.3% above Fib pocket. Wait for pullback to $162.51.",177.14,143.27,244.88,278.75,2.0,9.95,56.8,29,5137.06,1000.0,1.0,162.51,162.51,156.24,163.98,161.12
-O,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.9% above Fib pocket. Wait for pullback to $56.95.",59.26,54.53,68.72,73.45,2.0,0.97,67.5,211,12503.86,1000.0,1.0,56.95,56.95,56.1,58.81,58.35
-REGN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.4% above Fib pocket. Wait for pullback to $861.39.",951.19,762.28,1329.01,1517.92,2.0,37.09,68.5,5,4755.95,1000.0,1.0,861.39,861.39,825.96,916.03,939.38
-ROP,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.5% above Fib pocket. Wait for pullback to $427.74.",477.87,371.91,689.79,795.75,2.0,13.38,67.6,9,4300.83,1000.0,1.0,427.74,427.74,406.13,479.46,485.19
-RCL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.8% above Fib pocket. Wait for pullback to $300.22.",321.99,268.09,429.79,483.69,2.0,12.21,53.4,18,5795.82,1000.0,1.0,300.22,300.22,288.78,326.38,324.82
-SPGI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $446.71.",468.51,417.15,571.23,622.59,2.0,10.56,56.4,19,8901.69,1000.0,1.0,446.71,446.71,436.03,469.55,473.04
-SLB,6,A,SKIP,Insufficient confluence.,50.91,47.67,57.39,60.63,2.0,1.67,48.3,308,15680.28,1000.0,1.0,,50.83,49.81,50.47,51.59
-SPG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $215.65.",233.61,200.06,300.71,334.26,2.0,4.44,80.6,29,6774.69,1000.0,1.0,215.65,215.65,209.77,227.31,225.08
-SHW,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.6% above Fib pocket. Wait for pullback to $335.39.",351.39,307.37,439.43,483.45,2.0,11.76,54.9,22,7730.58,1000.0,1.0,335.39,335.39,325.66,347.64,354.71
-SW,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.2% above Fib pocket. Wait for pullback to $41.81.",43.18,38.35,52.84,57.67,2.0,1.47,46.4,207,8938.26,1000.0,1.0,41.81,41.81,40.61,44.14,44.23
-SNA,6,A,SKIP,Price $367.89 below key EMAs. Macro trend is not bullish.,367.89,324.7,454.27,497.46,2.0,8.33,51.7,23,8461.47,1000.0,1.0,,347.65,339.38,366.76,365.84
-SBUX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $102.22.",107.26,94.89,132.0,144.37,2.0,3.18,56.1,80,8580.8,1000.0,1.0,102.22,102.22,99.69,105.91,106.9
-STLD,6,A,NEAR ENTRY,Price is 0.6% from Golden Pocket ($235.77). Set limit buy at $235.77.,237.11,216.51,278.31,298.91,2.0,9.51,49.0,48,11381.28,1000.0,1.0,235.77,235.77,229.4,228.68,240.25
-STE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.3% above Fib pocket. Wait for pullback to $234.87.",253.44,216.25,327.82,365.01,2.0,7.1,69.5,26,6589.44,1000.0,1.0,234.87,234.87,228.24,249.33,243.38
-SYK,6,A,SKIP,Price $312.39 below key EMAs. Macro trend is not bullish.,312.39,276.21,384.75,420.93,2.0,11.94,46.8,27,8434.53,1000.0,1.0,,307.89,296.58,324.33,321.24
-TTWO,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.0% above Fib pocket. Wait for pullback to $204.32.",226.95,178.61,323.63,371.97,2.0,10.51,68.8,20,4539.0,1000.0,1.0,204.32,204.32,195.32,211.43,204.56
-TROW,6,A,NEAR ENTRY,Price is 2.6% from Golden Pocket ($105.36). Set limit buy at $105.36.,108.22,98.23,128.2,138.19,2.0,3.11,51.8,100,10822.0,1000.0,1.0,105.36,105.36,102.91,108.78,109.52
-TSLA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.6% above Fib pocket. Wait for pullback to $367.21.",397.45,329.18,533.99,602.26,2.0,17.94,59.7,14,5564.3,1000.0,1.0,367.21,367.21,354.43,364.21,376.19
-TDY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.7% above Fib pocket. Wait for pullback to $623.49.",647.57,578.06,786.59,856.1,2.0,22.22,54.3,14,9065.98,1000.0,1.0,623.49,623.49,608.4,622.34,629.81
-ULTA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.6% above Fib pocket. Wait for pullback to $621.32.",650.97,579.6,793.71,865.08,2.0,18.29,56.7,14,9113.58,1000.0,1.0,621.32,621.32,606.99,646.09,648.74
-UDR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 2.2% above Fib pocket. Wait for pullback to $35.33.",36.13,33.4,41.59,44.32,2.0,0.74,50.7,366,13223.58,1000.0,1.0,35.33,35.33,34.64,36.56,36.51
-UNP,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $290.54.",304.2,275.37,361.86,390.69,2.0,6.44,59.8,34,10342.8,1000.0,1.0,290.54,290.54,285.28,293.32,299.63
-UPS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $103.63.",110.38,95.23,140.68,155.83,2.0,2.77,58.0,66,7285.08,1000.0,1.0,103.63,103.63,100.55,109.39,111.56
-UHS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $182.74.",193.84,165.5,250.52,278.86,2.0,7.26,58.3,35,6784.4,1000.0,1.0,182.74,182.74,176.75,193.26,188.78
-VLO,6,A,SKIP,Insufficient confluence.,374.95,332.43,459.99,502.51,2.0,18.16,48.8,23,8623.85,1000.0,1.0,,385.37,366.08,353.97,369.01
-VLTO,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $107.52.",117.49,98.54,155.39,174.34,2.0,2.9,76.9,52,6109.48,1000.0,1.0,107.52,107.52,104.21,116.53,115.4
-VRSN,6,A,NEAR ENTRY,Price is 3.0% from Golden Pocket ($303.02). Set limit buy at $303.02.,312.48,285.22,367.0,394.26,2.0,8.89,56.9,36,11249.28,1000.0,1.0,303.02,303.02,297.14,310.49,314.12
-VTRS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.4% above Fib pocket. Wait for pullback to $19.14.",20.67,17.55,26.91,30.03,2.0,0.61,70.4,320,6614.4,1000.0,1.0,19.14,19.14,18.57,19.71,19.3
-V,6,A,NEAR ENTRY,Price is 2.1% from Golden Pocket ($411.66). Set limit buy at $411.66.,420.31,388.32,484.29,516.28,2.0,9.9,54.8,31,13029.61,1000.0,1.0,411.66,411.66,403.57,423.48,426.7
-WAB,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $285.21.",300.51,266.58,368.37,402.3,2.0,9.12,61.7,29,8714.79,1000.0,1.0,285.21,285.21,279.02,284.93,287.6
-WRB,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $74.38.",77.15,70.54,90.37,96.98,2.0,1.63,66.1,151,11649.65,1000.0,1.0,74.38,74.38,73.05,75.61,76.38
-WAT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 2.8% above Fib pocket. Wait for pullback to $449.12.",462.2,420.16,546.28,588.32,2.0,15.61,49.4,23,10630.6,1000.0,1.0,449.12,449.12,439.82,458.46,460.18
-WMT,6,A,NEAR ENTRY,Price is 3.0% from Golden Pocket ($122.43). Set limit buy at $122.43.,126.19,115.16,148.25,159.28,2.0,2.94,62.3,90,11357.1,1000.0,1.0,122.43,122.43,119.88,126.15,127.43
-WFC,6,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($83.79). Set limit buy at $83.79.,85.76,79.61,98.06,104.21,2.0,1.87,60.4,162,13893.12,1000.0,1.0,83.79,83.79,82.36,84.64,86.05
-WST,6,A,NEAR ENTRY,Price is 2.2% from Golden Pocket ($402.18). Set limit buy at $402.18.,411.3,374.47,484.96,521.79,2.0,11.14,61.4,27,11105.1,1000.0,1.0,402.18,402.18,392.44,400.52,402.44
-WELL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.3% above Fib pocket. Wait for pullback to $229.49.",244.93,214.24,306.31,337.0,2.0,5.46,60.2,32,7837.76,1000.0,1.0,229.49,229.49,223.99,243.05,240.82
-WMB,6,A,SKIP,Price $69.44 below key EMAs. Macro trend is not bullish.,69.44,62.31,83.7,90.83,2.0,2.74,51.0,140,9721.6,1000.0,1.0,,68.39,66.32,65.74,69.06
-XEL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.8% above Fib pocket. Wait for pullback to $77.56.",81.5,74.09,96.32,103.73,2.0,1.5,73.0,134,10921.0,1000.0,1.0,77.56,77.56,76.37,79.76,79.96
-ZTS,6,A,SKIP,Price $82.96 below key EMAs. Macro trend is not bullish.,82.96,75.09,98.7,106.57,2.0,2.85,56.4,127,10535.92,1000.0,1.0,,81.39,79.25,80.92,83.96
+CI,9,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,300.16,287.43,325.62,338.35,2.0,8.27,53.3,117,35118.72,1500.0,1.5,,301.69,297.24,297.28,297.85
+EL,9,A+,NEAR ENTRY,Price is 1.2% from Golden Pocket ($107.31). Set limit buy at $107.31.,108.61,100.26,125.31,133.66,2.0,4.24,46.6,179,19441.19,1500.0,1.5,107.31,107.31,105.14,111.97,112.42
+KDP,9,A+,NEAR ENTRY,Price is 0.6% from Golden Pocket ($35.79). Set limit buy at $35.79.,35.58,33.54,39.66,41.7,2.0,1.42,45.9,735,26151.3,1500.0,1.5,35.79,35.79,35.11,36.49,36.8
+PTC,9,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,196.38,192.29,204.56,208.65,2.0,1.11,70.2,366,71875.08,1500.0,1.5,,194.36,193.69,195.97,195.9
+ACN,8,A+,NEAR ENTRY,Price is 0.1% from Golden Pocket ($247.54). Set limit buy at $247.54.,247.7,228.08,286.94,306.56,2.0,8.97,44.6,76,18825.2,1500.0,1.5,247.54,247.54,240.96,252.19,255.57
+AES,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,14.94,14.73,15.36,15.57,2.0,0.05,69.2,7142,106701.48,1500.0,1.5,,14.83,14.8,14.91,14.91
+BALL,8,A+,SKIP,Insufficient confluence.,65.39,60.94,74.29,78.74,2.0,1.89,50.0,337,22036.43,1500.0,1.5,,64.83,63.54,65.73,66.24
+DHR,8,A+,NEAR ENTRY,Price is 1.9% from Golden Pocket ($225.54). Set limit buy at $225.54.,229.91,214.65,260.43,275.69,2.0,5.8,45.3,98,22531.18,1500.0,1.5,225.54,225.54,222.02,233.07,233.16
+DLTR,8,A+,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $132.46.",138.7,119.71,176.68,195.67,2.0,5.61,54.8,78,10818.6,1500.0,1.5,132.46,132.46,128.09,138.32,138.8
+IEX,8,A+,NEAR ENTRY,Price is 1.9% from Golden Pocket ($229.11). Set limit buy at $229.11.,233.57,218.27,264.17,279.47,2.0,6.05,47.0,98,22889.86,1500.0,1.5,229.11,229.11,225.68,236.87,235.36
+LYV,8,A+,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $177.99.,177.68,166.58,199.88,210.98,2.0,4.98,50.1,135,23986.8,1500.0,1.5,177.99,176.26,173.1,177.99,177.07
+MET,8,A+,NEAR ENTRY,Price is 0.7% from Golden Pocket ($100.77). Set limit buy at $100.77.,101.45,95.82,112.71,118.34,2.0,2.53,51.8,266,26985.7,1500.0,1.5,100.77,100.77,99.15,102.39,101.85
+NSC,8,A+,BUY NOW,All layers aligned. Enter at open or place limit order near close.,329.27,316.13,355.55,368.69,2.0,7.12,47.6,114,37536.78,1500.0,1.5,,329.83,325.37,327.98,328.19
+PNW,8,A+,SKIP,Insufficient confluence.,105.33,99.55,116.89,122.67,2.0,2.31,49.1,259,27280.47,1500.0,1.5,,103.87,102.48,106.8,106.4
+RL,8,A+,SKIP,Insufficient confluence.,389.59,364.6,439.57,464.56,2.0,12.19,49.3,60,23375.4,1500.0,1.5,,387.08,379.87,388.75,393.64
+RMD,8,A+,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $238.49.,238.19,217.44,279.69,300.44,2.0,7.07,50.5,72,17149.68,1500.0,1.5,238.49,233.92,228.23,238.49,236.41
+VRSN,8,A+,NEAR ENTRY,Price is 1.8% from Golden Pocket ($303.02). Set limit buy at $303.02.,308.43,285.47,354.35,377.31,2.0,8.37,46.7,65,20047.95,1500.0,1.5,303.02,303.02,297.14,311.88,309.59
+WFC,8,A+,NEAR ENTRY,Price is 1.2% from Golden Pocket ($83.79). Set limit buy at $83.79.,84.84,79.6,95.32,100.56,2.0,1.89,50.2,286,24264.24,1500.0,1.5,83.79,83.79,82.36,85.89,85.56
+WSM,8,A+,SKIP,Insufficient confluence.,252.05,238.39,279.37,293.03,2.0,8.84,45.0,109,27473.45,1500.0,1.5,,254.9,249.58,253.98,253.83
+AFL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $122.27.",128.08,115.62,153.0,165.46,2.0,2.27,72.5,80,10246.4,1000.0,1.0,122.27,122.27,119.85,127.26,126.55
+AWK,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.1% above Fib pocket. Wait for pullback to $140.67.",151.36,131.59,190.9,210.67,2.0,3.2,70.5,50,7568.0,1000.0,1.0,140.67,140.67,137.38,149.35,148.86
+APA,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",47.3,41.94,58.02,63.38,2.0,1.89,50.6,186,8797.8,1000.0,1.0,,46.74,45.04,47.55,45.76
+AON,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.9% above Fib pocket. Wait for pullback to $312.64.",343.12,285.15,459.06,517.03,2.0,8.22,73.0,17,5833.04,1000.0,1.0,312.64,312.64,302.36,337.68,336.41
+APP,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 28.0% above Fib pocket. Wait for pullback to $299.14.",415.22,213.33,819.0,1020.89,2.0,23.73,78.4,4,1660.88,1000.0,1.0,299.14,299.14,266.62,405.6,398.59
+ACGL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $104.45.",110.89,97.56,137.55,150.88,2.0,2.45,71.4,75,8316.75,1000.0,1.0,104.45,104.45,101.96,109.15,108.24
+AJG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $270.56.",287.0,251.54,357.92,393.38,2.0,8.42,66.7,28,8036.0,1000.0,1.0,270.56,270.56,264.05,282.25,280.86
+BIIB,7,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($245.53). Set limit buy at $245.53.,251.65,232.29,290.37,309.73,2.0,7.34,53.7,51,12834.15,1000.0,1.0,245.53,245.53,241.32,253.51,253.72
+TECH,7,A,SKIP,Insufficient confluence.,72.79,72.34,73.69,74.14,2.0,0.11,68.5,2222,161739.38,1000.0,1.0,,72.57,72.5,72.78,72.75
+BR,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.3% above Fib pocket. Wait for pullback to $182.91.",195.24,172.48,240.76,263.52,2.0,4.65,74.0,43,8395.32,1000.0,1.0,182.91,182.91,179.34,192.42,192.36
+BMY,7,A,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $63.19.,62.93,58.91,70.97,74.99,2.0,1.83,54.5,248,15606.64,1000.0,1.0,63.19,62.01,61.05,63.19,62.71
+BF-B,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $29.09.",30.91,27.05,38.63,42.49,2.0,0.93,63.3,259,8005.69,1000.0,1.0,29.09,29.09,28.39,30.54,30.32
+BRO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $69.05.",73.51,63.48,93.57,103.6,2.0,2.44,62.3,99,7277.49,1000.0,1.0,69.05,69.05,67.14,71.85,71.69
+CMG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 14.0% above Fib pocket. Wait for pullback to $30.89.",35.94,26.72,54.38,63.6,2.0,1.17,67.0,108,3881.52,1000.0,1.0,30.89,30.89,29.32,35.43,35.72
+CVX,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",217.14,203.6,244.22,257.76,2.0,4.81,46.9,73,15851.22,1000.0,1.0,,217.65,212.53,217.58,212.96
+COP,7,A,SKIP,Insufficient confluence.,140.52,128.37,164.82,176.97,2.0,3.79,52.6,82,11522.64,1000.0,1.0,,139.05,135.19,139.55,135.96
+STZ,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.1% above Fib pocket. Wait for pullback to $136.22.",146.63,126.17,187.55,208.01,2.0,3.78,69.9,48,7038.24,1000.0,1.0,136.22,136.22,132.63,145.28,144.61
+DRI,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.8% above Fib pocket. Wait for pullback to $219.75.",230.93,208.18,276.43,299.18,2.0,5.56,69.1,43,9929.99,1000.0,1.0,219.75,219.75,215.89,228.93,229.31
+DXCM,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",81.61,75.05,94.73,101.29,2.0,2.95,48.6,152,12404.72,1000.0,1.0,,81.76,79.46,82.65,81.3
+DG,7,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($132.26). Set limit buy at $132.26.,136.18,122.33,163.88,177.73,2.0,4.58,54.4,72,9804.96,1000.0,1.0,132.26,132.26,128.9,134.84,136.25
+DUK,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $123.72.",130.59,117.58,156.61,169.62,2.0,2.22,74.1,76,9924.84,1000.0,1.0,123.72,123.72,121.51,128.75,127.92
+ECHO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.2% above Fib pocket. Wait for pullback to $92.32.",99.47,82.03,134.35,151.79,2.0,4.88,54.1,57,5669.79,1000.0,1.0,92.32,92.32,88.87,99.94,99.82
+ECL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $297.18.",308.41,280.3,364.63,392.74,2.0,6.87,59.6,35,10794.35,1000.0,1.0,297.18,297.18,291.27,308.33,306.46
+EOG,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",155.47,141.99,182.43,195.91,2.0,4.31,53.5,74,11504.78,1000.0,1.0,,152.46,148.8,155.97,151.27
+EQIX,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $987.71.",1043.06,913.81,1301.56,1430.81,2.0,34.78,52.9,7,7301.42,1000.0,1.0,987.71,987.71,962.86,1053.63,1053.3
+ESS,7,A,NEAR ENTRY,Price is 1.5% from Golden Pocket ($269.49). Set limit buy at $269.49.,273.46,256.26,307.86,325.06,2.0,5.46,55.3,58,15860.68,1000.0,1.0,269.49,269.49,264.87,273.71,274.5
+EXPD,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",195.34,181.63,222.76,236.47,2.0,5.18,52.9,72,14064.48,1000.0,1.0,,193.28,189.29,193.38,190.54
+FRT,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.0% above Fib pocket. Wait for pullback to $109.41.",113.99,104.46,133.05,142.58,2.0,1.78,64.8,104,11854.96,1000.0,1.0,109.41,109.41,107.63,113.06,113.33
+FITB,7,A,SKIP,Insufficient confluence.,53.63,49.82,61.25,65.06,2.0,1.23,48.2,262,14051.06,1000.0,1.0,,52.71,51.71,54.4,54.21
+GEN,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 13.1% above Fib pocket. Wait for pullback to $26.42.",30.4,23.07,45.06,52.39,2.0,0.96,67.6,136,4134.4,1000.0,1.0,26.42,26.42,25.16,30.16,29.93
+GD,7,A,NEAR ENTRY,Price is 0.2% from Golden Pocket ($359.01). Set limit buy at $359.01.,359.69,337.69,403.69,425.69,2.0,8.52,47.2,45,16186.05,1000.0,1.0,359.01,359.01,351.51,363.78,364.41
+HSIC,7,A,NEAR ENTRY,Price is 0.7% from Golden Pocket ($84.33). Set limit buy at $84.33.,84.96,79.72,95.44,100.68,2.0,2.62,43.1,190,16142.4,1000.0,1.0,84.33,84.33,82.88,86.7,87.67
+HLT,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.6% above Fib pocket. Wait for pullback to $352.84.",373.83,331.37,458.75,501.21,2.0,7.72,62.6,23,8598.09,1000.0,1.0,352.84,352.84,345.1,373.67,374.82
+HAS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.9% above Fib pocket. Wait for pullback to $110.27.",121.02,99.83,163.4,184.59,2.0,3.14,61.1,47,5687.94,1000.0,1.0,110.27,110.27,106.37,120.96,121.78
+HST,7,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($24.98). Set limit buy at $24.98.,25.72,23.94,29.28,31.06,2.0,0.6,59.1,561,14428.92,1000.0,1.0,24.98,24.98,24.66,25.47,25.4
+HRL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.2% above Fib pocket. Wait for pullback to $21.31.",22.71,19.88,28.37,31.2,2.0,0.57,69.1,353,8016.63,1000.0,1.0,21.31,21.31,20.81,22.09,22.08
+ICE,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.8% above Fib pocket. Wait for pullback to $164.4.",178.29,151.9,231.07,257.46,2.0,4.0,68.3,37,6596.73,1000.0,1.0,164.4,164.4,159.78,177.98,176.93
+ISRG,7,A,SKIP,Insufficient confluence.,437.75,392.03,529.19,574.91,2.0,13.91,42.6,21,9192.75,1000.0,1.0,,432.17,417.58,445.97,450.72
+J,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.1% above Fib pocket. Wait for pullback to $146.92.",159.82,135.3,208.86,233.38,2.0,4.6,66.7,40,6392.8,1000.0,1.0,146.92,146.92,142.82,157.38,155.68
+KEY,7,A,SKIP,Insufficient confluence.,21.23,19.82,24.05,25.46,2.0,0.45,50.4,709,15052.07,1000.0,1.0,,20.83,20.49,21.43,21.36
+KIM,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.3% above Fib pocket. Wait for pullback to $24.11.",25.73,22.48,32.23,35.48,2.0,0.46,71.0,307,7899.11,1000.0,1.0,24.11,24.11,23.49,25.56,25.58
+LH,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.3% above Fib pocket. Wait for pullback to $337.82.",372.46,310.49,496.4,558.37,2.0,8.57,71.3,16,5959.36,1000.0,1.0,337.82,337.82,327.69,370.04,369.15
+L,7,A,BUY NOW,"Strong confluence (7+ score, Fib pocket, accumulation). Favorable R:R.",111.84,106.4,122.72,128.16,2.0,1.97,59.3,183,20466.72,1000.0,1.0,,110.11,108.92,111.62,111.05
+MRSH,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.4% above Fib pocket. Wait for pullback to $198.65.",209.88,186.83,255.98,279.03,2.0,4.66,69.2,43,9024.84,1000.0,1.0,198.65,198.65,194.48,207.31,206.36
+MA,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.1% above Fib pocket. Wait for pullback to $634.41.",661.71,597.83,789.47,853.35,2.0,14.35,63.2,15,9925.65,1000.0,1.0,634.41,634.41,621.48,659.76,656.89
+MCO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $485.2.",506.28,449.73,619.38,675.93,2.0,11.85,53.2,17,8606.76,1000.0,1.0,485.2,485.2,472.2,509.33,511.6
+MSCI,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $613.29.",664.49,565.43,862.61,961.67,2.0,14.62,67.3,10,6644.9,1000.0,1.0,613.29,613.29,595.46,654.91,648.38
+OMC,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.5% above Fib pocket. Wait for pullback to $81.42.",88.0,75.29,113.42,126.13,2.0,2.36,64.4,78,6864.0,1000.0,1.0,81.42,81.42,79.24,87.97,87.94
+PAYX,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $112.81.",117.77,105.16,142.99,155.6,2.0,3.04,63.1,79,9303.83,1000.0,1.0,112.81,112.81,110.11,115.56,115.33
+PYPL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $56.83.",58.83,53.59,69.31,74.55,2.0,1.51,52.8,190,11177.7,1000.0,1.0,56.83,56.83,55.74,59.27,59.24
+PPG,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $114.7.",121.97,104.81,156.29,173.45,2.0,3.19,54.9,58,7074.26,1000.0,1.0,114.7,114.7,111.05,123.07,124.08
+PFG,7,A,SKIP,Insufficient confluence.,112.27,104.84,127.13,134.56,2.0,2.85,46.6,134,15044.18,1000.0,1.0,,111.18,109.02,113.92,114.65
+REGN,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.0% above Fib pocket. Wait for pullback to $866.87.",952.4,772.98,1311.24,1490.66,2.0,33.42,67.7,5,4762.0,1000.0,1.0,866.87,866.87,832.93,950.29,939.92
+RF,7,A,SKIP,Insufficient confluence.,28.6,26.91,31.98,33.67,2.0,0.59,50.9,591,16902.6,1000.0,1.0,,28.18,27.75,28.84,28.8
+REG,7,A,NEAR ENTRY,Price is 2.9% from Golden Pocket ($74.36). Set limit buy at $74.36.,76.58,71.51,86.72,91.79,2.0,1.23,61.4,197,15086.26,1000.0,1.0,74.36,74.36,73.38,76.0,75.78
+RTX,7,A,NEAR ENTRY,Price is 0.2% from Golden Pocket ($194.55). Set limit buy at $194.55.,194.89,184.96,214.75,224.68,2.0,5.51,45.1,100,19489.0,1000.0,1.0,194.55,194.55,191.54,198.34,197.87
+SO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $91.25.",94.64,87.99,107.94,114.59,2.0,1.97,67.6,150,14196.0,1000.0,1.0,91.25,91.25,90.25,92.7,92.44
+SOLV,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $85.47.",88.65,79.38,107.19,116.46,2.0,2.77,54.9,107,9485.55,1000.0,1.0,85.47,85.47,83.4,89.24,89.56
+SYY,7,A,SKIP,Price $78.24 below key EMAs. Macro trend is not bullish.,78.24,72.73,89.26,94.77,2.0,1.99,50.5,181,14161.44,1000.0,1.0,,77.65,75.92,77.21,77.42
+TROW,7,A,NEAR ENTRY,Price is 2.4% from Golden Pocket ($105.39). Set limit buy at $105.39.,107.96,98.39,127.1,136.67,2.0,2.9,49.9,104,11227.84,1000.0,1.0,105.39,105.39,102.95,109.19,109.7
+TPR,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.8% above Fib pocket. Wait for pullback to $122.54.",132.95,107.03,184.79,210.71,2.0,4.21,68.6,38,5052.1,1000.0,1.0,122.54,122.54,116.64,132.91,133.92
+TMO,7,A,NEAR ENTRY,Price is 0.7% from Golden Pocket ($686.61). Set limit buy at $686.61.,691.33,651.54,770.91,810.7,2.0,19.52,44.8,25,17283.25,1000.0,1.0,686.61,686.61,675.48,703.02,708.64
+TXN,7,A,NEAR ENTRY,Price is 2.0% from Golden Pocket ($288.46). Set limit buy at $288.46.,294.21,263.31,356.01,386.91,2.0,14.75,45.8,32,9414.72,1000.0,1.0,288.46,288.46,280.64,301.9,298.49
+TSCO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 12.5% above Fib pocket. Wait for pullback to $33.22.",37.95,29.19,55.47,64.23,2.0,1.43,72.0,114,4326.3,1000.0,1.0,33.22,33.22,31.76,36.55,36.75
+TRV,7,A,SKIP,Insufficient confluence.,403.06,384.04,441.1,460.12,2.0,9.07,59.3,52,20959.12,1000.0,1.0,,399.81,394.87,401.85,399.08
+TYL,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.2% above Fib pocket. Wait for pullback to $382.45.",425.98,342.25,593.44,677.17,2.0,12.53,70.6,11,4685.78,1000.0,1.0,382.45,382.45,367.53,423.11,421.22
+USB,7,A,SKIP,Insufficient confluence.,60.43,57.34,66.61,69.7,2.0,1.26,52.5,323,19518.89,1000.0,1.0,,59.72,58.95,60.9,60.73
+UPS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.3% above Fib pocket. Wait for pullback to $102.53.",111.82,94.61,146.24,163.45,2.0,2.51,67.0,58,6485.56,1000.0,1.0,102.53,102.53,99.6,110.33,109.47
+UDR,7,A,NEAR ENTRY,Price is 3.0% from Golden Pocket ($35.27). Set limit buy at $35.27.,36.37,33.43,42.25,45.19,2.0,0.66,58.3,340,12365.8,1000.0,1.0,35.27,35.27,34.61,36.33,36.39
+UHS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.6% above Fib pocket. Wait for pullback to $182.74.",197.8,165.61,262.18,294.37,2.0,7.03,65.1,31,6131.8,1000.0,1.0,182.74,182.74,176.75,194.54,195.47
+VLTO,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.3% above Fib pocket. Wait for pullback to $107.95.",120.31,98.91,163.11,184.51,2.0,2.74,83.8,46,5534.26,1000.0,1.0,107.95,107.95,104.57,118.12,117.85
+VTRS,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $19.14.",20.74,17.58,27.06,30.22,2.0,0.57,69.6,316,6553.84,1000.0,1.0,19.14,19.14,18.57,20.73,20.55
+WM,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $233.33.",244.33,222.17,288.65,310.81,2.0,4.95,68.8,45,10994.85,1000.0,1.0,233.33,233.33,229.51,242.58,240.08
+WEC,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.0% above Fib pocket. Wait for pullback to $111.55.",117.46,105.83,140.72,152.35,2.0,2.02,69.5,85,9984.1,1000.0,1.0,111.55,111.55,109.48,117.12,116.15
+WTW,7,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.1% above Fib pocket. Wait for pullback to $324.17.",338.13,306.85,400.69,431.97,2.0,8.99,65.8,31,10482.03,1000.0,1.0,324.17,324.17,318.53,334.28,332.17
+APD,6,A,NEAR ENTRY,Price is 2.0% from Golden Pocket ($307.64). Set limit buy at $307.64.,313.9,294.53,352.64,372.01,2.0,5.99,56.2,51,16008.9,1000.0,1.0,307.64,307.64,303.19,314.95,311.79
+ALLE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.7% above Fib pocket. Wait for pullback to $170.53.",190.97,153.02,266.87,304.82,2.0,4.26,64.5,26,4965.22,1000.0,1.0,170.53,170.53,163.77,191.41,190.28
+LNT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.2% above Fib pocket. Wait for pullback to $69.87.",72.91,65.95,86.83,93.79,2.0,1.37,57.9,143,10426.13,1000.0,1.0,69.87,69.87,68.45,73.39,73.31
+AMP,6,A,NEAR ENTRY,Price is 2.7% from Golden Pocket ($500.4). Set limit buy at $500.4.,514.06,470.24,601.7,645.52,2.0,13.89,54.3,22,11309.32,1000.0,1.0,500.4,500.4,490.19,519.76,520.42
+AME,6,A,NEAR ENTRY,Price is 0.5% from Golden Pocket ($234.55). Set limit buy at $234.55.,235.75,218.33,270.59,288.01,2.0,7.81,43.4,57,13437.75,1000.0,1.0,234.55,234.55,229.13,240.96,238.66
+AIZ,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.5% above Fib pocket. Wait for pullback to $299.37.",323.8,278.99,413.42,458.23,2.0,6.61,83.4,22,7123.6,1000.0,1.0,299.37,299.37,291.86,320.57,317.5
+ADSK,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $251.49.",265.53,230.18,336.23,371.58,2.0,8.32,64.9,28,7434.84,1000.0,1.0,251.49,251.49,243.95,263.43,261.43
+ATO,6,A,NEAR ENTRY,Price is 2.8% from Golden Pocket ($171.27). Set limit buy at $171.27.,176.16,163.52,201.44,214.08,2.0,2.84,67.1,79,13916.64,1000.0,1.0,171.27,171.27,168.49,175.9,175.09
+AZO,6,A,NEAR ENTRY,Price is 2.5% from Golden Pocket ($3189.45). Set limit buy at $3189.45.,3269.78,3049.04,3711.26,3932.0,2.0,71.23,60.1,4,13079.12,1000.0,1.0,3189.45,3189.45,3143.36,3251.09,3233.88
+BRK-B,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $557.73.",592.85,528.37,721.81,786.29,2.0,10.25,84.6,15,8892.75,1000.0,1.0,557.73,557.73,547.07,588.52,579.68
+BBY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $97.13.",103.35,89.26,131.53,145.62,2.0,3.77,58.3,70,7234.5,1000.0,1.0,97.13,97.13,94.5,103.85,103.42
+BLK,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $1157.67.",1197.97,1090.03,1413.85,1521.79,2.0,30.87,53.1,9,10781.73,1000.0,1.0,1157.67,1157.67,1134.71,1220.23,1214.88
+XYZ,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.9% above Fib pocket. Wait for pullback to $79.75.",82.96,72.06,104.76,115.66,2.0,3.47,51.6,91,7549.36,1000.0,1.0,79.75,79.75,77.13,84.98,85.77
+CAH,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $259.84.",283.85,240.37,370.81,414.29,2.0,6.23,88.5,22,6244.7,1000.0,1.0,259.84,259.84,252.65,279.77,277.1
+CBOE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 11.4% above Fib pocket. Wait for pullback to $334.47.",377.5,300.69,531.12,607.93,2.0,11.56,83.1,13,4907.5,1000.0,1.0,334.47,334.47,322.15,371.81,364.59
+CVNA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.8% above Fib pocket. Wait for pullback to $64.53.",70.74,54.03,104.16,120.87,2.0,3.76,50.9,59,4173.66,1000.0,1.0,64.53,64.53,60.74,72.72,73.42
+CNC,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.5% above Fib pocket. Wait for pullback to $69.9.",74.77,63.14,98.03,109.66,2.0,3.42,67.0,85,6355.45,1000.0,1.0,69.9,69.9,67.68,70.65,69.42
+CNP,6,A,SKIP,Insufficient confluence.,40.68,38.59,44.86,46.95,2.0,0.86,44.1,478,19445.04,1000.0,1.0,,40.45,39.82,41.09,40.89
+COR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $336.28.",356.94,314.78,441.26,483.42,2.0,9.36,67.7,23,8209.62,1000.0,1.0,336.28,336.28,328.88,355.24,347.65
+CRL,6,A,SKIP,Insufficient confluence.,335.52,295.99,414.58,454.11,2.0,16.03,46.6,25,8388.0,1000.0,1.0,,332.89,320.18,339.49,342.53
+CB,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $364.08.",381.28,348.17,447.5,480.61,2.0,6.87,75.7,30,11438.4,1000.0,1.0,364.08,364.08,358.6,373.56,369.21
+CHD,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $108.08.",114.74,102.3,139.62,152.06,2.0,2.46,76.7,80,9179.2,1000.0,1.0,108.08,108.08,106.08,112.34,111.02
+CINF,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $179.83.",191.33,168.21,237.57,260.69,2.0,3.61,73.0,43,8227.19,1000.0,1.0,179.83,179.83,175.51,189.26,188.47
+CTAS,6,A,NEAR ENTRY,Price is 2.8% from Golden Pocket ($217.84). Set limit buy at $217.84.,224.16,206.07,260.34,278.43,2.0,4.9,53.9,55,12328.8,1000.0,1.0,217.84,217.84,213.74,225.92,225.28
+CFG,6,A,SKIP,Insufficient confluence.,64.44,61.38,70.56,73.62,2.0,1.48,47.8,326,21007.44,1000.0,1.0,,64.22,63.3,65.16,64.95
+CLX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 14.8% above Fib pocket. Wait for pullback to $93.83.",110.17,81.3,167.91,196.78,2.0,3.83,93.7,34,3745.78,1000.0,1.0,93.83,93.83,89.16,108.07,105.31
+KO,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $94.39.",99.48,89.71,119.02,128.79,2.0,1.74,82.0,102,10146.96,1000.0,1.0,94.39,94.39,92.72,98.5,97.01
+CMS,6,A,NEAR ENTRY,Price is 2.6% from Golden Pocket ($68.92). Set limit buy at $68.92.,70.79,66.54,79.29,83.54,2.0,1.23,66.4,235,16635.65,1000.0,1.0,68.92,68.92,68.14,70.12,69.61
+CME,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.4% above Fib pocket. Wait for pullback to $302.11.",319.37,286.91,384.29,416.75,2.0,6.57,78.1,30,9581.1,1000.0,1.0,302.11,302.11,296.87,315.63,310.96
+CL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $94.8.",100.99,89.41,124.15,135.73,2.0,2.12,73.4,86,8685.14,1000.0,1.0,94.8,94.8,92.9,99.16,98.15
+CMCSA,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.7% above Fib pocket. Wait for pullback to $23.12.",25.6,21.1,34.6,39.1,2.0,0.72,76.2,222,5683.2,1000.0,1.0,23.12,23.12,22.39,25.01,24.72
+ED,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.6% above Fib pocket. Wait for pullback to $115.04.",121.88,109.16,147.32,160.04,2.0,2.23,73.1,78,9506.64,1000.0,1.0,115.04,115.04,112.94,120.43,119.28
+COST,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.4% above Fib pocket. Wait for pullback to $1031.64.",1113.74,969.18,1402.86,1547.42,2.0,19.38,82.5,6,6682.44,1000.0,1.0,1031.64,1031.64,1008.43,1096.68,1077.61
+DOV,6,A,NEAR ENTRY,Price is 2.2% from Golden Pocket ($201.56). Set limit buy at $201.56.,206.12,188.96,240.44,257.6,2.0,5.21,45.6,58,11954.96,1000.0,1.0,201.56,201.56,197.16,210.04,210.24
+DOW,6,A,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $32.53.,31.96,28.99,37.9,40.87,2.0,1.18,45.7,336,10738.56,1000.0,1.0,32.53,31.59,30.71,32.53,31.52
+DHI,6,A,SKIP,Insufficient confluence.,144.75,133.55,167.15,178.35,2.0,5.25,43.9,89,12882.75,1000.0,1.0,,145.7,141.51,147.08,150.13
+DTE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.2% above Fib pocket. Wait for pullback to $132.63.",139.91,125.98,167.77,181.7,2.0,2.58,71.7,71,9933.61,1000.0,1.0,132.63,132.63,130.27,139.19,138.14
+EBAY,6,A,SKIP,Insufficient confluence.,120.89,114.07,134.53,141.35,2.0,3.38,49.4,146,17649.94,1000.0,1.0,,120.34,118.32,121.23,121.85
+EW,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 11.3% above Fib pocket. Wait for pullback to $95.06.",107.11,85.56,150.21,171.76,2.0,3.01,86.6,46,4927.06,1000.0,1.0,95.06,95.06,91.54,106.41,104.93
+EFX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.1% above Fib pocket. Wait for pullback to $177.91.",189.5,163.57,241.36,267.29,2.0,5.08,62.5,38,7201.0,1000.0,1.0,177.91,177.91,172.72,187.98,187.72
+ERIE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.0% above Fib pocket. Wait for pullback to $261.99.",275.91,237.63,352.47,390.75,2.0,9.07,64.1,26,7173.66,1000.0,1.0,261.99,261.99,253.27,273.74,271.74
+ES,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.7% above Fib pocket. Wait for pullback to $67.88.",72.79,63.99,90.39,99.19,2.0,1.41,74.8,113,8225.27,1000.0,1.0,67.88,67.88,66.48,71.36,70.62
+FDS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.1% above Fib pocket. Wait for pullback to $322.02.",332.17,300.51,395.49,427.15,2.0,10.9,55.6,31,10297.27,1000.0,1.0,322.02,322.02,314.96,330.37,325.72
+FERG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $238.29.",253.2,215.83,327.94,365.31,2.0,9.22,57.4,26,6583.2,1000.0,1.0,238.29,238.29,230.44,256.58,256.79
+FICO,6,A,SKIP,Price $717.28 below key EMAs. Macro trend is not bullish.,717.28,636.33,879.18,960.13,2.0,34.15,45.5,12,8607.36,1000.0,1.0,,720.46,690.97,718.52,715.19
+FDX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.9% above Fib pocket. Wait for pullback to $308.21.",327.65,289.7,403.55,441.5,2.0,7.6,66.5,26,8518.9,1000.0,1.0,308.21,308.21,301.74,322.27,318.52
+FE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.4% above Fib pocket. Wait for pullback to $45.93.",47.55,44.52,53.61,56.64,2.0,0.69,77.6,330,15691.5,1000.0,1.0,45.93,45.93,45.46,46.85,46.54
+FTV,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $61.76.",67.53,56.57,89.45,100.41,2.0,1.5,66.4,91,6145.23,1000.0,1.0,61.76,61.76,59.81,67.68,67.21
+FISV,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 14.8% above Fib pocket. Wait for pullback to $53.98.",63.32,45.85,98.26,115.73,2.0,2.3,71.8,57,3609.24,1000.0,1.0,53.98,53.98,50.91,63.45,62.8
+GEHC,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $75.88.",82.96,67.54,113.8,129.22,2.0,2.24,65.0,64,5309.44,1000.0,1.0,75.88,75.88,72.71,83.03,83.04
+GE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.7% above Fib pocket. Wait for pullback to $303.28.",325.18,273.03,429.48,481.63,2.0,10.68,51.2,19,6178.42,1000.0,1.0,303.28,303.28,292.33,333.15,335.85
+GILD,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.8% above Fib pocket. Wait for pullback to $161.21.",167.58,149.43,203.88,222.03,2.0,4.56,53.4,55,9216.9,1000.0,1.0,161.21,161.21,157.03,168.34,168.85
+IDXX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 13.4% above Fib pocket. Wait for pullback to $606.75.",700.65,528.15,1045.65,1218.15,2.0,24.93,69.6,5,3503.25,1000.0,1.0,606.75,606.75,577.66,701.63,696.44
+ITW,6,A,NEAR ENTRY,Price is 2.0% from Golden Pocket ($279.06). Set limit buy at $279.06.,284.64,264.86,324.2,343.98,2.0,6.01,50.7,50,14232.0,1000.0,1.0,279.06,279.06,274.13,287.45,287.31
+HUM,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.2% above Fib pocket. Wait for pullback to $423.61.",461.25,390.66,602.43,673.02,2.0,17.37,75.9,14,6457.5,1000.0,1.0,423.61,423.61,412.94,445.56,436.68
+IBM,6,A,SKIP,Price $242.51 below key EMAs. Macro trend is not bullish.,242.51,231.42,264.69,275.78,2.0,5.91,42.2,90,21825.9,1000.0,1.0,,243.44,239.45,246.76,246.0
+PODD,6,A,SKIP,Price $145.29 below key EMAs. Macro trend is not bullish.,145.29,137.22,161.43,169.5,2.0,7.19,41.6,123,17870.67,1000.0,1.0,,151.38,146.73,151.5,149.55
+IR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.3% above Fib pocket. Wait for pullback to $78.21.",83.43,71.08,108.13,120.48,2.0,2.52,52.6,80,6674.4,1000.0,1.0,78.21,78.21,75.63,85.39,86.06
+INVH,6,A,SKIP,Price $27.1 below key EMAs. Macro trend is not bullish.,27.1,26.01,29.28,30.37,2.0,0.51,53.5,917,24850.7,1000.0,1.0,,26.94,26.65,26.9,26.99
+JKHY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $165.06.",178.91,150.0,236.73,265.64,2.0,5.46,71.8,34,6082.94,1000.0,1.0,165.06,165.06,159.64,176.49,174.13
+KMB,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.3% above Fib pocket. Wait for pullback to $107.66.",111.34,102.79,128.44,136.99,2.0,3.26,59.4,116,12915.44,1000.0,1.0,107.66,107.66,106.24,109.59,109.9
+KR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.4% above Fib pocket. Wait for pullback to $65.43.",70.67,60.57,90.87,100.97,2.0,1.81,73.5,99,6996.33,1000.0,1.0,65.43,65.43,63.69,69.81,68.62
+LHX,6,A,SKIP,Price $261.75 below key EMAs. Macro trend is not bullish.,261.75,239.36,306.53,328.92,2.0,8.49,42.3,44,11517.0,1000.0,1.0,,258.92,252.18,271.68,270.34
+LMT,6,A,SKIP,Insufficient confluence.,585.21,534.78,686.07,736.5,2.0,19.76,43.1,19,11118.99,1000.0,1.0,,587.57,568.7,594.99,592.89
+MAR,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.8% above Fib pocket. Wait for pullback to $401.0.",425.7,376.1,524.9,574.5,2.0,9.89,67.9,20,8514.0,1000.0,1.0,401.0,401.0,392.22,423.39,423.86
+MDT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.9% above Fib pocket. Wait for pullback to $97.86.",102.88,91.51,125.62,136.99,2.0,2.41,64.2,87,8950.56,1000.0,1.0,97.86,97.86,95.6,102.53,101.85
+MCK,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.9% above Fib pocket. Wait for pullback to $1018.02.",1105.04,941.52,1432.08,1595.6,2.0,25.06,80.5,6,6630.24,1000.0,1.0,1018.02,1018.02,989.88,1095.22,1080.02
+MKC,6,A,SKIP,Price $47.13 below key EMAs. Macro trend is not bullish.,47.13,44.64,52.11,54.6,2.0,1.52,47.0,401,18899.13,1000.0,1.0,,47.7,46.69,46.99,47.04
+MNST,6,A,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $46.21.,45.8,43.28,50.84,53.36,2.0,1.3,46.1,396,18136.8,1000.0,1.0,46.21,46.06,45.12,46.21,45.7
+MS,6,A,SKIP,Price $185.57 below key EMAs. Macro trend is not bullish.,185.57,172.92,210.87,223.52,2.0,5.51,46.4,79,14660.03,1000.0,1.0,,183.81,180.23,189.83,188.19
+MSI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.7% above Fib pocket. Wait for pullback to $493.19.",534.17,453.26,695.99,776.9,2.0,11.74,81.1,12,6410.04,1000.0,1.0,493.19,493.19,478.21,528.98,524.54
+NDSN,6,A,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $323.78.,322.56,304.98,357.72,375.3,2.0,7.8,47.2,56,18063.36,1000.0,1.0,323.78,319.16,314.64,323.78,321.85
+NCLH,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.1% above Fib pocket. Wait for pullback to $16.28.",17.9,14.17,25.36,29.09,2.0,0.73,53.7,268,4797.2,1000.0,1.0,16.28,16.28,15.51,18.12,18.44
+NTRS,6,A,NEAR ENTRY,Price is 2.6% from Golden Pocket ($170.92). Set limit buy at $170.92.,175.45,161.12,204.11,218.44,2.0,4.24,52.4,69,12106.05,1000.0,1.0,170.92,170.92,167.54,178.36,178.61
+NUE,6,A,SKIP,Insufficient confluence.,252.67,239.62,278.77,291.82,2.0,10.03,41.7,76,19202.92,1000.0,1.0,,261.09,253.85,252.82,255.0
+ORLY,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.6% above Fib pocket. Wait for pullback to $89.39.",92.7,85.68,106.74,113.76,2.0,2.04,66.1,142,13163.4,1000.0,1.0,89.39,89.39,88.21,91.66,90.59
+OKTA,6,A,WAIT FOR CONFIRMATION,Inside CPR band. Wait for daily close above Weekly TC $181.05.,178.22,157.83,219.0,239.39,2.0,12.71,37.2,49,8732.78,1000.0,1.0,181.05,188.83,177.99,181.05,177.41
+PKG,6,A,SKIP,Insufficient confluence.,250.47,232.76,285.89,303.6,2.0,5.89,48.4,56,14026.32,1000.0,1.0,,245.97,241.45,251.84,253.48
+PEP,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $138.11.",146.43,130.2,178.89,195.12,2.0,3.31,72.3,61,8932.23,1000.0,1.0,138.11,138.11,135.36,144.68,143.15
+PPL,6,A,NEAR ENTRY,Price is 2.5% from Golden Pocket ($34.9). Set limit buy at $34.9.,35.8,33.64,40.12,42.28,2.0,0.55,59.4,462,16539.6,1000.0,1.0,34.9,34.9,34.47,35.66,35.63
+PNC,6,A,NEAR ENTRY,Price is 2.0% from Golden Pocket ($225.01). Set limit buy at $225.01.,229.61,213.52,261.79,277.88,2.0,4.93,50.9,62,14235.82,1000.0,1.0,225.01,225.01,221.04,231.79,230.78
+PG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.0% above Fib pocket. Wait for pullback to $162.57.",173.02,154.07,210.92,229.87,2.0,3.39,78.5,52,8997.04,1000.0,1.0,162.57,162.57,159.58,169.19,167.98
+PEG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.3% above Fib pocket. Wait for pullback to $72.76.",76.06,69.86,88.46,94.66,2.0,1.29,71.9,161,12245.66,1000.0,1.0,72.76,72.76,71.77,75.39,74.4
+DGX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 9.0% above Fib pocket. Wait for pullback to $238.66.",262.21,220.89,344.85,386.17,2.0,5.22,78.2,24,6293.04,1000.0,1.0,238.66,238.66,231.99,259.2,258.39
+RSG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.2% above Fib pocket. Wait for pullback to $239.76.",255.56,226.82,313.04,341.78,2.0,4.83,79.0,34,8689.04,1000.0,1.0,239.76,239.76,235.13,251.87,249.62
+ROP,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.6% above Fib pocket. Wait for pullback to $432.35.",483.72,380.11,690.94,794.55,2.0,11.91,71.8,9,4353.48,1000.0,1.0,432.35,432.35,411.99,477.96,473.9
+SPGI,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.3% above Fib pocket. Wait for pullback to $451.31.",471.59,425.06,564.65,611.18,2.0,9.63,58.5,21,9903.39,1000.0,1.0,451.31,451.31,441.89,472.7,470.92
+SPG,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.0% above Fib pocket. Wait for pullback to $216.49.",232.78,201.56,295.22,326.44,2.0,4.17,76.0,32,7448.96,1000.0,1.0,216.49,216.49,210.84,233.02,233.12
+SJM,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.2% above Fib pocket. Wait for pullback to $128.46.",135.54,121.94,162.74,176.34,2.0,3.36,68.7,73,9894.42,1000.0,1.0,128.46,128.46,126.33,132.04,130.74
+LUV,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 10.1% above Fib pocket. Wait for pullback to $41.75.",46.44,37.66,64.0,72.78,2.0,1.67,63.4,113,5247.72,1000.0,1.0,41.75,41.75,40.32,45.26,45.91
+SBUX,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.7% above Fib pocket. Wait for pullback to $102.5.",108.72,95.84,134.48,147.36,2.0,3.02,63.5,77,8371.44,1000.0,1.0,102.5,102.5,100.23,106.89,107.78
+STE,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.9% above Fib pocket. Wait for pullback to $238.72.",261.91,217.31,351.11,395.71,2.0,7.38,73.3,22,5762.02,1000.0,1.0,238.72,238.72,230.93,261.9,257.05
+TGT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $152.76.",160.32,141.81,197.34,215.85,2.0,5.0,54.9,54,8657.28,1000.0,1.0,152.76,152.76,149.04,161.69,162.17
+TPL,6,A,SKIP,Price $292.16 below key EMAs. Macro trend is not bullish.,292.16,257.57,361.34,395.93,2.0,15.47,43.1,28,8180.48,1000.0,1.0,,297.76,283.49,288.92,282.94
+TSN,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 8.5% above Fib pocket. Wait for pullback to $58.52.",63.95,53.15,85.55,96.35,2.0,2.29,81.4,92,5883.4,1000.0,1.0,58.52,58.52,56.66,59.23,60.05
+UAL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.1% above Fib pocket. Wait for pullback to $105.06.",110.76,91.89,148.5,167.37,2.0,5.31,49.0,52,5759.52,1000.0,1.0,105.06,105.06,100.43,111.35,115.44
+URI,6,A,SKIP,Insufficient confluence.,1094.69,981.16,1321.75,1435.28,2.0,45.46,44.3,8,8757.52,1000.0,1.0,,1078.81,1045.86,1123.29,1120.76
+UNP,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.3% above Fib pocket. Wait for pullback to $290.54.",303.71,275.56,360.01,388.16,2.0,6.06,58.3,35,10629.85,1000.0,1.0,290.54,290.54,285.28,301.24,298.82
+UNH,6,A,NEAR ENTRY,Price is 2.3% from Golden Pocket ($402.73). Set limit buy at $402.73.,412.02,383.03,470.0,498.99,2.0,9.93,62.8,34,14008.68,1000.0,1.0,402.73,402.73,396.25,405.39,401.26
+VRSK,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 7.2% above Fib pocket. Wait for pullback to $197.47.",212.76,182.14,274.0,304.62,2.0,7.22,70.7,32,6808.32,1000.0,1.0,197.47,197.47,192.31,206.41,203.6
+VZ,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $44.26.",46.34,41.97,55.08,59.45,2.0,0.99,62.0,228,10565.52,1000.0,1.0,44.26,44.26,43.47,46.33,46.26
+V,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 3.5% above Fib pocket. Wait for pullback to $411.66.",426.46,388.76,501.86,539.56,2.0,9.03,62.2,26,11087.96,1000.0,1.0,411.66,411.66,403.57,424.94,423.3
+VMC,6,A,SKIP,Insufficient confluence.,277.26,251.43,328.92,354.75,2.0,8.09,46.6,38,10535.88,1000.0,1.0,,273.46,265.55,280.86,285.33
+WMT,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.7% above Fib pocket. Wait for pullback to $122.43.",128.41,115.27,154.69,167.83,2.0,2.71,70.2,76,9759.16,1000.0,1.0,122.43,122.43,119.88,127.37,125.93
+WRB,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 5.3% above Fib pocket. Wait for pullback to $74.38.",78.52,70.6,94.36,102.28,2.0,1.53,73.7,126,9893.52,1000.0,1.0,74.38,74.38,73.05,77.1,76.43
+DIS,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 4.5% above Fib pocket. Wait for pullback to $113.35.",118.7,107.58,140.94,152.06,2.0,2.35,65.4,89,10564.3,1000.0,1.0,113.35,113.35,111.33,118.93,118.84
+WAB,6,A,NEAR ENTRY,Price is 2.2% from Golden Pocket ($285.21). Set limit buy at $285.21.,291.74,266.91,341.4,366.23,2.0,8.47,48.7,40,11669.6,1000.0,1.0,285.21,285.21,279.02,297.94,297.89
+WELL,6,A,WAIT FOR PULLBACK,"Uptrend intact, but price is 6.2% above Fib pocket. Wait for pullback to $229.49.",244.65,214.47,305.01,335.19,2.0,5.01,59.1,33,8073.45,1000.0,1.0,229.49,229.49,223.99,245.08,246.32
+ZBH,6,A,SKIP,Insufficient confluence.,101.41,92.2,119.83,129.04,2.0,3.66,45.4,108,10952.28,1000.0,1.0,,101.1,97.99,104.17,106.1
