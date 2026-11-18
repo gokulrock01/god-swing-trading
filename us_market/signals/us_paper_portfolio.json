@@ -1,6 +1,6 @@
 {
   "initial_capital_usd": 100000.0,
-  "cash_balance_usd": 58.61999999999898,
+  "cash_balance_usd": 13.709999999998978,
   "realized_pnl_usd": 0.0,
   "open_positions": {
     "CNP": {
@@ -66,6 +66,19 @@
       "cost": 3525.66,
       "date": "2026-11-10",
       "score": 8,
+      "tp1_booked": false
+    },
+    "AES": {
+      "symbol": "AES",
+      "verdict": "BUY NOW",
+      "entry": 14.97,
+      "sl": 14.73,
+      "tp1": 15.45,
+      "tp2": 15.69,
+      "shares": 3,
+      "cost": 44.91,
+      "date": "2026-11-18",
+      "score": 9,
       "tp1_booked": false
     }
   },
