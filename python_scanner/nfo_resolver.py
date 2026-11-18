@@ -64,18 +64,39 @@ def load_nfo_master():
         print(f"  ⚠️ Error downloading NFO Scrip Master: {e}")
     return {}
 
-def get_current_expiry(name):
-    """Returns the nearest upcoming monthly expiry string."""
+def get_days_to_expiry(expiry_str):
+    """Calculates calendar days remaining until expiry string (e.g. '28NOV2026')"""
+    try:
+        exp_dt = datetime.strptime(expiry_str, "%d%b%Y")
+        return (exp_dt.date() - datetime.now().date()).days
+    except Exception:
+        return 99
+
+def get_current_expiry(name, min_dte=0):
+    """
+    Returns the nearest upcoming monthly expiry string.
+    If min_dte is specified and nearest expiry has <= min_dte days remaining,
+    rolls to next month to avoid expiry week gamma collapse and physical delivery traps!
+    """
     master = load_nfo_master()
     if name not in master:
         return None
     contracts = master[name]
     expiries = sorted(list(set(c["expiry"] for c in contracts)))
-    return expiries[0] if expiries else None
+    if not expiries:
+        return None
+        
+    if min_dte > 0 and len(expiries) > 1:
+        dte = get_days_to_expiry(expiries[0])
+        if dte <= min_dte:
+            return expiries[1]
+            
+    return expiries[0]
 
-def get_atm_option(name, spot_price, option_type="CE"):
+def get_atm_option(name, spot_price, option_type="CE", min_dte=2):
     """
     Finds the nearest At-The-Money (ATM) option contract for a stock.
+    Automatically guards against expiry-week gamma trap if within min_dte days.
     Returns: { symbol, token, strike, lotsize, expiry, type }
     """
     master = load_nfo_master()
@@ -83,7 +104,7 @@ def get_atm_option(name, spot_price, option_type="CE"):
     if clean_name not in master:
         return None
 
-    curr_expiry = get_current_expiry(clean_name)
+    curr_expiry = get_current_expiry(clean_name, min_dte=min_dte)
     if not curr_expiry:
         return None
 

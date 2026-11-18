@@ -79,6 +79,21 @@ BULLISH_KEYWORDS = [
     "record profit", "guidance raised", "strong results", "robust earnings",
 ]
 
+NEGATION_PATTERNS = [
+    r'\bno\s+(?:crash|plunge|fall|panic|selloff|recession|bloodbath)',
+    r"\bwon'?t\s+(?:crash|plunge|fall|slide)",
+    r'\bnot\s+(?:crashing|falling|worried|panicking)',
+    r'\bunlikely\s+to\s+(?:crash|fall|plunge)',
+    r'\brebounds?\s+from',
+    r'\brecovers?\s+from',
+    r'\bshrugs?\s+off',
+    r'\bdismisses?\s+(?:fears|concerns|rumors)',
+    r'\beases?\s+fears',
+    r'\bdispels?\s+fears',
+    r'\baverts?\s+crisis',
+    r'\bdenies?\s+(?:fraud|scam|probe)'
+]
+
 CUSTOM_VADER_LEXICON = {
     "rally": 2.0, "surge": 2.0, "soar": 2.0, "breakout": 1.8,
     "bullish": 1.8, "buyback": 1.5, "upgrade": 1.5, "outperform": 1.5,
@@ -244,17 +259,20 @@ _vader_analyzer = _init_vader()
 def analyze_headline_sentiment(title: str):
     """Returns (label, score) for a headline. VADER if available, else keywords."""
     text = title.lower()
+    is_negated = any(re.search(pat, text) for pat in NEGATION_PATTERNS)
 
     if _VADER_AVAILABLE and _vader_analyzer:
         scores   = _vader_analyzer.polarity_scores(title)
         compound = scores["compound"]
+        if is_negated and compound < 0:
+            compound = 0.0  # Neutralize false negative clickbait
         if compound >= 0.05:
             return "BULLISH", compound
         elif compound <= -0.05:
             return "BEARISH", compound
         return "NEUTRAL", compound
     else:
-        bear_hits = sum(1 for kw in BEARISH_KEYWORDS if re.search(r"\b" + re.escape(kw) + r"\b", text))
+        bear_hits = 0 if is_negated else sum(1 for kw in BEARISH_KEYWORDS if re.search(r"\b" + re.escape(kw) + r"\b", text))
         bull_hits = sum(1 for kw in BULLISH_KEYWORDS if re.search(r"\b" + re.escape(kw) + r"\b", text))
         net = bull_hits - bear_hits
         if net > 0:
