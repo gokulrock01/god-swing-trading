@@ -268,7 +268,8 @@ def execute_model_1_entry(portfolio, candidate):
 
     opt_ltp = get_option_ltp(sym, token)
     if not opt_ltp or opt_ltp <= 0.05:
-        opt_ltp = round(spot * 0.020, 2)
+        print(f"  ⚠️ Live option quote unavailable for {sym} from Angel One. Skipping trade.")
+        return
 
     cost = opt_ltp * lotsize
 
@@ -356,8 +357,11 @@ def execute_model_2_entry(portfolio, candidate):
     buy_leg  = spread["buy_leg"]
     lotsize  = sell_leg["lotsize"]
 
-    sell_p = get_option_ltp(sell_leg["symbol"], sell_leg["token"]) or round(spot * 0.015, 2)
-    buy_p  = get_option_ltp(buy_leg["symbol"], buy_leg["token"]) or round(spot * 0.009, 2)
+    sell_p = get_option_ltp(sell_leg["symbol"], sell_leg["token"])
+    buy_p  = get_option_ltp(buy_leg["symbol"], buy_leg["token"])
+    if not sell_p or not buy_p or sell_p <= 0.05 or buy_p <= 0.05:
+        print(f"  ⚠️ Live option spread quotes unavailable for {name} from Angel One. Skipping trade.")
+        return
 
     net_credit = max(0.20, sell_p - buy_p)
     total_credit = net_credit * lotsize
